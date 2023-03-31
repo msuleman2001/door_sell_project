@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class WishlistModel extends Model
 {
     use HasFactory;
+    protected $table='wishlist';
+
+    protected $primaryKey='wishlist_id';
 }

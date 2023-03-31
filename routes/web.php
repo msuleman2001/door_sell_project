@@ -8,8 +8,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DoorShopMainPageController;
 use App\Http\Controllers\ColourTypeController;
 use App\Http\Controllers\ColourController;
-
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WishListController;
+use App\Http\Controllers\CommentsController;
+
 
 
 /*
@@ -26,7 +28,7 @@ Route::view('index2','main-web.index3');
 //appling group middleware on the all admin routes to have only access if admin is login
 Route::group(['middleware'=>['admin']], function(){
     //Admin Dashboard Routes
-    Route::get('/Admin/dashboard',[AdminController::class,'index']);
+    Route::get('/Admin/dashboard',[AdminController::class,'index'])->name('dashboard');
 //Route::view('/register','register');
 
 //Product Categories Route
@@ -90,6 +92,16 @@ Route::group(['middleware'=>['admin']], function(){
     //deleting colours
 
     Route::delete('/Admin/delete/{id}',[ColourController::class,'deleteColour'])->name('deleteColour');
+
+
+//    Wishlist Routes
+Route::get('Admin/wish-list',[WishListController::class,'showWishList'])->name('wishList');
+
+// Users Routes
+    Route::get('Admin/user-list',[AuthController::class,'showUsers'])->name('userList');
+
+// Comments Routes
+    Route::get('Admin/comments-list',[CommentsController::class,'showComments'])->name('commentList');
 
 });
 

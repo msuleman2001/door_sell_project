@@ -79,6 +79,12 @@ return redirect('/');
         // redirect the user to the login page
         return redirect('/admin');
     }
+//Showing the users data on view
+
+    public function showUsers(){
+        $users = AuthModel::where('is_admin', 1)->get();
+        return view('admin.users-list', compact('users'));
+    }
 
 }
 

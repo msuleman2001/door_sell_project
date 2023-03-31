@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('dashboard')}}">
             <i class="fas fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -54,16 +54,21 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage  Colours Type</span></a>
     </li>
-{{--    <li class="nav-item">--}}
-{{--        <a class="nav-link" href="#">--}}
-{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Manage Users</span></a>--}}
-{{--    </li>--}}
-{{--    <li class="nav-item">--}}
-{{--        <a class="nav-link" href="#">--}}
-{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Manage Wishlist</span></a>--}}
-{{--    </li>--}}
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('userList')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Users</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('wishList')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Wishlist</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('commentList')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Comments</span></a>
+    </li>
 {{--    <li class="nav-item">--}}
 {{--        <a class="nav-link" href="#">--}}
 {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
@@ -246,7 +251,8 @@
                    ADMIN
 
                     </span>
-                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            <!--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
+
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
