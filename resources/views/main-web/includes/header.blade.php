@@ -11,7 +11,7 @@
             <!-- logo -->
             <div class="mobile-logo">
                 <a href="/door-shop2">
-                    <img class="logo-mobile img-fluid" src="{{asset('img/home/logo-mobile.png')}} " alt="Prestashop_Furnitica">
+                    <img class="logo-mobile img-fluid" src="{{asset('storage/img/home/logo-mobile.png')}}" alt="Prestashop_Furnitica">
                 </a>
             </div>
 
@@ -44,7 +44,7 @@
                                 <tr>
                                     <td class="product-image">
                                         <a href="">
-                                            <img src="{{asset('img/product/5.jpg')}}" alt="="Product">
+                                            <img src="{{asset('storage/img/product/5.jpg')}}" alt= "">Product">
                                         </a>
                                     </td>
                                     <td>
@@ -92,7 +92,7 @@
                 <div class="col-sm-2 col-md-2 d-flex align-items-center">
                     <div id="logo">
                         <a href="/door_shop2">
-                            <img class="img-fluid" src="{{asset('img/home/logo.png')}}" alt="="logo">
+                            <img class="img-fluid" src="{{asset('storage/img/home/logo.png')}}"alt= "">
                         </a>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                                                         <div class="menu-content">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="404.html">404 Page</a>
+                                                                    <a href="/404">404 Page</a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="/about-us">About Us Page</a>
@@ -244,6 +244,12 @@
                                     </a>
                                 </div>
                                 <div>
+                                    <a class="login" href="{{route('Logout')}}" rel="nofollow" title="Log out your customer account">
+                                        <i class="fa fa-sign-out"></i>
+                                        <span>Sign out</span>
+                                    </a>
+                                </div>
+                                <div>
                                     <a class="register" href="/user-register" rel="nofollow" title="Register Account">
                                         <i class="fa fa-user"></i>
                                         <span>Register Account</span>
@@ -275,22 +281,22 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item current">
                                             <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas.jpg')}} " alt="English" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas.jpg ')}}" alt="English" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas2.jpg')}} " alt="Italiano" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas2.jpg ')}}" alt="Italiano" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas3.jpg')}}' " alt="Français" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas3.jpg ')}}" alt="Français" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas4.jpg')}}" alt="="Español" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas4.jpg')}}" alt="Español" width="16" height="11">
                                             </a>
                                         </li>
                                     </ul>
@@ -311,7 +317,7 @@
                                         <tr>
                                             <td class="product-image">
                                                 <a href="/product-detail">
-                                                    <img src="{{asset('img/product/5.jpg')}} " alt="Product">
+                                                    <img src="{{asset('storage/img/product/5.jpg')}}"  alt="Product">
                                                 </a>
                                             </td>
                                             <td>

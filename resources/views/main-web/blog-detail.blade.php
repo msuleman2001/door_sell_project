@@ -14,7 +14,7 @@
                 <!-- logo -->
                 <div class="mobile-logo">
                     <a href="/door_shop2">
-                        <img class="logo-mobile img-fluid" src="img/home/logo-mobie.png" alt="="Prestashop_Furnitica">
+                        <img class="logo-mobile img-fluid" src="{{asset('img/home/logo-mobie.png')}}" alt= "">Prestashop_Furnitica">
                     </a>
                 </div>
 
@@ -48,7 +48,7 @@
                                         <tr>
                                             <td class="product-image">
                                                 <a href="/product-detail">
-                                                    <img src="{{asset('img/product/5.jpg" alt="="Product">
+                                                    <img src="{{asset('img/product/5.jpg')}}" alt= "">Product">
                                                 </a>
                                             </td>
                                             <td>
@@ -96,7 +96,7 @@
                     <div class="col-sm-2 col-md-2 d-flex align-items-center">
                         <div id="logo">
                             <a href="/door_shop2">
-                                <img src="img/home/logo.png" alt="="logo" class="img-fluid">
+                                <img src="{{asset('img/home/logo.png')}}" alt= "">logo" class="img-fluid">
                             </a>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                                 <a href="/door_shop2" title="Home Page 1">Home Page 1</a>
                                             </li>
                                             <li class="item">
-                                                <a href="home2.blade.php" title="Home Page 2">Home Page 2</a>
+                                               / <a href="/home2.blade.php" title="Home Page 2">Home Page 2</a>
                                             </li>
                                             <li class="item">
                                                 <a href="/home3" title="Home Page 3">Home Page 3</a>
@@ -147,7 +147,7 @@
                                                 <a href="/blog-grid-no-sidebar" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
                                             </li>
                                             <li class="item">
-                                                <a href="blog-detail.html" title="Blog Detail">Blog Detail</a>
+                                                <a href="/blog-detail" title="Blog Detail">Blog Detail</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -193,7 +193,7 @@
                                                             <div class="menu-content">
                                                                 <ul>
                                                                     <li>
-                                                                        <a href="404.html">404 Page</a>
+                                                                        <a href="/404">404 Page</a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="/about-us">About Us Page</a>
@@ -283,22 +283,22 @@
                                         <ul class="list-inline">
                                             <li class="list-inline-itemcurrent">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas.jpg" alt="="English" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas.jpg')}}" alt= "">English" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas2.jpg" alt="="Italiano" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas2.jpg')}}" alt= "">Italiano" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas3.jpg" alt="="Français" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas3.jpg')}}" alt= "">Français" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas4.jpg" alt="="Español" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas4.jpg')}}" alt= "">Español" width="16" height="11">
                                                 </a>
                                             </li>
                                         </ul>
@@ -319,7 +319,7 @@
                                                 <tr>
                                                     <td class="product-image">
                                                         <a href="/product-detail">
-                                                            <img src="{{asset('img/product/5.jpg" alt="="Product">
+                                                            <img src="{{asset('img/product/5.jpg')}}" alt= "">Product">
                                                         </a>
                                                     </td>
                                                     <td>
@@ -547,7 +547,7 @@
                                             <div class="post-item-content">
                                                 <div>
                                                     <div class="late-item first-child">
-                                                        <a href="blog-detail.html">
+                                                        <a href="/blog-detail">
                                                             <p class="content-title">Lorem ipsum dolor sit amet</p>
                                                         </a>
                                                         <span>
@@ -559,13 +559,13 @@
                                                             nonummy...
                                                         </p>
                                                         <p class="remove">
-                                                            <a href="blog-detail.html">READ MORE</a>
+                                                            <a href="/blog-detail">READ MORE</a>
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <div class="late-item">
-                                                        <a href="blog-detail.html">
+                                                        <a href="/blog-detail">
                                                             <p class="content-title">Lorem ipsum dolor sit amet</p>
                                                         </a>
                                                         <span>
@@ -577,7 +577,7 @@
                                                             nonummy...
                                                         </p>
                                                         <p class="remove">
-                                                            <a href="blog-detail.html">READ MORE</a>
+                                                            <a href="/blog-detail">READ MORE</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -600,7 +600,7 @@
                                                     </li>
 
                                                     <li>
-                                                        <a href="man.html" title="Show products matching tag Man">Man</a>
+                                                        <a href="man" title="Show products matching tag Man">Man</a>
                                                     </li>
 
                                                     <li>
@@ -642,7 +642,7 @@
                                         <div class="sidebar-block group-image-special">
                                             <div class="effect">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/blog/advertising.jpg" alt="="banner-2" title="banner-2">
+                                                    <img class="img-fluid" src="{{asset('storage/img/blog/advertising.jpg')}}" alt= ""> title="banner-2">
                                                 </a>
                                             </div>
                                         </div>
@@ -650,7 +650,7 @@
                                     <div class="col-sm-8 col-lg-9 col-md-9 flex-xs-first main-blogs">
                                         <h3>Rutrum Nonvopxe Sapiente Delectus Aut Bonbde</h3>
                                         <div class="hover-after">
-                                            <img src="img/blog/detail.jpg" alt="="img" class="img-fluid">
+                                            <img src="{{asset('storage/img/blog/detail.jpg')}}" alt= "">img" class="img-fluid">
                                         </div>
                                         <div class="late-item">
                                             <p>
@@ -678,12 +678,12 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6 p-left">
                                                             <div class="effect">
-                                                                <img class="img-fluid" src="img/blog/3.jpg" alt="="banner-1" title="banner-1">
+                                                                <img class="img-fluid" src="{{asset('storage/img/blog/3.jpg')}}" alt= ""> title="banner-1">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 p-right">
                                                             <div class="effect">
-                                                                <img class="img-fluid" src="img/blog/2.jpg" alt="="banner-2" title="banner-2">
+                                                                <img class="img-fluid" src="{{asset('storage/img/blog/2.jpg')}}" alt= ""> title="banner-2">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -724,7 +724,7 @@
                                         </div>
 
                                         <div class="admin">
-                                            <img src="img/blog/user.jpg" alt="="img" class="float-left right">
+                                            <img src="{{asset('storage/img/blog/user.jpg')}}" alt= "">img" class="float-left right">
                                             <div class="info">
                                                 <p>
                                                     <a href="#">
@@ -745,13 +745,13 @@
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="hover-after">
-                                                            <a href="blog-detail.html">
-                                                                <img src="img/blog/7.jpg" alt="="img" class="img-fluid">
+                                                            <a href="/blog-detail">
+                                                                <img src="{{asset('storage/img/blog/7.jpg')}}" alt= "">img" class="img-fluid">
                                                             </a>
                                                         </div>
                                                         <div class="late-item">
                                                             <p class="content-title">
-                                                                <a href="blog-detail.html">Lorem ipsum dolor sit amet</a>
+                                                                <a href="/blog-detail">Lorem ipsum dolor sit amet</a>
                                                             </p>
                                                             <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin,
                                                                 lorem quis bibendum auctor.
@@ -760,13 +760,13 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="hover-after">
-                                                            <a href="blog-detail.html">
-                                                                <img src="img/blog/8.jpg" alt="="img" class="img-fluid">
+                                                            <a href="/blog-detail">
+                                                                <img src="{{asset('storage/img/blog/8.jpg')}}" alt= "">img" class="img-fluid">
                                                             </a>
                                                         </div>
                                                         <div class="late-item">
                                                             <p class="content-title">
-                                                                <a href="blog-detail.html">Lorem ipsum dolor sit amet</a>
+                                                                <a href="/blog-detail">Lorem ipsum dolor sit amet</a>
                                                             </p>
                                                             <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin,
                                                                 lorem quis bibendum auctor.
@@ -775,13 +775,13 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="hover-after">
-                                                            <a href="blog-detail.html">
-                                                                <img src="img/blog/9.jpg" alt="="img" class="img-fluid">
+                                                            <a href="/blog-detail">
+                                                                <img src="{{asset('storage/img/blog/9.jpg')}}" alt= "">img" class="img-fluid">
                                                             </a>
                                                         </div>
                                                         <div class="late-item">
                                                             <p class="content-title">
-                                                                <a href="blog-detail.html">Lorem ipsum dolor sit amet</a>
+                                                                <a href="/blog-detail">Lorem ipsum dolor sit amet</a>
                                                             </p>
                                                             <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin,
                                                                 lorem quis bibendum auctor .
@@ -794,7 +794,7 @@
                                         <div class="reply late-item">
                                             <div class="blog-comment" id="blog-comment">
                                                 <h2 class="title-block">Comments</h2>
-                                                <img src="img/blog/user1.jpg" alt="="img" class="float-left right">
+                                                <img src="{{asset('storage/img/blog/user1.jpg')}}" alt= "">img" class="float-left right">
                                             </div>
                                             <div class="comment-content">
                                                 <p class="user-title">
@@ -812,7 +812,7 @@
                                             </div>
                                             <div class="blog-comment margin-right-comment">
                                                 <div class="avatar">
-                                                    <img src="img/blog/user2.jpg" alt="="img" class="float-left">
+                                                    <img src="{{asset('storage/img/blog/user2.jpg')}}" alt= "">img" class="float-left">
                                                 </div>
                                                 <div class="comment-content">
                                                     <p class="user-title">
@@ -832,7 +832,7 @@
                                             </div>
                                             <div class="blog-comment">
                                                 <div class="avatar">
-                                                    <img src="img/blog/user1.jpg" alt="="img" class="float-left right">
+                                                    <img src="{{asset('storage/img/blog/user1.jpg')}}" alt= "">img" class="float-left right">
                                                 </div>
                                                 <div class="comment-content">
                                                     <p class="user-title">
@@ -898,7 +898,7 @@
                             <div class="block">
                                 <div class="block-content">
                                     <p class="logo-footer">
-                                        <img src="img/home/logo.png" alt="="img">
+                                        <img src="{{asset('img/home/logo.png')}}" alt= "">
                                     </p>
                                     <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt
                                         ut labore et dolore magna aliqua. Ut enim ad minim
@@ -929,7 +929,7 @@
                             <div class="block">
                                 <div class="block-content">
                                     <p class="img-payment ">
-                                        <img class="img-fluid" src="img/home/payment-footer.png" alt="="img">
+                                        <img class="img-fluid" src="{{asset('img/home/payment-footer.png')}}" alt= "">
                                     </p>
                                 </div>
                             </div>
@@ -943,7 +943,7 @@
                                     <div class="contact-us">
                                         <div class="title-content">
                                             <i class="fa fa-home" aria-hidden="true"></i>
-                                            <span>Address :</span>
+                                            <span>  Add ress :</span>
                                         </div>
                                         <div class="content-contact address-contact">
                                             <p>123 Suspendis matti, Visaosang Building VST District NY Accums, North American
@@ -1045,7 +1045,7 @@
                                             Payment accept
                                         </div>
                                         <div class="payment-image">
-                                            <img class="img-fluid" src="img/home/payment.png" alt="="img">
+                                            <img class="img-fluid" src="{{asset('img/home/payment.png')}}" alt= "">
                                         </div>
                                     </div>
                                     <!-- Popup newsletter -->
@@ -1087,7 +1087,7 @@
                     <ul class="menu level1">
                         <li class="item  parent">
                             <a href="#" class="hasicon" title="SIDE TABLE">
-                                <img src="img/home/table-lamp.png" alt="="img">SIDE TABLE</a>
+                                <img src="{{asset('img/home/table-lamp.png')}}" alt= "">SIDE TABLE</a>
                             <span class="arrow collapsed" data-toggle="collapse" data-target="#SIDE-TABLE" aria-expanded="false" role="status">
                                 <i class="zmdi zmdi-minus"></i>
                                 <i class="zmdi zmdi-plus"></i>
@@ -1137,7 +1137,7 @@
                         </li>
                         <li class="item  parent group">
                             <a href="#" class="hasicon" title="FI">
-                                <img src="img/home/fireplace.png" alt="="img">FIREPLACE
+                                <img src="{{asset('img/home/fireplace.png')}}" alt= "">FIREPLACE
                             </a>
                             <span class="arrow collapsed" data-toggle="collapse" data-target="#fi" aria-expanded="false" role="status">
                                 <i class="zmdi zmdi-minus"></i>
@@ -1389,7 +1389,7 @@
                         </li>
                         <li class="item group-category-img parent group">
                             <a href="#" class="hasicon" title="TABLE LAMP">
-                                <img src="img/home/table-lamp.png" alt="="img">TABLE LAMP</a>
+                                <img src="{{asset('img/home/table-lamp.png')}}" alt= "">TABLE LAMP</a>
                             <span class="arrow collapsed" data-toggle="collapse" data-target="#table-lamp" aria-expanded="false" role="status">
                                 <i class="zmdi zmdi-minus"></i>
                                 <i class="zmdi zmdi-plus"></i>
@@ -1507,76 +1507,76 @@
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="OTTOMAN">
-                                <img src="img/home/ottoman.png" alt="="img">OTTOMAN
+                                <img src="{{asset('img/home/ottoman.png')}}" alt= "">OTTOMAN
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="ARMCHAIR">
-                                <img src="img/home/armchair.png" alt="="img">ARMCHAIR
+                                <img src="{{asset('img/home/armchair.png')}}" alt= "">ARMCHAIR
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="CUSHION">
-                                <img src="img/home/cushion.png" alt="="img">CUSHION
+                                <img src="{{asset('img/home/cushion.png')}}" alt= "">CUSHION
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="COFFEE TABLE">
-                                <img src="img/home/coffee_table.png" alt="="img">COFFEE TABLE</a>
+                                <img src="{{asset('img/home/coffee_table.png')}}" alt= "">COFFEE TABLE</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="SHELF">
-                                <img src="img/home/shelf.png" alt="="img">SHELF
+                                <img src="{{asset('img/home/shelf.png')}}" alt= "">SHELF
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="SOFA">
-                                <img src="img/home/sofa.png" alt="="img">SOFA
+                                <img src="{{asset('img/home/sofa.png')}}" alt= "">SOFA
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="DRESSING TABLE">
-                                <img src="img/home/dressing.png" alt="="img">DRESSING TABLE</a>
+                                <img src="{{asset('img/home/dressing.png')}}" alt= "">DRESSING TABLE</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="WINDOWN CURTAIN">
-                                <img src="img/home/windown.png" alt="="img">WINDOWN CURTAIN</a>
+                                <img src="{{asset('img/home/windown.png')}}" alt= "">WINDOWN CURTAIN</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="CHANDELIER">
-                                <img src="img/home/chandelier.png" alt="="img">CHANDELIER
+                                <img src="{{asset('img/home/chandelier.png')}}" alt= "">CHANDELIER
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="CEILING FAN">
-                                <img src="img/home/ceiling_fan.png" alt="="img">CEILING FAN</a>
+                                <img src="{{asset('img/home/ceiling_fan.png')}}" alt= "">CEILING FAN</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="WARDROBE">
-                                <img src="img/home/wardrobe.png" alt="="img">WARDROBE
+                                <img src="{{asset('img/home/wardrobe.png')}}" alt= "">WARDROBE
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="FLOOR LAMP">
-                                <img src="img/home/floor_lamp.png" alt="="img">FLOOR LAMP</a>
+                                <img src="{{asset('img/home/floor_lamp.png')}}" alt= "">FLOOR LAMP</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="VASE-FLOWER ">
-                                <img src="img/home/vase-flower.png" alt="="img">VASE-FLOWER
+                                <img src="{{asset('img/home/vase-flower.png')}}" alt= "">VASE-FLOWER
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="BED">
-                                <img src="img/home/bed.png" alt="="img">BED
+                                <img src="{{asset('img/home/bed.png')}}" alt= "">BED
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="BED GIRL">
-                                <img src="img/home/bed.png" alt="="img">BED GIRL</a>
+                                <img src="{{asset('img/home/bed.png')}}" alt= "">BED GIRL</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="BED BOY">
-                                <img src="img/home/bed.png" alt="="img">BED BOY</a>
+                                <img src="{{asset('img/home/bed.png')}}" alt= "">BED BOY</a>
                         </li>
                     </ul>
                 </div>
@@ -1610,7 +1610,7 @@
                                             <a href="/door_shop2" title="Home Page 1">Home Page 1</a>
                                         </li>
                                         <li class="item">
-                                            <a href="home2.blade.php" title="Home Page 2">Home Page 2</a>
+                                           / <a href="/home2.blade.php" title="Home Page 2">Home Page 2</a>
                                         </li>
                                         <li class="item">
                                             <a href="/home3" title="Home Page 3">Home Page 3</a>
@@ -1650,7 +1650,7 @@
                                             <a href="/blog-grid-no-sidebar" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
                                         </li>
                                         <li class="item">
-                                            <a href="blog-detail.html" title="Blog Detail">Blog Detail</a>
+                                            <a href="/blog-detail" title="Blog Detail">Blog Detail</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -1701,7 +1701,7 @@
                                                         <div class="menu-content">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="404.html">404 Page</a>
+                                                                    <a href="/404">404 Page</a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="/about-us">About Us Page</a>

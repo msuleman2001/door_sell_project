@@ -14,7 +14,7 @@
 					<!-- logo -->
 					<div class="mobile-logo">
 						<a href="/door_shop2">
-							<img class="logo-mobile img-fluid" src="img/home/logo-mobie.png" alt="="Prestashop_Furnitica">
+							<img class="logo-mobile img-fluid" src="{{asset('img/home/logo-mobie.png')}}" alt= "">Prestashop_Furnitica">
 						</a>
 					</div>
 
@@ -48,7 +48,7 @@
 											<tr>
 												<td class="product-image">
 													<a href="/product-detail">
-														<img src="{{asset('img/product/5.jpg" alt="="Product">
+														<img src="{{asset('img/product/5.jpg')}}" alt= "">Product">
 													</a>
 												</td>
 												<td>
@@ -96,7 +96,7 @@
 						<div class="col-sm-2 col-md-2 d-flex align-items-center">
 							<div id="logo">
 								<a href="/door_shop2">
-									<img src="img/home/logo.png" alt="="logo" class="img-fluid">
+									<img src="{{asset('img/home/logo.png')}}" alt= "">logo" class="img-fluid">
 								</a>
 							</div>
 						</div>
@@ -193,10 +193,10 @@
 																<div class="menu-content">
 																	<ul>
 																		<li>
-																			<a href="404.html">404 Page</a>
+																			<a href="/404">404 Page</a>
 																		</li>
 																		<li>
-																			<a href="about-us.html">About Us Page</a>
+																			<a href="/about-us">About Us Page</a>
 																		</li>
 																	</ul>
 																</div>
@@ -279,22 +279,22 @@
 											<ul class="list-inline">
 												<li class="list-inline-itemcurrent">
 													<a href="#">
-														<img class="img-fluid" src="img/home/home1-flas.jpg" alt="="English" width="16" height="11">
+														<img class="img-fluid" src="{{asset('img/home/home1-flas.jpg')}}" alt= "">English" width="16" height="11">
 													</a>
 												</li>
 												<li class="list-inline-item">
 													<a href="#">
-														<img class="img-fluid" src="img/home/home1-flas2.jpg" alt="="Italiano" width="16" height="11">
+														<img class="img-fluid" src="{{asset('img/home/home1-flas2.jpg')}}" alt= "">Italiano" width="16" height="11">
 													</a>
 												</li>
 												<li class="list-inline-item">
 													<a href="#">
-														<img class="img-fluid" src="img/home/home1-flas3.jpg" alt="="Français" width="16" height="11">
+														<img class="img-fluid" src="{{asset('img/home/home1-flas3.jpg')}}" alt= "">Français" width="16" height="11">
 													</a>
 												</li>
 												<li class="list-inline-item">
 													<a href="#">
-														<img class="img-fluid" src="img/home/home1-flas4.jpg" alt="="Español" width="16" height="11">
+														<img class="img-fluid" src="{{asset('img/home/home1-flas4.jpg')}}" alt= "">Español" width="16" height="11">
 													</a>
 												</li>
 											</ul>
@@ -315,7 +315,7 @@
 													<tr>
 														<td class="product-image">
 															<a href="/product-detail">
-																<img src="{{asset('img/product/5.jpg" alt="="Product">
+																<img src="{{asset('img/product/5.jpg')}}" alt= "">Product">
 															</a>
 														</td>
 														<td>
@@ -392,7 +392,7 @@
 									<div class="row">
 										<div class="col-lg-6 col-md-6 col-sm-6 right">
 											<a href="#">
-												<img class="img-fluid" src="img/other/1.jpg" alt="="#" />
+												<img class="img-fluid" src="{{asset('storage/img/other/1.jpg')}}" alt= "">#" />
 											</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 left">
@@ -406,7 +406,7 @@
 													sed odio sit amet nibh vultate cursus a sit amet mauris. Duis sed odio sit
 												amet nibh vultate cursus a sit amet mauris.</p>
 												<a>
-													<img class="img-fluid" src="img/other/4.png" alt="="#" />
+													<img class="img-fluid" src="{{asset('storage/img/other/4.png')}}" alt= "">#" />
 													<span>Mr. kwang shang - CEO</span>
 												</a>
 											</div>
@@ -425,12 +425,12 @@
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 left">
 											<a href="#">
-												<img class="img-fluid" src="img/other/2.jpg" alt="="#" />
+												<img class="img-fluid" src="{{asset('storage/img/other/2.jpg')}}" alt= "">#" />
 											</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 right">
 											<a href="#">
-												<img class="img-fluid" src="img/other/3.jpg" alt="="#" />
+												<img class="img-fluid" src="{{asset('storage/img/other/3.jpg')}}" alt= "">#" />
 											</a>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 left">
@@ -523,7 +523,7 @@
 								<div class="block">
 									<div class="block-content">
 										<p class="logo-footer">
-											<img src="img/home/logo.png" alt="="img">
+											<img src="{{asset('img/home/logo.png')}}" alt= "">
 										</p>
 										<p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt
 											ut labore et dolore magna aliqua. Ut enim ad minim
@@ -554,7 +554,7 @@
 								<div class="block">
 									<div class="block-content">
 										<p class="img-payment ">
-											<img class="img-fluid" src="img/home/payment-footer.png" alt="="img">
+											<img class="img-fluid" src="{{asset('img/home/payment-footer.png')}}" alt= "">
 										</p>
 									</div>
 								</div>
@@ -568,7 +568,7 @@
 										<div class="contact-us">
 											<div class="title-content">
 												<i class="fa fa-home" aria-hidden="true"></i>
-												<span>Address :</span>
+												<span>  Add ress :</span>
 											</div>
 											<div class="content-contact address-contact">
 												<p>123 Suspendis matti, Visaosang Building VST District NY Accums, North American
@@ -670,7 +670,7 @@
 												Payment accept
 											</div>
 											<div class="payment-image">
-												<img class="img-fluid" src="img/home/payment.png" alt="="img">
+												<img class="img-fluid" src="{{asset('img/home/payment.png')}}" alt= "">
 											</div>
 										</div>
 										<!-- Popup newsletter -->
@@ -712,7 +712,7 @@
 						<ul class="menu level1">
 							<li class="item  parent">
 								<a href="#" class="hasicon" title="SIDE TABLE">
-									<img src="img/home/table-lamp.png" alt="="img">SIDE TABLE
+									<img src="{{asset('img/home/table-lamp.png')}}" alt= "">SIDE TABLE
 								</a>
 								<span class="arrow collapsed" data-toggle="collapse" data-target="#SIDE-TABLE" aria-expanded="false" role="status">
 									<i class="zmdi zmdi-minus"></i>
@@ -763,7 +763,7 @@
 							</li>
 							<li class="item  parent group">
 								<a href="#" class="hasicon" title="FI">
-									<img src="img/home/fireplace.png" alt="="img">FIREPLACE
+									<img src="{{asset('img/home/fireplace.png')}}" alt= "">FIREPLACE
 								</a>
 								<span class="arrow collapsed" data-toggle="collapse" data-target="#fi" aria-expanded="false" role="status">
 									<i class="zmdi zmdi-minus"></i>
@@ -1015,7 +1015,7 @@
 							</li>
 							<li class="item group-category-img parent group">
 								<a href="#" class="hasicon" title="TABLE LAMP">
-								<img src="img/home/table-lamp.png" alt="="img">TABLE LAMP</a>
+								<img src="{{asset('img/home/table-lamp.png')}}" alt= "">TABLE LAMP</a>
 								<span class="arrow collapsed" data-toggle="collapse" data-target="#table-lamp" aria-expanded="false" role="status">
 									<i class="zmdi zmdi-minus"></i>
 									<i class="zmdi zmdi-plus"></i>
@@ -1133,76 +1133,76 @@
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="OTTOMAN">
-									<img src="img/home/ottoman.png" alt="="img">OTTOMAN
+									<img src="{{asset('img/home/ottoman.png')}}" alt= "">OTTOMAN
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="ARMCHAIR">
-									<img src="img/home/armchair.png" alt="="img">ARMCHAIR
+									<img src="{{asset('img/home/armchair.png')}}" alt= "">ARMCHAIR
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="CUSHION">
-									<img src="img/home/cushion.png" alt="="img">CUSHION
+									<img src="{{asset('img/home/cushion.png')}}" alt= "">CUSHION
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="COFFEE TABLE">
-								<img src="img/home/coffee_table.png" alt="="img">COFFEE TABLE</a>
+								<img src="{{asset('img/home/coffee_table.png')}}" alt= "">COFFEE TABLE</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="SHELF">
-									<img src="img/home/shelf.png" alt="="img">SHELF
+									<img src="{{asset('img/home/shelf.png')}}" alt= "">SHELF
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="SOFA">
-									<img src="img/home/sofa.png" alt="="img">SOFA
+									<img src="{{asset('img/home/sofa.png')}}" alt= "">SOFA
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="DRESSING TABLE">
-								<img src="img/home/dressing.png" alt="="img">DRESSING TABLE</a>
+								<img src="{{asset('img/home/dressing.png')}}" alt= "">DRESSING TABLE</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="WINDOWN CURTAIN">
-								<img src="img/home/windown.png" alt="="img">WINDOWN CURTAIN</a>
+								<img src="{{asset('img/home/windown.png')}}" alt= "">WINDOWN CURTAIN</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="CHANDELIER">
-									<img src="img/home/chandelier.png" alt="="img">CHANDELIER
+									<img src="{{asset('img/home/chandelier.png')}}" alt= "">CHANDELIER
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="CEILING FAN">
-								<img src="img/home/ceiling_fan.png" alt="="img">CEILING FAN</a>
+								<img src="{{asset('img/home/ceiling_fan.png')}}" alt= "">CEILING FAN</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="WARDROBE">
-									<img src="img/home/wardrobe.png" alt="="img">WARDROBE
+									<img src="{{asset('img/home/wardrobe.png')}}" alt= "">WARDROBE
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="FLOOR LAMP">
-								<img src="img/home/floor_lamp.png" alt="="img">FLOOR LAMP</a>
+								<img src="{{asset('img/home/floor_lamp.png')}}" alt= "">FLOOR LAMP</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="VASE-FLOWER ">
-									<img src="img/home/vase-flower.png" alt="="img">VASE-FLOWER
+									<img src="{{asset('img/home/vase-flower.png')}}" alt= "">VASE-FLOWER
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="BED">
-									<img src="img/home/bed.png" alt="="img">BED
+									<img src="{{asset('img/home/bed.png')}}" alt= "">BED
 								</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="BED GIRL">
-								<img src="img/home/bed.png" alt="="img">BED GIRL</a>
+								<img src="{{asset('img/home/bed.png')}}" alt= "">BED GIRL</a>
 							</li>
 							<li class="item">
 								<a href="#" class="hasicon" title="BED BOY">
-								<img src="img/home/bed.png" alt="="img">BED BOY</a>
+								<img src="{{asset('img/home/bed.png')}}" alt= "">BED BOY</a>
 							</li>
 						</ul>
 					</div>
@@ -1327,10 +1327,10 @@
 															<div class="menu-content">
                                                             <ul>
 															<li>
-															<a href="404.html">404 Page</a>
+															<a href="/404">404 Page</a>
 															</li>
 															<li>
-															<a href="page-about.html">About Us Page</a>
+															<a href="page-about">About Us Page</a>
 															</li>
                                                             </ul>
 															</div>

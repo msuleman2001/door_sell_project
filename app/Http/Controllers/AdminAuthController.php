@@ -7,16 +7,20 @@ use Illuminate\Http\Request;
 
 class AdminAuthController extends Controller
 {
-public function adminRegister(Request $request){
-    $admin_data=new AuthModel();
-    $admin_data->user_name=$request->input('user_name');
-    $admin_data->user_email=$request->input('user_email');
-    $admin_data->user_password=password_hash($request->input('user_password'),PASSWORD_BCRYPT);
-    $admin_data->is_admin=1; // set is_admin column to 1
+    public function logView(){
+        return view('auth.login');
+    }
+    public function adminRegister(Request $request){
+        $admin_data=new AuthModel();
+        $admin_data->user_name=$request->input('user_name');
+        $admin_data->user_email=$request->input('user_email');
+        $admin_data->user_password=password_hash($request->input('user_password'),PASSWORD_BCRYPT);
+        $admin_data->is_admin=1; // set is_admin column to 1
 
-    $admin_data->save();
+        $admin_data->save();
 
-    return view('admin-login');
+        return redirect('/login');
+
 }
 public function adminLogin(Request $request){
     // Clear existing admin session data

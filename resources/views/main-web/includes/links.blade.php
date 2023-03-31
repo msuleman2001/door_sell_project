@@ -6,6 +6,7 @@
 <html lang="zxx">
 
 
+
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
@@ -18,24 +19,20 @@
 
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="{{ asset('libs/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/font-material/css/material-design-iconic-font.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/nivo-slider/css/nivo-slider.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/nivo-slider/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/nivo-slider/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('libs/owl-carousel/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{asset('libs/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/font-material/css/material-design-iconic-font.min.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/nivo-slider/css/nivo-slider.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/nivo-slider/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/nivo-slider/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/owl-carousel/assets/owl.carousel.min.css')}}">
+
     <!-- Template CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('main_website_assets/css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('main_website_assets/css/reponsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main_website_assets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('main_website_assets/css/reponsive.css')}}">
 </head>
-<style>
-    .carosell{
-        margin-top: 200px;
-    }
-</style>

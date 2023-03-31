@@ -20,7 +20,7 @@ public  function productCategory(){
 
     public function colors()
     {
-        return $this->belongsToMany(ColorTypeModel::class, 'product_colours', 'product_id', 'colour_type_id');
+        return $this->belongsToMany(ColourTypeModel::class, 'product_colours', 'product_id', 'colour_type_id');
     }
 
 }

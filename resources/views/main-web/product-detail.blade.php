@@ -14,7 +14,7 @@
 
             <!-- logo -->
             <div class="mobile-logo">
-                <a href="index-2.html">
+                <a href="/index-2">
                     <img class="logo-mobile img-fluid" src="{{asset('img/home/logo-mobie.png')}}" alt="Prestashop_Furnitica">
                 </a>
             </div>
@@ -48,13 +48,13 @@
                                 <tbody>
                                 <tr>
                                     <td class="product-image">
-                                        <a href="product-detail.html">
+                                        <a href="/product-detail">
                                             <img src="{{asset('img/product/5.jpg')}}" alt="Product">
                                         </a>
                                     </td>
                                     <td>
                                         <div class="product-name">
-                                            <a href="product-detail.html">Organic Strawberry Fruits</a>
+                                            <a href="/product-detail">Organic Strawberry Fruits</a>
                                         </div>
                                         <div>
                                             2 x
@@ -75,8 +75,8 @@
                                 <tr>
                                     <td colspan="3" class="d-flex justify-content-center">
                                         <div class="cart-button">
-                                            <a href="product-cart.html" title="View Cart">View Cart</a>
-                                            <a href="product-checkout.html" title="Checkout">Checkout</a>
+                                            <a href="product-cart" title="View Cart">View Cart</a>
+                                            <a href="product-checkout" title="Checkout">Checkout</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -96,7 +96,7 @@
                 <!-- logo -->
                 <div class="col-sm-2 col-md-2 d-flex align-items-center">
                     <div id="logo">
-                        <a href="index-2.html">
+                        <a href="/index-2">
                             <img src="{{asset('img/home/logo.png')}}" alt="logo" class="img-fluid">
                         </a>
                     </div>
@@ -111,19 +111,19 @@
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li class="item">
-                                            <a href="index-2.html" title="Home Page 1">Home Page 1</a>
+                                            <a href="/index-2" title="Home Page 1">Home Page 1</a>
                                         </li>
                                         <li class="item">
-                                            <a href="home2.html" title="Home Page 2">Home Page 2</a>
+                                           / <a href="/home2" title="Home Page 2">Home Page 2</a>
                                         </li>
                                         <li class="item">
-                                            <a href="home3.html" title="Home Page 3">Home Page 3</a>
+                                           / <a href="/home3" title="Home Page 3">Home Page 3</a>
                                         </li>
                                         <li class="item">
-                                            <a href="home4.html" title="Home Page 4">Home Page 4</a>
+                                           / <a href="/home4" title="Home Page 4">Home Page 4</a>
                                         </li>
                                         <li class="item">
-                                            <a href="home5.html" title="Home Page 5">Home Page 5</a>
+                                           / <a href="/home5" title="Home Page 5">Home Page 5</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -133,22 +133,22 @@
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li class="item">
-                                            <a href="blog-list-sidebar-left.html" title="Blog List (Sidebar Left)">Blog List (Sidebar Left)</a>
+                                            <a href="/blog-list-sidebar-left" title="Blog List (Sidebar Left)">Blog List (Sidebar Left)</a>
                                         </li>
                                         <li class="item">
-                                            <a href="blog-list-sidebar-left2.html" title="Blog List (Sidebar Left) 2">Blog List (Sidebar Left) 2</a>
+                                            <a href="/blog-list-sidebar-left2" title="Blog List (Sidebar Left) 2">Blog List (Sidebar Left) 2</a>
                                         </li>
                                         <li class="item">
-                                            <a href="blog-list-sidebar-right.html" title="Category Blog (Right column)">Blog List (Sidebar Right)</a>
+                                            <a href="/blog-list-sidebar-right" title="Category Blog (Right column)">Blog List (Sidebar Right)</a>
                                         </li>
                                         <li class="item">
-                                            <a href="blog-list-no-sidebar.html" title="Blog List (No Sidebar)">Blog List (No Sidebar)</a>
+                                            <a href="/blog-list-no-sidebar" title="Blog List (No Sidebar)">Blog List (No Sidebar)</a>
                                         </li>
                                         <li class="item">
-                                            <a href="blog-grid-no-sidebar.html" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
+                                            <a href="/blog-grid-no-sidebar" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
                                         </li>
                                         <li class="item">
-                                            <a href="blog-detail.html" title="Blog Detail">Blog Detail</a>
+                                            <a href="/blog-detail" title="Blog Detail">Blog Detail</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -165,13 +165,13 @@
                                                         <div class="menu-content">
                                                             <ul class="col">
                                                                 <li>
-                                                                    <a href="product-grid-sidebar-left.html">Product Grid (Sidebar Left)</a>
+                                                                    <a href="/product-grid-sidebar-left">Product Grid (Sidebar Left)</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="product-grid-sidebar-right.html">Product Grid (Sidebar Right)</a>
+                                                                    <a href="/product-grid-sidebar-right">Product Grid (Sidebar Right)</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="product-list-sidebar-left.html">Product List (Sidebar left) </a>
+                                                                    <a href="/product-list-sidebar-left">Product List (Sidebar left) </a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -181,7 +181,7 @@
                                                         <div class="menu-content">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="product-detail.html">Product Detail (Sidebar Left)</a>
+                                                                    <a href="/product-detail">Product Detail (Sidebar Left)</a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="#">Product Detail (Sidebar Right)</a>
@@ -194,10 +194,10 @@
                                                         <div class="menu-content">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="404.html">404 Page</a>
+                                                                    <a href="/404">404 Page</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="about-us.html">About Us Page</a>
+                                                                    <a href="/about-us">About Us Page</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -209,7 +209,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="contact.html" class="parent">Contact US</a>
+                                <a href="/contact-us" class="parent">Contact US</a>
                             </li>
                         </ul>
                     </div>
@@ -241,31 +241,31 @@
                             <div class="account-list-content">
 
                                 <div>
-                                    <a class="login" href="user-acount.html" rel="nofollow" title="Log in to your customer account">
+                                    <a class="login" href="user-acount" rel="nofollow" title="Log in to your customer account">
                                         <i class="fa fa-cog"></i>
                                         <span>My Account</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="login" href="user-login.html" rel="nofollow" title="Log in to your customer account">
+                                    <a class="login" href="user-login" rel="nofollow" title="Log in to your customer account">
                                         <i class="fa fa-sign-in"></i>
                                         <span>Sign in</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="register" href="user-register.html" rel="nofollow" title="Register Account">
+                                    <a class="register" href="user-register" rel="nofollow" title="Register Account">
                                         <i class="fa fa-user"></i>
                                         <span>Register Account</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="check-out" href="product-checkout.html" rel="nofollow" title="Checkout">
+                                    <a class="check-out" href="product-checkout" rel="nofollow" title="Checkout">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                         <span>Checkout</span>
                                     </a>
                                 </div>
                                 <div class="link_wishlist">
-                                    <a href="user-wishlist.html" title="My Wishlists">
+                                    <a href="user-wishlist" title="My Wishlists">
                                         <i class="fa fa-heart"></i>
                                         <span>My Wishlists</span>
                                     </a>
@@ -284,22 +284,22 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-itemcurrent">
                                             <a href="#">
-                                                <img class="img-fluid" src="img/home/home1-flas.jpg" alt="English" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('img/home/home1-flas.jpg')}}" alt="English" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="img/home/home1-flas2.jpg" alt="Italiano" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('img/home/home1-flas2.jpg')}}" alt="Italiano" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="img/home/home1-flas3.jpg" alt="Français" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('img/home/home1-flas3.jpg')}}" alt="Français" width="16" height="11">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a href="#">
-                                                <img class="img-fluid" src="img/home/home1-flas4.jpg" alt="Español" width="16" height="11">
+                                                <img class="img-fluid" src="{{asset('img/home/home1-flas4.jpg')}}" alt="Español" width="16" height="11">
                                             </a>
                                         </li>
                                     </ul>
@@ -319,13 +319,13 @@
                                         <tbody>
                                         <tr>
                                             <td class="product-image">
-                                                <a href="product-detail.html">
-                                                    <img src="img/product/5.jpg" alt="Product">
+                                                <a href="/product-detail">
+                                                    <img src="{{asset('img/product/5.jpg')}}" alt="Product">
                                                 </a>
                                             </td>
                                             <td>
                                                 <div class="product-name">
-                                                    <a href="product-detail.html">Organic Strawberry Fruits</a>
+                                                    <a href="/product-detail">Organic Strawberry Fruits</a>
                                                 </div>
                                                 <div>
                                                     2 x
@@ -346,8 +346,8 @@
                                         <tr>
                                             <td colspan="3" class="d-flex justify-content-center">
                                                 <div class="cart-button">
-                                                    <a href="product-cart.html" title="View Cart">View Cart</a>
-                                                    <a href="product-checkout.html" title="Checkout">Checkout</a>
+                                                    <a href="product-cart" title="View Cart">View Cart</a>
+                                                    <a href="product-checkout" title="Checkout">Checkout</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -553,15 +553,15 @@
                                                 <div class="item col-md-12">
                                                     <div class="product-miniature item-one first-item d-flex">
                                                         <div class="thumbnail-container border">
-                                                            <a href="product-detail.html">
-                                                                <img class="img-fluid image-cover" src="img/product/1.jpg" alt="img">
-                                                                <img class="img-fluid image-secondary" src="img/product/22.jpg" alt="img">
+                                                            <a href="/product-detail">
+                                                                <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg')}}" alt="img">
+                                                                <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg')}}" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="product-description">
                                                             <div class="product-groups">
                                                                 <div class="product-title">
-                                                                    <a href="product-detail.html">Nulla et justo augue</a>
+                                                                    <a href="/product-detail">Nulla et justo augue</a>
                                                                 </div>
                                                                 <div class="rating">
                                                                     <div class="star-content">
@@ -584,15 +584,15 @@
                                                 <div class="item col-md-12">
                                                     <div class="product-miniature item-one first-item d-flex">
                                                         <div class="thumbnail-container border">
-                                                            <a href="product-detail.html">
-                                                                <img class="img-fluid image-cover" src="img/product/2.jpg" alt="img">
-                                                                <img class="img-fluid image-secondary" src="img/product/11.jpg" alt="img">
+                                                            <a href="/product-detail">
+                                                                <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg')}}" alt="img">
+                                                                <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="product-description">
                                                             <div class="product-groups">
                                                                 <div class="product-title">
-                                                                    <a href="product-detail.html">Nulla et justo augue</a>
+                                                                    <a href="/product-detail">Nulla et justo augue</a>
                                                                 </div>
                                                                 <div class="rating">
                                                                     <div class="star-content">
@@ -615,15 +615,15 @@
                                                 <div class="item col-md-12">
                                                     <div class="product-miniature item-one first-item d-flex">
                                                         <div class="thumbnail-container border">
-                                                            <a href="product-detail.html">
-                                                                <img class="img-fluid image-cover" src="img/product/3.jpg" alt="img">
-                                                                <img class="img-fluid image-secondary" src="img/product/14.jpg" alt="img">
+                                                            <a href="/product-detail">
+                                                                <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg')}}" alt="img">
+                                                                <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="product-description">
                                                             <div class="product-groups">
                                                                 <div class="product-title">
-                                                                    <a href="product-detail.html">Nulla et justo augue</a>
+                                                                    <a href="/product-detail">Nulla et justo augue</a>
                                                                 </div>
                                                                 <div class="rating">
                                                                     <div class="star-content">
@@ -664,7 +664,7 @@
                                                 </li>
 
                                                 <li>
-                                                    <a href="man.html" title="Show products matching tag Man">Man</a>
+                                                    <a href="man" title="Show products matching tag Man">Man</a>
                                                 </li>
 
                                                 <li>
@@ -739,12 +739,12 @@
                                                             </li>
                                                             <li class="col">
                                                                 <a href="#item3" data-toggle="tab">
-                                                                    <img src="img/product/3.jpg" alt="img">
+                                                                    <img src="{{asset('img/product/3.jpg')}}" alt="img">
                                                                 </a>
                                                             </li>
                                                             <li class="col">
                                                                 <a href="#item4" data-toggle="tab">
-                                                                    <img src="img/product/5.jpg" alt="img">
+                                                                    <img src="{{asset('img/product/5.jpg')}}" alt="img">
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -760,37 +760,37 @@
                                                                                     <div class="images-container">
                                                                                         <div class="js-qv-mask mask tab-content">
                                                                                             <div id="modal-item1" class="tab-pane fade active in show">
-                                                                                                <img src="img/product/1.jpg" alt="img">
+                                                                                                <img src="{{asset('img/product/1.jpg')}}" alt="img">
                                                                                             </div>
                                                                                             <div id="modal-item2" class="tab-pane fade">
-                                                                                                <img src="img/product/2.jpg" alt="img">
+                                                                                                <img src="{{asset('img/product/2.jpg')}}" alt="img">
                                                                                             </div>
                                                                                             <div id="modal-item3" class="tab-pane fade">
-                                                                                                <img src="img/product/3.jpg" alt="img">
+                                                                                                <img src="{{asset('img/product/3.jpg')}}" alt="img">
                                                                                             </div>
                                                                                             <div id="modal-item4" class="tab-pane fade">
-                                                                                                <img src="img/product/5.jpg" alt="img">
+                                                                                                <img src="{{asset('img/product/5.jpg')}}" alt="img">
                                                                                             </div>
                                                                                         </div>
                                                                                         <ul class="product-tab nav nav-tabs">
                                                                                             <li class="active">
                                                                                                 <a href="#modal-item1" data-toggle="tab" class=" active show">
-                                                                                                    <img src="img/product/1.jpg" alt="img">
+                                                                                                    <img src="{{asset('img/product/1.jpg')}}" alt="img">
                                                                                                 </a>
                                                                                             </li>
                                                                                             <li>
                                                                                                 <a href="#modal-item2" data-toggle="tab">
-                                                                                                    <img src="img/product/2.jpg" alt="img">
+                                                                                                    <img src="{{asset('img/product/2.jpg')}}" alt="img">
                                                                                                 </a>
                                                                                             </li>
                                                                                             <li>
                                                                                                 <a href="#modal-item3" data-toggle="tab">
-                                                                                                    <img src="img/product/3.jpg" alt="img">
+                                                                                                    <img src="{{asset('img/product/3.jpg')}}" alt="img">
                                                                                                 </a>
                                                                                             </li>
                                                                                             <li>
                                                                                                 <a href="#modal-item4" data-toggle="tab">
-                                                                                                    <img src="img/product/5.jpg" alt="img">
+                                                                                                    <img src="{{asset('img/product/5.jpg')}}" alt="img">
                                                                                                 </a>
                                                                                             </li>
                                                                                         </ul>
@@ -856,7 +856,7 @@
                                                                     <span class="add">
                                                                             <button class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" type="submit">
                                                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                <span>Add to cart</span>
+                                                                                <span>  Add  to cart</span>
                                                                             </button>
                                                                             <a class="addToWishlist" href="#">
                                                                                 <i class="fa fa-heart" aria-hidden="true"></i>
@@ -1091,9 +1091,9 @@
                                                     <div class="item text-center col-md-4">
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="img/product/1.jpg" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="img/product/22.jpg" alt="img">
+                                                                <a href="/product-detail">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg')}}" alt="img">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg')}}" alt="img">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -1106,7 +1106,7 @@
                                                             <div class="product-description">
                                                                 <div class="product-groups">
                                                                     <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                        <a href="/product-detail">Nulla et justo non augue</a>
                                                                     </div>
                                                                     <div class="rating">
                                                                         <div class="star-content">
@@ -1142,9 +1142,9 @@
                                                     <div class="item text-center col-md-4">
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="img/product/2.jpg" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="img/product/11.jpg" alt="img">
+                                                                <a href="/product-detail">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg')}}" alt="img">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt="img">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -1157,7 +1157,7 @@
                                                             <div class="product-description">
                                                                 <div class="product-groups">
                                                                     <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                        <a href="/product-detail">Nulla et justo non augue</a>
                                                                     </div>
                                                                     <div class="rating">
                                                                         <div class="star-content">
@@ -1193,9 +1193,9 @@
                                                     <div class="item text-center col-md-4">
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="img/product/3.jpg" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="img/product/14.jpg" alt="img">
+                                                                <a href="/product-detail">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg')}}" alt="img">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt="img">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -1208,7 +1208,7 @@
                                                             <div class="product-description">
                                                                 <div class="product-groups">
                                                                     <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                        <a href="/product-detail">Nulla et justo non augue</a>
                                                                     </div>
                                                                     <div class="rating">
                                                                         <div class="star-content">
@@ -1265,7 +1265,7 @@
                         <div class="block">
                             <div class="block-content">
                                 <p class="logo-footer">
-                                    <img src="img/home/logo.png" alt="img">
+                                    <img src="{{asset('img/home/logo.png')}}" alt="img">
                                 </p>
                                 <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua. Ut enim ad minim
@@ -1296,7 +1296,7 @@
                         <div class="block">
                             <div class="block-content">
                                 <p class="img-payment ">
-                                    <img class="img-fluid" src="img/home/payment-footer.png" alt="img">
+                                    <img class="img-fluid" src="{{asset('img/home/payment-footer.png')}}" alt="img">
                                 </p>
                             </div>
                         </div>
@@ -1310,7 +1310,7 @@
                                 <div class="contact-us">
                                     <div class="title-content">
                                         <i class="fa fa-home" aria-hidden="true"></i>
-                                        <span>Address :</span>
+                                        <span>  Add ress :</span>
                                     </div>
                                     <div class="content-contact address-contact">
                                         <p>123 Suspendis matti, Visaosang Building VST District NY Accums, North American
@@ -1412,7 +1412,7 @@
                                         Payment accept
                                     </div>
                                     <div class="payment-image">
-                                        <img class="img-fluid" src="img/home/payment.png" alt="img">
+                                        <img class="img-fluid" src="{{asset('img/home/payment.png')}}" alt="img">
                                     </div>
                                 </div>
                                 <!-- Popup newsletter -->
@@ -1454,7 +1454,7 @@
                 <ul class="menu level1">
                     <li class="item  parent">
                         <a href="#" class="hasicon" title="SIDE TABLE">
-                            <img src="img/home/table-lamp.png" alt="img">SIDE TABLE</a>
+                            <img src="{{asset('img/home/table-lamp.png')}}" alt="img">SIDE TABLE</a>
                         <span class="arrow collapsed" data-toggle="collapse" data-target="#SIDE-TABLE">
                                 <i class="zmdi zmdi-minus"></i>
                                 <i class="zmdi zmdi-plus"></i>
@@ -1504,7 +1504,7 @@
                     </li>
                     <li class="item  parent group">
                         <a href="#" class="hasicon" title="FI">
-                            <img src="img/home/fireplace.png" alt="img">FIREPLACE
+                            <img src="{{asset('img/home/fireplace.png')}}" alt="img">FIREPLACE
                         </a>
                         <span class="arrow collapsed" data-toggle="collapse" data-target="#fi">
                                 <i class="zmdi zmdi-minus"></i>
@@ -1756,7 +1756,7 @@
                     </li>
                     <li class="item group-category-img parent group">
                         <a href="#" class="hasicon" title="TABLE LAMP">
-                            <img src="img/home/table-lamp.png" alt="img">TABLE LAMP</a>
+                            <img src="{{asset('img/home/table-lamp.png')}}" alt="img">TABLE LAMP</a>
                         <span class="arrow collapsed" data-toggle="collapse" data-target="#table-lamp">
                                 <i class="zmdi zmdi-minus"></i>
                                 <i class="zmdi zmdi-plus"></i>
@@ -1874,76 +1874,76 @@
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="OTTOMAN">
-                            <img src="img/home/ottoman.png" alt="img">OTTOMAN
+                            <img src="{{asset('img/home/ottoman.png')}}" alt="img">OTTOMAN
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="ARMCHAIR">
-                            <img src="img/home/armchair.png" alt="img">ARMCHAIR
+                            <img src="{{asset('img/home/armchair.png')}}" alt="img">ARMCHAIR
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="CUSHION">
-                            <img src="img/home/cushion.png" alt="img">CUSHION
+                            <img src="{{asset('img/home/cushion.png')}}" alt="img">CUSHION
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="COFFEE TABLE">
-                            <img src="img/home/coffee_table.png" alt="img">COFFEE TABLE</a>
+                            <img src="{{asset('img/home/coffee_table.png')}}" alt="img">COFFEE TABLE</a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="SHELF">
-                            <img src="img/home/shelf.png" alt="img">SHELF
+                            <img src="{{asset('img/home/shelf.png')}}" alt="img">SHELF
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="SOFA">
-                            <img src="img/home/sofa.png" alt="img">SOFA
+                            <img src="{{asset('img/home/sofa.png')}}" alt="img">SOFA
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="DRESSING TABLE">
-                            <img src="img/home/dressing.png" alt="img">DRESSING TABLE</a>
+                            <img src="{{asset('img/home/dressing.png')}}" alt="img">DRESSING TABLE</a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="WINDOWN CURTAIN">
-                            <img src="img/home/windown.png" alt="img">WINDOWN CURTAIN</a>
+                            <img src="{{asset('img/home/windown.png')}}" alt="img">WINDOWN CURTAIN</a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="CHANDELIER">
-                            <img src="img/home/chandelier.png" alt="img">CHANDELIER
+                            <img src="{{asset('img/home/chandelier.png')}}" alt="img">CHANDELIER
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="CEILING FAN">
-                            <img src="img/home/ceiling_fan.png" alt="img">CEILING FAN</a>
+                            <img src="{{asset('img/home/ceiling_fan.png')}}" alt="img">CEILING FAN</a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="WARDROBE">
-                            <img src="img/home/wardrobe.png" alt="img">WARDROBE
+                            <img src="{{asset('img/home/wardrobe.png')}}" alt="img">WARDROBE
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="FLOOR LAMP">
-                            <img src="img/home/floor_lamp.png" alt="img">FLOOR LAMP</a>
+                            <img src="{{asset('img/home/floor_lamp.png')}}" alt="img">FLOOR LAMP</a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="VASE-FLOWER ">
-                            <img src="img/home/vase-flower.png" alt="img">VASE-FLOWER
+                            <img src="{{asset('img/home/vase-flower.png')}}" alt="img">VASE-FLOWER
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="BED">
-                            <img src="img/home/bed.png" alt="img">BED
+                            <img src="{{asset('img/home/bed.png')}}" alt="img">BED
                         </a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="BED GIRL">
-                            <img src="img/home/bed.png" alt="img">BED GIRL</a>
+                            <img src="{{asset('img/home/bed.png')}}" alt="img">BED GIRL</a>
                     </li>
                     <li class="item">
                         <a href="#" class="hasicon" title="BED BOY">
-                            <img src="img/home/bed.png" alt="img">BED BOY</a>
+                            <img src="{{asset('img/home/bed.png')}}" alt="img">BED BOY</a>
                     </li>
                 </ul>
             </div>
@@ -1969,24 +1969,24 @@
                                     <i class="zmdi zmdi-minus"></i>
                                     <i class="zmdi zmdi-plus"></i>
                                 </span>
-                            <a href="index-2.html" title="Home">
+                            <a href="/index-2" title="Home">
                                 <i class="fa fa-home" aria-hidden="true"></i>Home</a>
                             <div class="subCategory collapse" id="home1" aria-expanded="true" role="status">
                                 <ul>
                                     <li class="item">
-                                        <a href="index-2.html" title="Home Page 1">Home Page 1</a>
+                                        <a href="/index-2" title="Home Page 1">Home Page 1</a>
                                     </li>
                                     <li class="item">
-                                        <a href="home2.html" title="Home Page 2">Home Page 2</a>
+                                       / <a href="/home2" title="Home Page 2">Home Page 2</a>
                                     </li>
                                     <li class="item">
-                                        <a href="home3.html" title="Home Page 3">Home Page 3</a>
+                                       / <a href="/home3" title="Home Page 3">Home Page 3</a>
                                     </li>
                                     <li class="item">
-                                        <a href="home4.html" title="Home Page 4">Home Page 4</a>
+                                       / <a href="/home4" title="Home Page 4">Home Page 4</a>
                                     </li>
                                     <li class="item">
-                                        <a href="home5.html" title="Home Page 5">Home Page 5</a>
+                                       / <a href="/home5" title="Home Page 5">Home Page 5</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2002,22 +2002,22 @@
                             <div class="subCategory collapse" id="blog" aria-expanded="true" role="status">
                                 <ul>
                                     <li class="item">
-                                        <a href="blog-list-sidebar-left.html" title="Blog List (Sidebar Left)">Blog List (Sidebar Left)</a>
+                                        <a href="/blog-list-sidebar-left" title="Blog List (Sidebar Left)">Blog List (Sidebar Left)</a>
                                     </li>
                                     <li class="item">
-                                        <a href="blog-list-sidebar-left2.html" title="Blog List (Sidebar Left) 2">Blog List (Sidebar Left) 2</a>
+                                        <a href="/blog-list-sidebar-left2" title="Blog List (Sidebar Left) 2">Blog List (Sidebar Left) 2</a>
                                     </li>
                                     <li class="item">
-                                        <a href="blog-list-sidebar-right.html" title="Category Blog (Right column)">Blog List (Sidebar Right)</a>
+                                        <a href="/blog-list-sidebar-right" title="Category Blog (Right column)">Blog List (Sidebar Right)</a>
                                     </li>
                                     <li class="item">
-                                        <a href="blog-list-no-sidebar.html" title="Blog List (No Sidebar)">Blog List (No Sidebar)</a>
+                                        <a href="/blog-list-no-sidebar" title="Blog List (No Sidebar)">Blog List (No Sidebar)</a>
                                     </li>
                                     <li class="item">
-                                        <a href="blog-grid-no-sidebar.html" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
+                                        <a href="/blog-grid-no-sidebar" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
                                     </li>
                                     <li class="item">
-                                        <a href="blog-detail.html" title="Blog Detail">Blog Detail</a>
+                                        <a href="/blog-detail" title="Blog Detail">Blog Detail</a>
                                     </li>
                                 </ul>
                             </div>
@@ -2039,13 +2039,13 @@
                                                     <div class="menu-content">
                                                         <ul class="col">
                                                             <li>
-                                                                <a href="product-grid-sidebar-left.html">Product Grid (Sidebar Left)</a>
+                                                                <a href="/product-grid-sidebar-left">Product Grid (Sidebar Left)</a>
                                                             </li>
                                                             <li>
-                                                                <a href="product-grid-sidebar-right.html">Product Grid (Sidebar Right)</a>
+                                                                <a href="/product-grid-sidebar-right">Product Grid (Sidebar Right)</a>
                                                             </li>
                                                             <li>
-                                                                <a href="product-list-sidebar-left.html">Product List (Sidebar Left) </a>
+                                                                <a href="/product-list-sidebar-left">Product List (Sidebar Left) </a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -2055,7 +2055,7 @@
                                                     <div class="menu-content">
                                                         <ul>
                                                             <li>
-                                                                <a href="product-detail.html">Product Detail (Sidebar Left)</a>
+                                                                <a href="/product-detail">Product Detail (Sidebar Left)</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#">Product Detail (Sidebar Right)</a>
@@ -2068,10 +2068,10 @@
                                                     <div class="menu-content">
                                                         <ul>
                                                             <li>
-                                                                <a href="404.html">404 Page</a>
+                                                                <a href="/404">404 Page</a>
                                                             </li>
                                                             <li>
-                                                                <a href="about-us.html">About Us Page</a>
+                                                                <a href="/about-us">About Us Page</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -2083,7 +2083,7 @@
                             </div>
                         </li>
                         <li class="item has-sub">
-                            <a href="contact.html" title="Contact us">
+                            <a href="/contact-us" title="Contact us">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>Contact us</a>
                         </li>
                     </ul>

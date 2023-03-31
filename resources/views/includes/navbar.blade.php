@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -30,44 +30,45 @@
     <!-- Nav Item - Pages Collapse Menu -->
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('addProduct')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Add door</span></a>
+            <span>  Manage Products</span></a>
     </li>
 
 
 
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Add door type</span></a>
-    </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('addCategory')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Add Colour</span></a>
+            <span>  Add  Products Type</span></a>
     </li>
+
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link" href="">--}}
+{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--            <span>  Add  Colours</span></a>--}}
+{{--    </li>--}}
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Add Colour Type</span></a>
+            <span>  Manage  Colours Type</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Manage Users</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Manage Wishlist</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Manage Cart</span></a>
-    </li>
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link" href="#">--}}
+{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--            <span>  Add Users</span></a>--}}
+{{--    </li>--}}
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link" href="#">--}}
+{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--            <span>  Add Wishlist</span></a>--}}
+{{--    </li>--}}
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link" href="#">--}}
+{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--            <span>  Add Cart</span></a>--}}
+{{--    </li>--}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
@@ -193,7 +194,7 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="="">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60'}}" alt= "">">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -203,7 +204,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="="">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60'}}" alt= "">">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -213,7 +214,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="="">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60'}}" alt= "">">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -223,7 +224,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="="">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60'}}" alt= "">">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>

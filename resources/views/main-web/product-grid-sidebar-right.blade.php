@@ -53,7 +53,7 @@
                 <!-- logo -->
                 <div class="mobile-logo">
                     <a href="/door_shop2">
-                        <img class="logo-mobile img-fluid" src="img/home/logo-mobie.png" alt="="Prestashop_Furnitica">
+                        <img class="logo-mobile img-fluid" src="{{asset('img/home/logo-mobie.png')}}" alt= "">Prestashop_Furnitica">
                     </a>
                 </div>
 
@@ -87,7 +87,7 @@
                                         <tr>
                                             <td class="product-image">
                                                 <a href="/product-detail">
-                                                    <img src="{{asset('img/product/5.jpg" alt="="Product">
+                                                    <img src="{{asset('img/product/5.jpg')}}" alt= "">Product">
                                                 </a>
                                             </td>
                                             <td>
@@ -135,7 +135,7 @@
                     <div class="col-sm-2 col-md-2 d-flex align-items-center">
                         <div id="logo">
                             <a href="/door_shop2">
-                                <img src="img/home/logo.png" alt="="logo" class="img-fluid">
+                                <img src="{{asset('img/home/logo.png')}}" alt= "">logo" class="img-fluid">
                             </a>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                                                 <a href="/door_shop2" title="Home Page 1">Home Page 1</a>
                                             </li>
                                             <li class="item">
-                                                <a href="home2.blade.php" title="Home Page 2">Home Page 2</a>
+                                               / <a href="/home2.blade.php" title="Home Page 2">Home Page 2</a>
                                             </li>
                                             <li class="item">
                                                 <a href="/home3" title="Home Page 3">Home Page 3</a>
@@ -206,7 +206,7 @@
                                                                         <a href="/product-grid-sidebar-left">Product Grid (Sidebar Left)</a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="product-grid-sidebar-right.html">Product Grid (Sidebar Right)</a>
+                                                                        <a href="/product-grid-sidebar-right">Product Grid (Sidebar Right)</a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="/product-list-sidebar-left">Product List (Sidebar left) </a>
@@ -232,7 +232,7 @@
                                                             <div class="menu-content">
                                                                 <ul>
                                                                     <li>
-                                                                        <a href="404.html">404 Page</a>
+                                                                        <a href="/404">404 Page</a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="/about-us">About Us Page</a>
@@ -322,22 +322,22 @@
                                         <ul class="list-inline">
                                             <li class="list-inline-itemcurrent">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas.jpg" alt="="English" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas.jpg')}}" alt= "">English" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas2.jpg" alt="="Italiano" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas2.jpg')}}" alt= "">Italiano" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas3.jpg" alt="="Français" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas3.jpg')}}" alt= "">Français" width="16" height="11">
                                                 </a>
                                             </li>
                                             <li class="list-inline-item">
                                                 <a href="#">
-                                                    <img class="img-fluid" src="img/home/home1-flas4.jpg" alt="="Español" width="16" height="11">
+                                                    <img class="img-fluid" src="{{asset('img/home/home1-flas4.jpg')}}" alt= "">Español" width="16" height="11">
                                                 </a>
                                             </li>
                                         </ul>
@@ -358,7 +358,7 @@
                                                 <tr>
                                                     <td class="product-image">
                                                         <a href="/product-detail">
-                                                            <img src="{{asset('img/product/5.jpg" alt="="Product">
+                                                            <img src="{{asset('img/product/5.jpg')}}" alt= "">Product">
                                                         </a>
                                                     </td>
                                                     <td>
@@ -470,8 +470,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -522,8 +522,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -574,8 +574,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -626,8 +626,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/5.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/5.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -678,8 +678,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -730,8 +730,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -782,8 +782,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg')}}" alt= "">
                                                                 </a>
 
                                                                 <div class="highlighted-informations">
@@ -835,8 +835,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                 </a>
 
                                                                 <div class="highlighted-informations">
@@ -888,8 +888,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -940,8 +940,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg')}}" alt= "">
                                                                 </a>
                                                                 <div class="highlighted-informations">
                                                                     <div class="variant-links">
@@ -992,8 +992,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg')}}" alt= "">
                                                                 </a>
 
                                                                 <div class="highlighted-informations">
@@ -1045,8 +1045,8 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg" alt="="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg')}}" alt= "">
+                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                 </a>
 
                                                                 <div class="highlighted-informations">
@@ -1104,8 +1104,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1162,8 +1162,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1220,8 +1220,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1278,8 +1278,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/5.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/5.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1336,8 +1336,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1394,8 +1394,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1452,8 +1452,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
 
@@ -1511,8 +1511,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
 
@@ -1570,8 +1570,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/8.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1628,8 +1628,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/11.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/12.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -1686,8 +1686,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/13.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/23.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
 
@@ -1745,8 +1745,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="thumbnail-container border">
                                                                         <a href="/product-detail">
-                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg" alt="="img">
-                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg" alt="="img">
+                                                                            <img class="img-fluid image-cover" src="{{asset('img/product/26.jpg')}}" alt= "">
+                                                                            <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt= "">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -2245,7 +2245,7 @@
                                                     </li>
 
                                                     <li>
-                                                        <a href="man.html" title="Show products matching tag Man">Man</a>
+                                                        <a href="man" title="Show products matching tag Man">Man</a>
                                                     </li>
 
                                                     <li>
@@ -2302,7 +2302,7 @@
                             <div class="block">
                                 <div class="block-content">
                                     <p class="logo-footer">
-                                        <img src="img/home/logo.png" alt="="img">
+                                        <img src="{{asset('img/home/logo.png')}}" alt= "">
                                     </p>
                                     <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt
                                         ut labore et dolore magna aliqua. Ut enim ad minim
@@ -2333,7 +2333,7 @@
                             <div class="block">
                                 <div class="block-content">
                                     <p class="img-payment ">
-                                        <img class="img-fluid" src="img/home/payment-footer.png" alt="="img">
+                                        <img class="img-fluid" src="{{asset('img/home/payment-footer.png')}}" alt= "">
                                     </p>
                                 </div>
                             </div>
@@ -2347,7 +2347,7 @@
                                     <div class="contact-us">
                                         <div class="title-content">
                                             <i class="fa fa-home" aria-hidden="true"></i>
-                                            <span>Address :</span>
+                                            <span>  Add ress :</span>
                                         </div>
                                         <div class="content-contact address-contact">
                                             <p>123 Suspendis matti, Visaosang Building VST District NY Accums, North American
@@ -2449,7 +2449,7 @@
                                             Payment accept
                                         </div>
                                         <div class="payment-image">
-                                            <img class="img-fluid" src="img/home/payment.png" alt="="img">
+                                            <img class="img-fluid" src="{{asset('img/home/payment.png')}}" alt= "">
                                         </div>
                                     </div>
                                     <!-- Popup newsletter -->
@@ -2491,7 +2491,7 @@
                     <ul class="menu level1">
                         <li class="item  parent">
                             <a href="#" class="hasicon" title="SIDE TABLE">
-                                <img src="img/home/table-lamp.png" alt="="img">SIDE TABLE</a>
+                                <img src="{{asset('img/home/table-lamp.png')}}" alt= "">SIDE TABLE</a>
                             <span class="arrow collapsed" data-toggle="collapse" data-target="#SIDE-TABLE" aria-expanded="false" role="status">
                                 <i class="zmdi zmdi-minus"></i>
                                 <i class="zmdi zmdi-plus"></i>
@@ -2541,7 +2541,7 @@
                         </li>
                         <li class="item  parent group">
                             <a href="#" class="hasicon" title="FI">
-                                <img src="img/home/fireplace.png" alt="="img">FIREPLACE
+                                <img src="{{asset('img/home/fireplace.png')}}" alt= "">FIREPLACE
                             </a>
                             <span class="arrow collapsed" data-toggle="collapse" data-target="#fi" aria-expanded="false" role="status">
                                 <i class="zmdi zmdi-minus"></i>
@@ -2793,7 +2793,7 @@
                         </li>
                         <li class="item group-category-img parent group">
                             <a href="#" class="hasicon" title="TABLE LAMP">
-                                <img src="img/home/table-lamp.png" alt="="img">TABLE LAMP</a>
+                                <img src="{{asset('img/home/table-lamp.png')}}" alt= "">TABLE LAMP</a>
                             <span class="arrow collapsed" data-toggle="collapse" data-target="#table-lamp" aria-expanded="false" role="status">
                                 <i class="zmdi zmdi-minus"></i>
                                 <i class="zmdi zmdi-plus"></i>
@@ -2911,76 +2911,76 @@
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="OTTOMAN">
-                                <img src="img/home/ottoman.png" alt="="img">OTTOMAN
+                                <img src="{{asset('img/home/ottoman.png')}}" alt= "">OTTOMAN
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="ARMCHAIR">
-                                <img src="img/home/armchair.png" alt="="img">ARMCHAIR
+                                <img src="{{asset('img/home/armchair.png')}}" alt= "">ARMCHAIR
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="CUSHION">
-                                <img src="img/home/cushion.png" alt="="img">CUSHION
+                                <img src="{{asset('img/home/cushion.png')}}" alt= "">CUSHION
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="COFFEE TABLE">
-                                <img src="img/home/coffee_table.png" alt="="img">COFFEE TABLE</a>
+                                <img src="{{asset('img/home/coffee_table.png')}}" alt= "">COFFEE TABLE</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="SHELF">
-                                <img src="img/home/shelf.png" alt="="img">SHELF
+                                <img src="{{asset('img/home/shelf.png')}}" alt= "">SHELF
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="SOFA">
-                                <img src="img/home/sofa.png" alt="="img">SOFA
+                                <img src="{{asset('img/home/sofa.png')}}" alt= "">SOFA
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="DRESSING TABLE">
-                                <img src="img/home/dressing.png" alt="="img">DRESSING TABLE</a>
+                                <img src="{{asset('img/home/dressing.png')}}" alt= "">DRESSING TABLE</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="WINDOWN CURTAIN">
-                                <img src="img/home/windown.png" alt="="img">WINDOWN CURTAIN</a>
+                                <img src="{{asset('img/home/windown.png')}}" alt= "">WINDOWN CURTAIN</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="CHANDELIER">
-                                <img src="img/home/chandelier.png" alt="="img">CHANDELIER
+                                <img src="{{asset('img/home/chandelier.png')}}" alt= "">CHANDELIER
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="CEILING FAN">
-                                <img src="img/home/ceiling_fan.png" alt="="img">CEILING FAN</a>
+                                <img src="{{asset('img/home/ceiling_fan.png')}}" alt= "">CEILING FAN</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="WARDROBE">
-                                <img src="img/home/wardrobe.png" alt="="img">WARDROBE
+                                <img src="{{asset('img/home/wardrobe.png')}}" alt= "">WARDROBE
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="FLOOR LAMP">
-                                <img src="img/home/floor_lamp.png" alt="="img">FLOOR LAMP</a>
+                                <img src="{{asset('img/home/floor_lamp.png')}}" alt= "">FLOOR LAMP</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="VASE-FLOWER ">
-                                <img src="img/home/vase-flower.png" alt="="img">VASE-FLOWER
+                                <img src="{{asset('img/home/vase-flower.png')}}" alt= "">VASE-FLOWER
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="BED">
-                                <img src="img/home/bed.png" alt="="img">BED
+                                <img src="{{asset('img/home/bed.png')}}" alt= "">BED
                             </a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="BED GIRL">
-                                <img src="img/home/bed.png" alt="="img">BED GIRL</a>
+                                <img src="{{asset('img/home/bed.png')}}" alt= "">BED GIRL</a>
                         </li>
                         <li class="item">
                             <a href="#" class="hasicon" title="BED BOY">
-                                <img src="img/home/bed.png" alt="="img">BED BOY</a>
+                                <img src="{{asset('img/home/bed.png')}}" alt= "">BED BOY</a>
                         </li>
                     </ul>
                 </div>
@@ -3014,7 +3014,7 @@
                                             <a href="/door_shop2" title="Home Page 1">Home Page 1</a>
                                         </li>
                                         <li class="item">
-                                            <a href="home2.blade.php" title="Home Page 2">Home Page 2</a>
+                                           / <a href="/home2.blade.php" title="Home Page 2">Home Page 2</a>
                                         </li>
                                         <li class="item">
                                             <a href="/home3" title="Home Page 3">Home Page 3</a>
@@ -3079,7 +3079,7 @@
                                                                     <a href="/product-grid-sidebar-left">Product Grid (Sidebar Left)</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="product-grid-sidebar-right.html">Product Grid (Sidebar Right)</a>
+                                                                    <a href="/product-grid-sidebar-right">Product Grid (Sidebar Right)</a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="/product-list-sidebar-left">Product List (Sidebar Left) </a>
@@ -3105,7 +3105,7 @@
                                                         <div class="menu-content">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="404.html">404 Page</a>
+                                                                    <a href="/404">404 Page</a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="/about-us">About Us Page</a>

@@ -10,7 +10,7 @@ class ProductCategoryController extends Controller
 {
     public function passData(){
         $categories = ProductCategoryModel::all();
-        return view('product-category-list',compact('categories'));
+        return view('admin.product-category-list',compact('categories'));
     }
     public function addCategory(Request $request)
     {
@@ -40,9 +40,36 @@ class ProductCategoryController extends Controller
             ->with('categories', $categories);
             // Category saved successfully
 
-
-
-//        passing the data to the product-categories view
     }
+
+
+    //Updating the Product Category Data
+
+
+    //geting data related to specific id on edit product view
+public function editCatData($category_id){
+        $category=ProductCategoryModel::find($category_id);
+        return view('admin.edit-product-category',compact('category'));
+}
+//updating the category data related to specific id\
+public function updateCatData(Request $request, $category_id){
+        $category=ProductCategoryModel::find($category_id);
+        $category->category_name=$request->input('category_name');
+        $category->category_details=$request->input('category_details');
+
+        $category->save();
+
+        return redirect('/admin/add-category');
+}
+//deleting the category data
+
+public function deleteCategory( $id){
+        $category=ProductCategoryModel::find($id);
+
+        $category->delete();
+        return redirect()->back();
+
+
+}
 
 }
