@@ -41,14 +41,14 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('addCategory')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>  Add  Products Type</span></a>
+            <span>  Manage Products Type</span></a>
     </li>
 
-{{--    <li class="nav-item">--}}
-{{--        <a class="nav-link" href="">--}}
-{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Add  Colours</span></a>--}}
-{{--    </li>--}}
+  <li class="nav-item">
+    <a class="nav-link" href="">
+        <i class="fas fa-fw fa-chart-area"></i>
+          <span>  Manage  Colours</span></a>
+</li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -57,17 +57,17 @@
 {{--    <li class="nav-item">--}}
 {{--        <a class="nav-link" href="#">--}}
 {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Add Users</span></a>--}}
+{{--            <span>  Manage Users</span></a>--}}
 {{--    </li>--}}
 {{--    <li class="nav-item">--}}
 {{--        <a class="nav-link" href="#">--}}
 {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Add Wishlist</span></a>--}}
+{{--            <span>  Manage Wishlist</span></a>--}}
 {{--    </li>--}}
 {{--    <li class="nav-item">--}}
 {{--        <a class="nav-link" href="#">--}}
 {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Add Cart</span></a>--}}
+{{--            <span>  Manage Cart</span></a>--}}
 {{--    </li>--}}
 
     <!-- Divider -->

@@ -284,7 +284,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-group">
-                                    <label for="colourName">Colour Type</label>
+                                    <label for="colourName">Add Colour </label>
 
                                     <select name="colour_type_id"  class="form-control col-md-6" id="categories">
                                         <option value="">--Select Product Colour Type--</option>
@@ -294,7 +294,7 @@
                                         @endforeach
                                     </select><br>
                                     <label for="colourName">Colour Name</label>
-                                    <input class="form-control col-md-6" value="" name="product_colour_name" type="text" id="colourtName"><br>
+                                    <input class="form-control col-md-6" value="" name="colour_name" type="text" id="colourtName"><br>
                                 </div>
                             </div>
                                 <div class="col-md-6 mb-4">
@@ -302,10 +302,10 @@
                                 <label for="colourImage">Colour Image</label>
                                     <input class="form-control col-md-6" value="" name="colour_image" type="file" id="colourImage"><br>
                                     <label for="colourDetails">Colour Details</label>
-                                    <textarea class="form-control col-md-6" cols="4" rows="4"  name="product_colour_details" type="text" id="colourDetails">
+                                    <textarea class="form-control col-md-6" cols="4" rows="4"  name="colour_details" type="text" id="colourDetails">
                                     </textarea>
                             <br>
-                            <button type="submit"  id="addColour" class="btn btn-primary " >Add Colour</button>
+                            <button type="submit"  id="addColour" class="btn btn-primary  " >Add Colour</button>
                         </div>
                     </div>
 

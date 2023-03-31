@@ -41,14 +41,14 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('addCategory')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>  Add  Products Type</span></a>
+            <span>  Manage Products Type</span></a>
     </li>
 
-{{--    <li class="nav-item">--}}
-{{--        <a class="nav-link" href="">--}}
-{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Add  Colours</span></a>--}}
-{{--    </li>--}}
+  <li class="nav-item">
+    <a class="nav-link" href="">
+        <i class="fas fa-fw fa-chart-area"></i>
+          <span>  Add  Colours</span></a>
+</li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>

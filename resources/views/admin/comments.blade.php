@@ -1,6 +1,7 @@
 @include('includes.header');
 
 
+<!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -30,7 +31,6 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-
     <li class="nav-item">
         <a class="nav-link" href="{{route('addCategory')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -46,11 +46,11 @@
     </li>
 
 
-    {{--    <li class="nav-item">--}}
-    {{--        <a class="nav-link" href={{route('addColour')}}>--}}
-    {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Manage  Colours</span></a>--}}
-    {{--    </li>--}}
+    <li class="nav-item">
+        <a class="nav-link" href={{route('addColour')}}>
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage  Colours</span></a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -71,7 +71,6 @@
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
     {{--            <span>  Manage Cart</span></a>--}}
     {{--    </li>--}}
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -81,7 +80,6 @@
     </div>
 
 </ul>
-
 <!-- End of Sidebar -->
 
 <!-- Content Wrapper -->
@@ -277,21 +275,57 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Add Color Type</h1>
-            <form method="post" action="{{route('updatingColourType',['id'=>$colour_types->colour_type_id])}}">
-                @csrf
-                @method('PUT');
-                <div class="form-group">
-                    <label for="color-type-name">Color Type Name</label>
-                    <input type="text" class="form-control col-md-6" id="colour-type-name" name="colour_type_name" placeholder="Enter color type name" value="{{$colour_types->colour_type_name}}">
-                </div>
-                <div class="form-group">
-                    <label for="color-type-details">Color Type Details</label>
-                    <textarea class="form-control col-md-6" id="colour-type-details" name="colour_type_details" rows="3" placeholder="Enter color type details"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Color Type</button>
-            </form>
+            <div class="container mt-5">
+                <table class="table table-stripped" id="table">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Manage Comments</h2>
+                        </div>
+                    </div>
+                    <div id="example_wrapper">
+                        <div class="col-md-6 mb-4">
+                            <!-- The buttons container will be appended here -->
+                        </div>
+                    </div>
+                    <thead>
+                    <tr>
+                        <th>Sr #</th>
+                        <th>User</th>
+                        <th>Comment</th>
+                        <th>Created At</th>
+                        <th>Created By</th>
+                        <th>Updated At</th>
+                        <th>Updated By</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
+                    <tr>
+                        <?php
+                        $sr=1;
+                        ?>
+                        @foreach ($comments as $comment)
+                            <td>{{$sr++}}</td>
+                            <td>{{ $comment->user_id }}</td>
+                            <td>{{ $comment->comment_body }}</td>
+                            <td>{{ $comment->created_at}}</td>
+                            <td>{{ $comment->created_by_id }}</td>
+                            <td>{{$comment->updated_at }}</td>
+                            <td>{{ $comment->updated_by_id }}</td>
+                            <td class="d-flex">
+                                <i class="fas fa-check-circle"></i> <!-- Enabled -->
+                                <i class="fas fa-times-circle"></i> <!-- Disabled -->
+                            </td>
+
+
+                    </tr>
+
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{--To Add the Copy data tables buttons--}}
 
         </div>
         <!-- /.container-fluid -->
@@ -323,6 +357,7 @@
 <!-- Logout Modal-->
 @include('includes.logout-Model');
 @include('includes.script');
+
 
 </body>
 

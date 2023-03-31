@@ -82,6 +82,14 @@ Route::group(['middleware'=>['admin']], function(){
     Route::get('/Admin/adding-colour',[ColourController::class,'passColourType'])->name('addingColour');
     Route::post('/Admin/added-colour',[ColourController::class,'addColour'])->name('addedColour');
 
+    //updating colours
+
+    Route::get('/Admin/edit/colour/{id}',[ColourController::class,'editColour'])->name('updateColour');
+    Route::put('/Admin/update/{id}',[ColourController::class,'updateColour'])->name('updatingColour');
+
+    //deleting colours
+
+    Route::delete('/Admin/delete/{id}',[ColourController::class,'deleteColour'])->name('deleteColour');
 
 });
 

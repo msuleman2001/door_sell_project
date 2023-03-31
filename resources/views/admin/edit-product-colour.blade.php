@@ -59,7 +59,7 @@
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageUser')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span> Manage Users</span></a>--}}
+    {{--            <span>  Manage Users</span></a>--}}
     {{--    </li>--}}
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageWishlist')}}">--}}
@@ -71,7 +71,6 @@
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
     {{--            <span>  Manage Cart</span></a>--}}
     {{--    </li>--}}
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -277,23 +276,42 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Add Color Type</h1>
-            <form method="post" action="{{route('updatingColourType',['id'=>$colour_types->colour_type_id])}}">
+            <h1 class="h3 mb-4 text-gray-800">Product Colour</h1>
+            <form id="add-colour-form" method="post" action="{{route('updatingColour',['id'=>$colour->colour_id])}}" enctype="multipart/form-data">
                 @csrf
-                @method('PUT');
-                <div class="form-group">
-                    <label for="color-type-name">Color Type Name</label>
-                    <input type="text" class="form-control col-md-6" id="colour-type-name" name="colour_type_name" placeholder="Enter color type name" value="{{$colour_types->colour_type_name}}">
-                </div>
-                <div class="form-group">
-                    <label for="color-type-details">Color Type Details</label>
-                    <textarea class="form-control col-md-6" id="colour-type-details" name="colour_type_details" rows="3" placeholder="Enter color type details"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Color Type</button>
+                @method('PUT')
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-group">
+                                    <label for="colourName">Update Colour </label>
+
+                                    <select name="colour_type_id"  class="form-control col-md-6" id="categories">
+                                        <option value="">--Select Product Colour Type--</option>
+
+                                        @foreach($colour_types as $colour_type)
+                                            <option value={{ $colour_type->colour_type_id}}>{{ $colour_type->colour_type_name}}</option>
+                                        @endforeach
+                                    </select><br>
+                                    <label for="colourName">Colour Name</label>
+                                    <input class="form-control col-md-6" value="{{$colour->colour_name}}" name="colour_name" type="text" id="colourtName"><br>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="colourImage">Colour Image</label>
+                                <input class="form-control col-md-6" value="{{$colour->colour_image}}" name="colour_image" type="file" id="colourImage"><br>
+                                <label for="colourDetails">Colour Details</label>
+                                <textarea class="form-control col-md-6" cols="4" rows="4"  name="colour_details" type="text" id="colourDetails">
+                                    </textarea>
+                                <br>
+                                <button type="submit"  id="addColour" class="btn btn-primary  " >Update Colour</button>
+                            </div>
+                        </div>
             </form>
 
-
         </div>
+
         <!-- /.container-fluid -->
 
     </div>

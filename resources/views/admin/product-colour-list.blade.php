@@ -46,11 +46,11 @@
     </li>
 
 
-    {{--    <li class="nav-item">--}}
-    {{--        <a class="nav-link" href={{route('addColour')}}>--}}
-    {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Add  Colours</span></a>--}}
-    {{--    </li>--}}
+    <li class="nav-item">
+        <a class="nav-link" href={{route('addColour')}}>
+            <i class="fas fa-fw fa-chart-area"></i>
+             <span>  Manage Colours</span></a>
+     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -59,17 +59,17 @@
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageUser')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Add Users</span></a>--}}
+    {{--            <span> Manage Users</span></a>--}}
     {{--    </li>--}}
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageWishlist')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Add Wishlist</span></a>--}}
+    {{--            <span>  Manage Wishlist</span></a>--}}
     {{--    </li>--}}
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageCart')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Add Cart</span></a>--}}
+    {{--            <span>  Manage Cart</span></a>--}}
     {{--    </li>--}}
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
@@ -308,18 +308,18 @@
                         ?>
                         @foreach ($colour_list as $colour)
                             <td>{{$sr++}}</td>
-                            <td>{{ $colour->product_colour_name }}</td>
+                            <td>{{ $colour->colour_name }}</td>
                             <td>{{ $colour->created_at}}</td>
                             <td>{{ $colour->created_by_id }}</td>
                             <td>{{$colour->updated_at }}</td>
                             <td>{{ $colour->updated_by_id }}</td>
                             <td class="d-flex">
-                                <form action="{{ route('deleteColour', ['id' =>$colour->product_colour_id]) }}" method="POST" id="delete-form">
+                                <form action="{{ route('deleteColour', ['id' =>$colour->colour_id]) }}" method="POST" id="delete-form">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn" data-toggle="modal" data-target="#deleteModal"> <i class="btn fa fa-trash text-white bg-danger delete"></i></button>
                                 </form>
-                                <a class="mt-2" href="{{route('updateColourType',['id'=>$colour->product_colour_id] )}}"><i class="btn fa fa-pencil text-white bg-success edit"></i></a>
+                                <a class="mt-2" href="{{route('updateColour',['id'=>$colour->colour_id] )}}"><i class="btn fa fa-pencil text-white bg-success edit"></i></a>
                             </td>
 
                             <!-- Confirmation Modal -->

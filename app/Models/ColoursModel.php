@@ -10,7 +10,7 @@ class ColoursModel extends Model
 {
     use HasFactory;
     protected $table='colours';
-    protected $primaryKey='product_colour_id';
+    protected $primaryKey='colour_id';
     public $incrementing=true;
     public $timestamps=true;
 

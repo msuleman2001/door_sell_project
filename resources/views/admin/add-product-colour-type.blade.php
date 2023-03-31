@@ -49,8 +49,7 @@
 {{--    <li class="nav-item">--}}
 {{--        <a class="nav-link" href={{route('addColour')}}>--}}
 {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Manage  Colours</span></a>--}}
-{{--    </li>--}}
+{{--            <span>  Manage  Colours</span></a>   </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -59,17 +58,17 @@
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageUser')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Add Users</span></a>--}}
+    {{--            <span> Manage Users</span></a>--}}
     {{--    </li>--}}
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageWishlist')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Add Wishlist</span></a>--}}
+    {{--            <span>  Manage Wishlist</span></a>--}}
     {{--    </li>--}}
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageCart')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>  Add Cart</span></a>--}}
+    {{--            <span>  Manage Cart</span></a>--}}
     {{--    </li>--}}
 
     <!-- Divider -->
