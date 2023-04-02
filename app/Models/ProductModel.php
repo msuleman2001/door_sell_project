@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +23,11 @@ public  function productCategory(){
     public function colors()
     {
         return $this->belongsToMany(ColourTypeModel::class, 'product_colours', 'product_id', 'colour_type_id');
+    }
+    //one to many rellationship between Product and review
+    public function reviews()
+    {
+        return $this->hasMany(ReviewModel::class,'product_id','product_id');
     }
 
 }

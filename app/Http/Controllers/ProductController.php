@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductCategoryModel;
 use App\Models\ProductModel;
+use App\Models\ReviewModel;
 use App\Models\ColourTypeModel;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -71,9 +71,10 @@ class ProductController extends Controller
  //going to specific product detail page from the images
     public function show($id){
         $product_details = ProductModel::find($id);
-//        $products = ProductModel::all();
-        return view('main-web.product-detail', compact('product_details'));
+        $reviews = $product_details->reviews()->get();
+        return view('main-web.product-detail', compact('product_details', 'reviews'));
     }
+
 
 
     // updating the product data

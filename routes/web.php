@@ -11,6 +11,7 @@ use App\Http\Controllers\ColourController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\ReviewController;
 
 
 
@@ -179,3 +180,7 @@ Route::view('/product-checkout','main-web.product-checkout');
 
 //user wishlist
 Route::view('/user-wishlist','main-web.user-wishlist');
+
+
+// user review route
+Route::post('/review',[ReviewController::class,'addReview'])->name('addReview');

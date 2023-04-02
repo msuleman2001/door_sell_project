@@ -11,9 +11,6 @@ class AuthController extends Controller
 //registering user to database
 
 //returning register view
-public function regView(){
-    return view('auth.register');
-}
 
 //user registration
     public function user_register(Request $request)
@@ -23,9 +20,7 @@ public function regView(){
         $user_data->user_email = $request->input('user_email');
         $user_data->user_password = password_hash($request->input('user_password'), PASSWORD_BCRYPT);
 $user_data->save();
-return redirect('/');
-//following will select the value of is_admin field 0 or 1 based on input values
-//    0 for client and 1 for admin
+return redirect('/')->with('success', 'Registered Successfully');
 
     }
 
@@ -52,7 +47,6 @@ return redirect('/');
 }
     public function login(Request $request)
     {
-
         $user_name = $request->input('user_name');
         $user_password = $request->input('user_password');
 
@@ -60,17 +54,18 @@ return redirect('/');
         $user = AuthModel::where('user_name', '=', $user_name)->first();
 
         if ($user && password_verify($user_password, $user->user_password)) {
-            session()->put('user', $user);
+            session()->put('user', $user->user_name);
             if(!$user->is_admin==1){
-                return redirect('/');
+                return redirect('/')->with('success', 'Login successful!');
             }
             else {
-                return redirect('/Admin/dashboard');
+                return redirect('/Admin/dashboard')->with('success', 'Login successful!');
             }
         } else {
             return redirect()->back()->withErrors(['msg' => 'Invalid username or password']);
         }
     }
+
 
 
     public function logout(){
@@ -82,7 +77,7 @@ return redirect('/');
 //Showing the users data on view
 
     public function showUsers(){
-        $users = AuthModel::where('is_admin', 1)->get();
+        $users = AuthModel::all();
         return view('admin.users-list', compact('users'));
     }
 

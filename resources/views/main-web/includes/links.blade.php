@@ -36,3 +36,20 @@
     <link rel="stylesheet" type="text/css" href="{{asset('main_website_assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('main_website_assets/css/reponsive.css')}}">
 </head>
+<style>
+    .modal-dialog {
+        max-width: 900px;
+        height: 450px;
+        padding: 20 30px 30px 30px;
+        margin-top: 60px;
+    }
+    .modal-body{
+        font-family: Arial;
+    }
+    .login-btn{
+position: absolute;
+       z-index: 500;
+        right: 10px;
+        top: 40px;
+    }
+</style>

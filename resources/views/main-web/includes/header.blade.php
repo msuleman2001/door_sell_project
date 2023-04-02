@@ -225,7 +225,11 @@
                         <div class="myaccount-title">
                             <a href="#acount" data-toggle="collapse" class="acount">
                                 <i class="fa fa-user" aria-hidden="true"></i>
+                                @if(session()->has('user'))
+                                    <span>{{ session('user') }}</span>
+                                @else
                                 <span>Account</span>
+                                @endif
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -234,7 +238,9 @@
                                 <div>
                                     <a class="login" href="/user-acount" rel="nofollow" title="Log in to your customer account">
                                         <i class="fa fa-cog"></i>
-                                        <span>My Account</span>
+
+                                     <span>My Account</span>
+
                                     </a>
                                 </div>
                                 <div>
@@ -242,6 +248,7 @@
                                         <i class="fa fa-sign-in"></i>
                                         <span>Sign in</span>
                                     </a>
+
                                 </div>
                                 <div>
                                     <a class="login" href="{{route('Logout')}}" rel="nofollow" title="Log out your customer account">

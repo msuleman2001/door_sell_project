@@ -1,22 +1,91 @@
 @include('main-web.includes.links')
+@if (session('success'))
+    <script>
+        alert('Success')
+    </script>
+@endif
+
 
 <body id="home">
+<button type="button" class="btn btn-outline-primary login-btn" data-toggle="modal" data-target="#exampleModal">
+    Login
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog mx-auto " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form  method="post" action="{{route('loggedIn')}}">
+                            @csrf
+                            <h4>Login</h4>
+                            <hr>
+                            <div class="form-group text-sm">
+                                <label for="loginEmail">Username<sup>*</sup></label>
+                                <input name="user_name"  type="text" class="form-control" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password<sup>*</sup></label>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="user_password">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-md rounded-0">Login</button>
+
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form  method="post" action="{{route('userRegistered')}}">
+                            @csrf
+                            <h4>Register</h4>
+                            <hr>
+                                <label for="registerName">Username<sup>*</sup></label>
+                                <input name="user_name" type="text" id="form3Example1c" class="form-control" >
+
+                                <label for="registerEmail">Email address<sup>*</sup></label>
+                                <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp"
+                                       placeholder="Enter email" name="user_email">
+
+
+                                <label for="registerPassword">Password<sup>*</sup></label>
+                                <input type="password" class="form-control" id="registerPassword" placeholder="Password" name="user_password">
+
+                            <button type="submit" class="btn btn-primary btn-md rounded-0">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 @include('main-web.includes.header')
 <!-- main content -->
 <div class="main-content">
 </div>
+
 <!-- slide show -->
 <div class="section banner">
     <div class="tiva-slideshow-wrapper">
         <div id="tiva-slideshow" class="nivoSlider">
             <a href="#">
-                <img class="img-responsive" src="{{asset('storage/img/home/home1-banner1.jpg')}}"  title="#caption1" alt="Slideshow image">
+                <img class="img-responsive" src="{{asset('storage/img/home/home1-banner1.jpg')}}"
+                     title="#caption1" alt="Slideshow image">
             </a>
             <a href="#">
-                <img class="img-responsive" src="{{asset('storage/img/home/home1-banner2.jpg')}}"  title="#caption2" alt="Slideshow image">
+                <img class="img-responsive" src="{{asset('storage/img/home/home1-banner2.jpg')}}"
+                     title="#caption2" alt="Slideshow image">
             </a>
             <a href="#">
-                <img class="img-responsive" src="{{asset('storage/img/home/home1-banner3.jpg')}}"  title="#caption3" alt="Slideshow image">
+                <img class="img-responsive" src="{{asset('storage/img/home/home1-banner3.jpg')}}"
+                     title="#caption3" alt="Slideshow image">
             </a>
         </div>
     </div>
