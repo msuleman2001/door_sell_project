@@ -1,7 +1,5 @@
 @include('main-web.includes.links');
 
-
-<body id="product-detail">
 @if ($errors->any())
     <script>
         alert('Login First!')
@@ -13,369 +11,9 @@
         alert('Review added!')
     </script>
 @endif
+<body id="product-detail">
 
-<header>
-    <!-- header left mobie -->
-    <div class="header-mobile d-md-none">
-        <div class="mobile hidden-md-up text-xs-center d-flex align-items-center justify-content-around">
-
-            <!-- menu left -->
-            <div id="mobile_mainmenu" class="item-mobile-top">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </div>
-
-            <!-- logo -->
-            <div class="mobile-logo">
-                <a href="/index-2">
-                    <img class="logo-mobile img-fluid" src="{{asset('img/home/logo-mobie.png')}}" alt="Prestashop_Furnitica">
-                </a>
-            </div>
-
-            <!-- menu right -->
-            <div class="mobile-menutop" data-target="#mobile-pagemenu">
-                <i class="zmdi zmdi-more"></i>
-            </div>
-        </div>
-
-        <!-- search -->
-        <div id="mobile_search" class="d-flex">
-            <div id="mobile_search_content">
-                <form method="get" action="#">
-
-                    <input type="text" name="s" value="" placeholder="Search">
-                    <button type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-            </div>
-            <div class="desktop_cart">
-                <div class="blockcart block-cart cart-preview tiva-toggle">
-                    <div class="header-cart tiva-toggle-btn">
-                        <span class="cart-products-count">1</span>
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </div>
-                    <div class="dropdown-content">
-                        <div class="cart-content">
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td class="product-image">
-                                        <a href="/product-detail">
-                                            <img src="{{asset('img/product/5.jpg')}}" alt="Product">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="product-name">
-                                            <a href="/product-detail">Organic Strawberry Fruits</a>
-                                        </div>
-                                        <div>
-                                            2 x
-                                            <span class="product-price">£28.98</span>
-                                        </div>
-                                    </td>
-                                    <td class="action">
-                                        <a class="remove" href="#">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="total">
-                                    <td colspan="2">Total:</td>
-                                    <td>£92.96</td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="3" class="d-flex justify-content-center">
-                                        <div class="cart-button">
-                                            <a href="product-cart" title="View Cart">View Cart</a>
-                                            <a href="product-checkout" title="Checkout">Checkout</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- header desktop -->
-    <div class="header-top d-xs-none ">
-        <div class="container">
-            <div class="row">
-                <!-- logo -->
-                <div class="col-sm-2 col-md-2 d-flex align-items-center">
-                    <div id="logo">
-                        <a href="/index-2">
-                            <img src="{{asset('img/home/logo.png')}}" alt="logo" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- menu -->
-                <div class="col-sm-5 col-md-5 align-items-center justify-content-center navbar-expand-md main-menu">
-                    <div class="menu navbar collapse navbar-collapse">
-                        <ul class="menu-top navbar-nav">
-                            <li>
-                                <a href="#" class="parent">Home</a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li class="item">
-                                            <a href="/index-2" title="Home Page 1">Home Page 1</a>
-                                        </li>
-                                        <li class="item">
-                                           / <a href="/home2" title="Home Page 2">Home Page 2</a>
-                                        </li>
-                                        <li class="item">
-                                           / <a href="/home3" title="Home Page 3">Home Page 3</a>
-                                        </li>
-                                        <li class="item">
-                                           / <a href="/home4" title="Home Page 4">Home Page 4</a>
-                                        </li>
-                                        <li class="item">
-                                           / <a href="/home5" title="Home Page 5">Home Page 5</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#" class="parent">Blog</a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li class="item">
-                                            <a href="/blog-list-sidebar-left" title="Blog List (Sidebar Left)">Blog List (Sidebar Left)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-list-sidebar-left2" title="Blog List (Sidebar Left) 2">Blog List (Sidebar Left) 2</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-list-sidebar-right" title="Category Blog (Right column)">Blog List (Sidebar Right)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-list-no-sidebar" title="Blog List (No Sidebar)">Blog List (No Sidebar)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-grid-no-sidebar" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-detail" title="Blog Detail">Blog Detail</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-link">
-                                <a href="#" class="parent">Page</a>
-                                <div class="dropdown-menu drop-tab">
-                                    <ul>
-                                        <li class="item container group">
-                                            <div class="dropdown-menu dropdown-tab">
-                                                <ul>
-                                                    <li class="item col-md-4 float-left">
-                                                        <span class="menu-title">Category Style</span>
-                                                        <div class="menu-content">
-                                                            <ul class="col">
-                                                                <li>
-                                                                    <a href="/product-grid-sidebar-left">Product Grid (Sidebar Left)</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/product-grid-sidebar-right">Product Grid (Sidebar Right)</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/product-list-sidebar-left">Product List (Sidebar left) </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="item col-md-4 html float-left">
-                                                        <span class="menu-title">Product Detail Style</span>
-                                                        <div class="menu-content">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/product-detail">Product Detail (Sidebar Left)</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Product Detail (Sidebar Right)</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="item col-md-4 html float-left">
-                                                        <span class="menu-title">Bonus Page</span>
-                                                        <div class="menu-content">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/404">404 Page</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/about-us">About Us Page</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="/contact-us" class="parent">Contact US</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- search and acount -->
-                <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
-                    <form method="get" action="#">
-
-                        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                        <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
-                        <button type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-
-                    <div id="block_myaccount_infos" class="hidden-sm-down dropdown">
-                        <div class="myaccount-title ">
-                            <a href="#acount" data-toggle="collapse" class="acount">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span>Account</span>
-                                <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </a>
-
-                        </div>
-
-                        <div id="acount" class="collapse">
-
-                            <div class="account-list-content">
-
-                                <div>
-                                    <a class="login" href="user-acount" rel="nofollow" title="Log in to your customer account">
-                                        <i class="fa fa-cog"></i>
-                                        <span>My Account</span>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a class="login" href="user-login" rel="nofollow" title="Log in to your customer account">
-                                        <i class="fa fa-sign-in"></i>
-                                        <span>Sign in</span>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a class="register" href="user-register" rel="nofollow" title="Register Account">
-                                        <i class="fa fa-user"></i>
-                                        <span>Register Account</span>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a class="check-out" href="product-checkout" rel="nofollow" title="Checkout">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                        <span>Checkout</span>
-                                    </a>
-                                </div>
-                                <div class="link_wishlist">
-                                    <a href="user-wishlist" title="My Wishlists">
-                                        <i class="fa fa-heart"></i>
-                                        <span>My Wishlists</span>
-                                    </a>
-                                </div>
-                                <div id="desktop_currency_selector" class="currency-selector groups-selector hidden-sm-down">
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a title="Euro" rel="nofollow" href="#">EUR</a>
-                                        </li>
-                                        <li class="current list-inline-item">
-                                            <a title="British Pound Sterling" rel="nofollow" href="#">GBP</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-itemcurrent">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas.jpg')}}" alt="English" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas2.jpg')}}" alt="Italiano" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas3.jpg')}}" alt="Français" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('img/home/home1-flas4.jpg')}}" alt="Español" width="16" height="11">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="desktop_cart">
-                        <div class="blockcart block-cart cart-preview tiva-toggle">
-                            <div class="header-cart tiva-toggle-btn">
-                                <span class="cart-products-count">1</span>
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </div>
-                            <div class="dropdown-content">
-                                <div class="cart-content">
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="/product-detail">
-                                                    <img src="{{asset('img/product/5.jpg')}}" alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="/product-detail">Organic Strawberry Fruits</a>
-                                                </div>
-                                                <div>
-                                                    2 x
-                                                    <span class="product-price">£28.98</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="total">
-                                            <td colspan="2">Total:</td>
-                                            <td>£92.96</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3" class="d-flex justify-content-center">
-                                                <div class="cart-button">
-                                                    <a href="product-cart" title="View Cart">View Cart</a>
-                                                    <a href="product-checkout" title="Checkout">Checkout</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
+@include('main-web.includes.header')
 <!-- main content -->
 <div class="main-content">
     <div id="wrapper-site">
@@ -951,34 +589,68 @@
                                         </div>
 {{--//showing the review data--}}
                                         <div class="container">
-                                            <div class="review-container mb-5">
-                                                <!-- Reviews will show here after commenting -->
-                                                @if ($product_details->reviews->count() > 0)
-                                                    @foreach ($product_details->reviews as $review)
-                                                        <small>By {{$review->review_user}}<span>/</span>
-                                                            <span>{{now()}}</span>
-                                                        </small>
-                                                    <hr style="width: 25%">
-                                                        <p>{{ $review->review_content }}</p>
+                                            <h4 class="mb-5">Reviews</h4>
+                                            <div id="review-carousel" class="carousel slide mb-5" data-ride="carousel">
+                                                <!-- Indicators -->
+                                                <ol class="carousel-indicators">
+                                                    @foreach ($product_details->reviews as $index => $review)
+                                                        <li data-target="#review-carousel" data-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
                                                     @endforeach
-                                                @else
-                                                    <p>There are no reviews yet</p>
-                                                @endif
-                                            </div>
-                                            <div class="review-section p-4 ">
+                                                </ol>
 
+                                                <!-- Reviews -->
+                                                <div class="carousel-inner text-center">
+                                                    @if ($product_details->reviews->count() > 0)
+                                                        @foreach ($product_details->reviews as $index => $review)
+                                                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                                                <p>{{ $review->review_content }}</p>
+                                                                <small>By {{ $review->review_user }} <span>/</span> <span>{{ now() }}</span></small>
+                                                            </div>
+                                                        @endforeach
+                                                    @else
+                                                        <p>There are no reviews yet</p>
+                                                    @endif
+                                                </div>
 
-                                                <form action="{{route('addReview')}}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="product_id" value="{{ $product_details->product_id }}">
-
-                                                    <label for="review-content"><strong>Your review*</strong></label><br>
-                                                    <textarea class="review-content" id="review-content" name="review_content"></textarea><br>
-                                                    <input type="submit" class="submit-btn btn rounded-0" value="Submit">                                                </form>
+                                                <!-- Controls -->
+                                                <a class="carousel-control-prev btn" href="#review-carousel" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only text-danger">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next btn" href="#review-carousel" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only ">Next</span>
+                                                </a>
                                             </div>
                                         </div>
 
-                                        <div class="related">
+
+                                        <div class="review-section p-4 ">
+                                            <form action="{{ route('addReview') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{ $product_details->product_id }}">
+                                                <label for="review-content"><strong>Your review*</strong></label><br>
+                                                <textarea class="review-content" id="review-content" name="review_content"></textarea><br>
+                                                @if(!session()->has('user'))
+                                              <div class="d-flex mt-3 mb-5">
+                                                  <div class="mr-4">
+                                                      <label for="review-email"><strong>Email*</strong></label><br>
+                                                      <input class="form-control" type="email" id="review-email" name="review_email" size="25" required><br>
+                                                  </div>
+                                                  <div class="">
+                                                  <label for="review-user"><strong>Name*</strong></label><br>
+                                                  <input type="text"  class="form-control" id="review-user" name="review_user" size="25" required><br>
+                                                  </div>
+                                                    </div>
+
+                                                @endif
+                                                <input type="submit" class="submit-btn btn rounded-0" value="Submit">
+
+                                            </form>
+                                        </div>
+
+
+                                        <div class="related mt-5">
                                             <div class="title-tab-content  text-center">
                                                 <div class="title-product justify-content-start">
                                                     <h2>Related Products</h2>
@@ -1151,7 +823,7 @@
             </div>
         </div>
     </div>
-</div>
+</body>
 
 <!-- footer -->
 <footer class="footer-one">
@@ -1992,20 +1664,9 @@
 </div>
 
 <!-- Vendor JS -->
-<script src="libs/jquery/jquery.min.js"></script>
-<script src="libs/popper/popper.min.js"></script>
-<script src="libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="libs/nivo-slider/js/jquery.nivo.slider.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/slider-range/js/tmpl.js"></script>
-<script src="libs/slider-range/js/jquery.dependClass-0.1.js"></script>
-<script src="libs/slider-range/js/draggable-0.1.js"></script>
-<script src="libs/slider-range/js/jquery.slider.js"></script>
-
-<!-- Template JS -->
-<script src="js/theme.js"></script>
+@include('main-web.includes.script');
+</div>
+</div>
 </body>
 
-
-<!-- product-detail07:06-->
 </html>

@@ -19,6 +19,9 @@
 
 </head>
 <body>
+
+
+
 <div class="container register">
     <div class="row">
         <div class="col-md-3 register-left">
@@ -32,7 +35,7 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Login</h3>
 
-                    <form method="post" action="{{route('loggedIn')}}">
+                    <form method="post" action="{{route('adminLogin')}}">
                         @csrf
                     <div class="row register-form">
                         <div class="col-md-6">
@@ -40,11 +43,9 @@
                                 <input name="user_name" type="text" class="form-control" placeholder=" Username *" value="" />
                             </div>
                             @if ($errors->any())
-                                <span class="text-danger">
-                    @foreach ($errors->all() as $error)
-                                        {{ $error }}
-                                    @endforeach
-                </span>
+                                <script >
+                  alert('An error occured while logging in')
+                </script>
                             @endif
 
                         </div>

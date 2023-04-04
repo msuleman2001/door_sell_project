@@ -20,6 +20,7 @@ class AuthController extends Controller
         $user_data->user_email = $request->input('user_email');
         $user_data->user_password = password_hash($request->input('user_password'), PASSWORD_BCRYPT);
 $user_data->save();
+$request->session()->put('user',$user_data);
 return redirect('/')->with('success', 'Registered Successfully');
 
     }
@@ -45,34 +46,56 @@ return redirect('/')->with('success', 'Registered Successfully');
 
         return redirect('/admin');
 }
-    public function login(Request $request)
+    public function adminLogin(Request $request)
     {
         $user_name = $request->input('user_name');
         $user_password = $request->input('user_password');
 
         //coparing inputs to database
         $user = AuthModel::where('user_name', '=', $user_name)->first();
-
-        if ($user && password_verify($user_password, $user->user_password)) {
-            session()->put('user', $user->user_name);
-            if(!$user->is_admin==1){
-                return redirect('/')->with('success', 'Login successful!');
-            }
-            else {
-                return redirect('/Admin/dashboard')->with('success', 'Login successful!');
-            }
-        } else {
-            return redirect()->back()->withErrors(['msg' => 'Invalid username or password']);
+        $enabled = $user->is_enabled;
+        if ($user && ($user->is_admin == 1) && $enabled && password_verify($user_password, $user->user_password)) {
+            session()->put('admin', $user);
+            return redirect('/Admin/dashboard')->with('success', 'Login successful!');
+        }
+        else{
+            return redirect('/admin')->withErrors(['loginError' => 'Invalid credentials.']);
         }
     }
 
+//user login
+    public function userLogin(Request $request)
+    {
+        $user_name = $request->input('user_name');
+        $user_password = $request->input('user_password');
 
+        //comparing inputs to database
+        $user = AuthModel::where('user_name', '=', $user_name)->first();
+        if ($user && ($user->is_admin == 0) && $user->is_enabled && password_verify($user_password, $user->user_password)) {
+            session()->put('user', $user);
+            return redirect('/')->with('success', 'Login successful!');
+        } elseif ($user && ($user->is_admin == 0) && !$user->is_enabled) {
+            return redirect('/')->withErrors(['loginError' => 'User is not enabled.']);
+        } else {
+            return redirect('/')->withErrors(['loginError' => 'Invalid login credentials.']);
+        }
+    }
 
-    public function logout(){
+// admin logout
+    public function adminLogout(){
+        // clear the user session data
+        session()->forget('admin');
+        // redirect the user to the login page
+        return redirect('/admin');
+    }
+
+    //user logout
+
+    public function userLogout(){
         // clear the user session data
         session()->forget('user');
         // redirect the user to the login page
-        return redirect('/admin');
+        return redirect('/');
     }
 //Showing the users data on view
 
@@ -80,6 +103,21 @@ return redirect('/')->with('success', 'Registered Successfully');
         $users = AuthModel::all();
         return view('admin.users-list', compact('users'));
     }
+// enabling and disabling the users
+    public function toggle(Request $request, $id)
+    {
+        $user = AuthModel::find($id);
+        $user->is_enabled = $request->input('is_enabled', 0);
+        $user->save();
+
+        if ($request->ajax()) {
+            return response()->json(['message' => 'User status updated']);
+        }
+
+        return redirect()->back();
+    }
+
+
 
 }
 

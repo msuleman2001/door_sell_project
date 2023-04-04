@@ -25,8 +25,31 @@ use App\Http\Controllers\ReviewController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::view('index2','main-web.index3');
-//appling group middleware on the all admin routes to have only access if admin is login
+//
+//Auth routes
+//register-client
+Route::get('/user/register', [AuthController::class, 'regView'])->name('userRegister');
+Route::post('/user/register',[AuthController::class,'user_register'])->name('userRegistered');
+
+//login-client
+Route::post('user/login',[AuthController::class, 'userLogin'])->name('userLogin');
+
+//logout-client
+Route::get('user/logout',[AuthController::class, 'userLogout'])->name('userLogout');
+
+//Registration and Login Routes for Admin
+//register-admin
+Route::get('/Admin/register',[AuthController::class, 'adminRegView'])->name('adminRegister');
+Route::post('Aadmin/register',[AuthController::class, 'admin_register'])->name('adminRegistered');
+
+//login-admin
+Route::get('/admin', [AuthController::class, 'logView'])->name('login');
+Route::post('Admin/login',[AuthController::class, 'adminLogin'])->name('adminLogin');
+//logout-admin
+Route::get('Admin/logout',[AuthController::class, 'adminLogout'])->name('adminLogout');
+
+
+//applying group middleware on the all admin routes to have only access if admin is login
 Route::group(['middleware'=>['admin']], function(){
     //Admin Dashboard Routes
     Route::get('/Admin/dashboard',[AdminController::class,'index'])->name('dashboard');
@@ -100,6 +123,11 @@ Route::get('Admin/wish-list',[WishListController::class,'showWishList'])->name('
 
 // Users Routes
     Route::get('Admin/user-list',[AuthController::class,'showUsers'])->name('userList');
+    // enabling disabling users
+    Route::put('/Admin/user-list/{id}',[AuthController::class, 'toggle'])->name('toggle');
+
+
+
 
 // Comments Routes
     Route::get('Admin/comments-list',[CommentsController::class,'showComments'])->name('commentList');
@@ -111,27 +139,11 @@ Route::get('Admin/wish-list',[WishListController::class,'showWishList'])->name('
 
 
 
-//Registeration for Client
-//register
-Route::get('/user/register', [AuthController::class, 'regView'])->name('userRegister');
-Route::post('/user/register',[AuthController::class,'user_register'])->name('userRegistered');
-
-//logout
-Route::get('/logout',[AuthController::class, 'logout'])->name('Logout');
-
-//Registration and Login Routes for Admin
-Route::get('/Admin/register',[AuthController::class, 'adminRegView'])->name('adminRegister');
-Route::post('Aadmin/register',[AuthController::class, 'admin_register'])->name('adminRegistered');
-
-//login routes
-//login
-Route::get('/admin', [AuthController::class, 'logView'])->name('login');
-Route::post('/login',[AuthController::class, 'login'])->name('loggedIn');
-
-
 
 //Client Side Routes
 //client
+Route::view('index2','main-web.index3');
+
 Route::view('/user-account','main-web.user-account');
 Route::view('/user-register','main-web.user-register');
 Route::view('/user-login','main-web.user-login');

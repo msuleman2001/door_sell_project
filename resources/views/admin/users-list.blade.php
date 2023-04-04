@@ -1,5 +1,9 @@
 @include('includes.header');
-
+@if ($errors->any())
+    <script >
+        alert('Something went wrong')
+    </script>
+@endif
 
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -285,7 +289,7 @@
                 <table class="table table-stripped" id="table">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Manage Comments</h2>
+                            <h2>Manage Users</h2>
                         </div>
                     </div>
                     <div id="example_wrapper">
@@ -319,9 +323,26 @@
                             <td>{{ $user->created_by_id }}</td>
                             <td>{{$user->updated_at }}</td>
                             <td>{{ $user->updated_by_id }}</td>
-                            <td class="d-flex">
-                                <i class="fas fa-check-circle"></i> <!-- Enabled -->
-                                <i class="fas fa-times-circle"></i> <!-- Disabled -->
+                            <td >
+                                <!-- Default switch -->
+                                <!-- HTML code -->
+                                <form method="post" id="toggle-form-{{ $user->user_id }}" action="{{ route('toggle', ['id'=>$user->user_id]) }}">
+                                    @csrf
+                                    @method('put')
+                                    <label for="customSwitches{{ $user->user_id }}">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitches{{ $user->user_id }}" name="is_enabled" {{ $user->is_enabled ? 'checked' : '' }}>
+                                            <span class="custom-control-label"></span>
+                                        </div>
+                                    </label>
+                                </form>
+
+
+
+
+                                </form>
+
+
                             </td>
 
 
@@ -363,6 +384,30 @@
 <!-- Logout Modal-->
 @include('includes.logout-Model');
 @include('includes.script');
+<!-- jQuery code to change the value in database based on toggle button-->
+@foreach($users as $user)
+    <script>
+        $(document).ready(function() {
+            $('#customSwitches{{ $user->user_id }}').change(function() {
+                var is_enabled = $(this).is(':checked') ? 1 : 0;
+                $.ajax({
+                    url: $('#toggle-form-{{ $user->user_id }}').attr('action'),
+                    method: 'PUT',
+                    data: {
+                        _token: $('input[name=_token]').val(),
+                        is_enabled: is_enabled
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    @endforeach
 
 
 </body>

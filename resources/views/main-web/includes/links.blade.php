@@ -52,4 +52,7 @@ position: absolute;
         right: 10px;
         top: 40px;
     }
+    .review-section{
+        width: 800px;
+    }
 </style>
