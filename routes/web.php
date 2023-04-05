@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AdonsController;
 
 
 
@@ -132,8 +133,27 @@ Route::get('Admin/wish-list',[WishListController::class,'showWishList'])->name('
 // Comments Routes
     Route::get('Admin/comments-list',[CommentsController::class,'showComments'])->name('commentList');
 
-});
+    //Addons Routes
+    Route::get('/product/adons/adding',[AdonsController::class,'passData'])->name('addingAdons');
+    Route::post('/product/adons/added',[AdonsController::class,'addAddon'])->name('add.Addon');
 
+    //save to database
+    Route::post('/product/adons/save', [AdonsController::class, 'saveAdons'])->name('save.Addons');
+
+
+    //updating the json data
+
+    Route::get('product/adons/{index}/edit', [AdonsController::class, 'edit'])->name('edit.json');
+    Route::put('/product/adons/{index}', [AdonsController::class,'updateOnPage'])->name('update.json');
+
+
+    //deleting the json record
+
+
+    //submitting to the database
+    Route::post('/add-data/',[AdonsController::class,'addJsonToDb']);
+
+});
 
 
 

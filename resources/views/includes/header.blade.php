@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <title> Admin Panel</title>
 {{--    jquery cdn--}}
@@ -25,6 +27,11 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 <style>
+    img.img-fluid {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
 </style>
 <body id="page-top">
 
