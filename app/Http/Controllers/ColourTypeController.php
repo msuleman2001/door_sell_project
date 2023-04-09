@@ -10,6 +10,7 @@ class ColourTypeController extends Controller
     public function passData(){
         //passing data to color-list view
         $colour_type_list=ColourTypeModel::all();
+
         return view('admin.product-colour-type-list',compact('colour_type_list'));
 
 https://doorng.com/door/public/Admin/add-colour-type

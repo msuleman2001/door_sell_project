@@ -486,8 +486,215 @@
                                                             <span class="red"></span>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="adon-color"><h6>Color:</h6></label>
+                                                        @foreach ($color_items as $item)
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input type="radio" name="adon_color" value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
+                                                                    {{ $item->adon_item_name }}
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+{{--                                                    <div class="form-group" id="color-images" style="display: none;">--}}
+{{--                                                        <strong>Select Colors</strong>--}}
+{{--                                                        <div class="row">--}}
+{{--                                                            <div class="col-sm-4">--}}
+{{--                                                                <label>--}}
+{{--                                                                    <input type="radio" name="color" value="black">--}}
+{{--                                                                    <img src="black.jpg" alt="Black" class="img-fluid">--}}
+{{--                                                                </label>--}}
+{{--                                                            </div>--}}
+{{--                                                            <div class="col-sm-4">--}}
+{{--                                                                <label>--}}
+{{--                                                                    <input type="radio" name="color" value="blue">--}}
+{{--                                                                    <img src="blue.jpg" alt="Blue" class="img-fluid">--}}
+{{--                                                                </label>--}}
+{{--                                                            </div>--}}
+{{--                                                            <div class="col-sm-4">--}}
+{{--                                                                <label>--}}
+{{--                                                                    <input type="radio" name="color" value="red">--}}
+{{--                                                                    <img src="red.jpg" alt="Red" class="img-fluid">--}}
+{{--                                                                </label>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+
+{{--                                                    SHOWING THE DOOR TYPES--}}
+                                                    <div class="form-group" id="door-types" style="display: none;">
+                                                        <strong>Select Door Type</strong>
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                @foreach ($door_type_items as $item)
+                                                                    <div class="radio">
+                                                                        <label>
+                                                                            <input type="radio" name="door_type" value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
+                                                                            {{ $item->adon_item_name }}
+                                                                        </label>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+
+                                                    <div class="door-sizes" id="door-sizes-single" style="display: none;">
+                                                        <strong>Select Door Size</strong>
+
+                                                        <div class="form-check">
+                                                            @foreach ($dimention_items as $item)
+                                                                <div class="radio">
+                                                                    <label>
+                                                                        <input class="form-check-input" type="radio" name="door_size" id="door_size"
+                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
+                                                                        {{ $item->adon_item_name }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+
+{{--                                                    <div class="door-sizes" id="door-sizes-single_half" style="display: none;">--}}
+{{--                                                        <strong>Select Size</strong>--}}
+{{--                                                        <div class="form-check">--}}
+{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_3" value="36x80">--}}
+{{--                                                            <label class="form-check-label" for="door_size_3">--}}
+{{--                                                                <img src="36x80.jpg" alt="36x80" class="img-fluid">--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="form-check">--}}
+{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_4" value="42x80">--}}
+{{--                                                            <label class="form-check-label" for="door_size_4">--}}
+{{--                                                                <img src="42x80.jpg" alt="42x80" class="img-fluid">--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+
+{{--                                                    <div class="door-sizes" id="door-sizes-double" style="display: none;">--}}
+{{--                                                        <strong>Select Size</strong>--}}
+{{--                                                        <div class="form-check">--}}
+{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_5" value="72x80">--}}
+{{--                                                            <label class="form-check-label" for="door_size_5">--}}
+{{--                                                                <img src="72x80.jpg" alt="72x80" class="img-fluid">--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="form-check">--}}
+{{--                                                            <strong>Select Size</strong>--}}
+{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_6" value="96x80">--}}
+{{--                                                            <label class="form-check-label" for="door_size_6">--}}
+{{--                                                                <img src="96x80.jpg" alt="96x80" class="img-fluid">--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+
+
+
+                                                    {{--SELECTING THE SWING TYPR--}}
+                                                                <div class="swing-type-selection" id="swing-type-selection" style="display: none;">
+                                                                    <div class="form-group">
+
+                                                                        <label for="swing-type-selection"><strong>Select Door Swing Type</strong></label>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="swing_type_selection" id="swing-type-yes" value="yes">
+                                                                            <label class="form-check-label" for="swing-type-yes">Yes</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="swing_type_selection" id="swing-type-not-sure" value="not_sure">
+                                                                            <label class="form-check-label" for="swing-type-not-sure">Not Sure</label>
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="swing_type_selection" id="swing-type-no" value="no">
+                                                                            <label class="form-check-label" for="swing-type-no">No</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                {{--Images to show w=if we want to select the door type--}}
+                                                    <div class="swing-type" id="door-sizes-double" style="display: none;">
+                                                        <strong>Swing Type Select</strong>
+                                                        <div class="form-check">
+                                                            @foreach ($swing_type_items as $item)
+                                                                <div class="radio">
+                                                                    <label>
+                                                                        <input class="form-check-input" type="radio" name="swing_type_items" id="swing_type_items"
+                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
+                                                                        {{ $item->adon_item_name }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+
+                                                        <!-- Text Area for Not Sure Option -->
+
+
+
+
+                                                    {{--Architrave Design--}}
+                                                    <div class="architrave-design form-group" style="display: none;">
+                                                        <label><strong>Select Architrave Design</strong></label>
+
+                                                        <div class="form-check">
+                                                            @foreach ($architrave_design_items as $item)
+                                                                <div class="radio">
+                                                                    <label>
+                                                                        <input class="form-check-input" type="radio" name="architrave_design" id="architrave_design"
+                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
+                                                                        {{ $item->adon_item_name }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+
+
+                                                        <!-- HANDLE TYPE -->
+                                                    <div class="handle-type " id="handle-type" style="display: none">
+
+                                                        <strong>Select Double Handle Type</strong>
+                                                        <div class="form-check">
+                                                            @foreach ($handle_type_items as $item)
+                                                                <div class="radio">
+                                                                    <label>
+                                                                        <input class="form-check-input" type="radio" name="handle" id="handle"
+                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
+                                                                        {{ $item->adon_item_name }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                        <!-- LOCK TYPE -->
+
+                                                    <div class="lock-type" id="lock-type" style="display: none;">
+                                                        <strong>Select Lock Type</strong>
+                                                        <div class="form-check">
+                                                            @foreach ($lock_type_items as $item)
+                                                                <div class="radio">
+                                                                    <label>
+                                                                        <input class="form-check-input" type="radio" name="lock-1" id="lock" value="{{ $item->adon_item_id }}"
+                                                                               data-price="{{ $item->adon_item_price }}">
+
+                                                                        {{ $item->adon_item_name }}
+                                                                    </label>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+
+                                                    </div>
+                                                    </div>
+
+
+                                                    <p>Total Price: <span class="total-price">0</span></p>
+
+
                                                     <div class="has-border cart-area">
                                                         <div class="product-quantity">
+
                                                             <div class="qty">
                                                                 <div class="input-group">
                                                                     <div class="quantity">
@@ -587,7 +794,14 @@
                                                 </div>
                                             </div>
                                         </div>
-{{--//showing the review data--}}
+
+{{--                                        DETAILS CARD FOR PRODUCT ADONS--}}
+
+
+
+
+                                        {{--//showing the review data--}}
+
                                         <div class="container">
                                             <h4 class="mb-5">Reviews</h4>
                                             <div id="review-carousel" class="carousel slide mb-5" data-ride="carousel">
@@ -823,7 +1037,7 @@
             </div>
         </div>
     </div>
-</body>
+
 
 <!-- footer -->
 <footer class="footer-one">
@@ -1665,6 +1879,88 @@
 
 <!-- Vendor JS -->
 @include('main-web.includes.script');
+<script>
+
+    $(document).ready(function() {
+        $('input[name="adon_color"]').click(function() {
+
+// Hide the div if it's currently visible
+                $('#door-types').hide();
+// Show the div if it's currently hidden
+                $('#door-types').show();
+        });
+
+    //SELECTING THE DOOR TYPE AFTER COLOR
+    // $('input[name="color"]').click(function() {
+    //     // Hide all other door type divs that may be visible
+    //     $('.door-types').hide();
+    //     // Show the door types div that corresponds to the clicked image
+    //     $('#door-types').show();
+
+//SELECTINF THE SIZE AGAINST THE DOOR TYPE SEPCIC!
+        $('input[name="door_type"]').click(function() {
+            // Get the value of the selected door type
+            // Hide all door sizes sections
+            $('.door-sizes').show();
+            // Show the door sizes section for the selected door type
+
+        });
+
+
+        //SHOWING WHETHER TO SELECT SWING TYPE OR NOT
+        $('input[name="door_size"]').click(function() {
+
+            $('#swing-type-selection').show();
+        });
+
+            // Show architrave design section when any swing type option is selected
+            $('input[name="swing_type_selection"]').on('change', function() {
+                $('.architrave-design').show();
+            });
+
+            // Show  images when "Yes" is selected
+            $('input[name="swing_type_selection"][value="yes"]').on('change', function() {
+                $('.swing-type').show();
+                $('.text-area').hide();
+            });
+
+            // Show  text when "Not Sure" is selected
+            $('input[name="swing_type_selection"][value="not_sure"]').on('change', function() {
+                $('.text-area').show();
+                $('.text-area textarea').val('Left');
+                $('.swing-type').hide();
+            });
+
+            // Hide images and red text when "No" is selected
+            $('input[name="swing_type_selection"][value="no"]').on('change', function() {
+                $('.swing-type, .text-area').hide();
+            });
+            $('.architrave-design').click(function(){
+                $('.handle-type').show();
+            });
+        $('.handle-type').click(function(){
+            $('.lock-type').show();
+        });
+//Calculating the total price after Checking the All radio buttons
+        $('.add-to-cart').click(function() {
+            const selectedItems = $('input[type="radio"]:checked');
+            let totalPrice = 0;
+            selectedItems.each(function() {
+                if ($(this).data('price')) { // check if data-price attribute exists
+                    const price = parseFloat($(this).data('price'));
+                    totalPrice += price;
+                }
+            });
+            $('.total-price').text(totalPrice.toFixed(2));
+        });
+
+
+
+
+    });
+
+</script>
+
 </div>
 </div>
 </body>

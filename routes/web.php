@@ -13,6 +13,8 @@ use App\Http\Controllers\WishListController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdonsController;
+use App\Http\Controllers\AdonItemController;
+
 
 
 
@@ -68,7 +70,7 @@ Route::group(['middleware'=>['admin']], function(){
     Route::put('/Admin/update-cat/{category_id}',[ProductCategoryController::class, 'updateCatData'])->name('updatingCategory');
 
     //deleting the category data
-    Route::delete('Admin/delete/category/{id}', [ProductCategoryController::class, 'deleteCategory'])->name('deleteCategory');
+    Route::delete('/Admin/delete/category/{id}', [ProductCategoryController::class, 'deleteCategory'])->name('deleteCategory');
 
 //Products Routes
 
@@ -82,7 +84,7 @@ Route::group(['middleware'=>['admin']], function(){
     Route::put('/Admin/update/product/{id}',[ProductController::class,'updateProduct'])->name('updatingProduct');
 
     //delete product data
-    Route::delete('Admin/delete/product/{id}',[ProductController::class, 'deleteProduct'])->name('deleteProduct');
+    Route::delete('/Admin/delete/product/{id}',[ProductController::class, 'deleteProduct'])->name('deleteProduct');
 
 
 //Color Type Routes
@@ -90,12 +92,12 @@ Route::group(['middleware'=>['admin']], function(){
     //adding the colour type
     Route::get('/Admin/add-colour-type',[ColourTypeController::class, 'passData'])->name('addColourType');
     Route::view('/Admin/adding-colour-type','admin.add-product-colour-type')->name('addingColourType');
-    Route::post('Admin/adding-colour-type',[ColourTypeController::class,'addType'])->name('addedColourType');
+    Route::post('/Admin/adding-colour-type',[ColourTypeController::class,'addType'])->name('addedColourType');
 
     //updating the colour type
 
     Route::get('/Admin/edit/colour-type/{id}',[ColourTypeController::class,'editColourType'])->name('updateColourType');
-    Route::put('Admin/update/colour-type/{id}',[ColourTypeController::class,'updateColourType'])->name('updatingColourType');
+    Route::put('/Admin/update/colour-type/{id}',[ColourTypeController::class,'updateColourType'])->name('updatingColourType');
 
     //deleting colour type
 
@@ -120,10 +122,10 @@ Route::group(['middleware'=>['admin']], function(){
 
 
 //    Wishlist Routes
-Route::get('Admin/wish-list',[WishListController::class,'showWishList'])->name('wishList');
+Route::get('/Admin/wish-list',[WishListController::class,'showWishList'])->name('wishList');
 
 // Users Routes
-    Route::get('Admin/user-list',[AuthController::class,'showUsers'])->name('userList');
+    Route::get('/Admin/user-list',[AuthController::class,'showUsers'])->name('userList');
     // enabling disabling users
     Route::put('/Admin/user-list/{id}',[AuthController::class, 'toggle'])->name('toggle');
 
@@ -131,27 +133,33 @@ Route::get('Admin/wish-list',[WishListController::class,'showWishList'])->name('
 
 
 // Comments Routes
-    Route::get('Admin/comments-list',[CommentsController::class,'showComments'])->name('commentList');
+    Route::get('/Admin/comments-list',[CommentsController::class,'showComments'])->name('commentList');
 
     //Addons Routes
-    Route::get('/product/adons/adding',[AdonsController::class,'passData'])->name('addingAdons');
-    Route::post('/product/adons/added',[AdonsController::class,'addAddon'])->name('add.Addon');
+    Route::get('/Admin/product/adons/adding',[AdonsController::class,'passData'])->name('addingAdons');
 
-    //save to database
-    Route::post('/product/adons/save', [AdonsController::class, 'saveAdons'])->name('save.Addons');
+    //ADDING TO DATABASE
+    Route::post('/Admin/save-adons', [AdonsController::class, 'saveAddons'])->name('save.addons');
+     //UPDATING
+    Route::get('/Admin/adon/edit/{id}',[AdonsController::class,'editAdon'])->name('edit.adon');
+    Route::put('/Admin/adon/update/{id}',[AdonsController::class,'updateAdon'])->name('update.adon');
+    //DELETING
+    Route::delete('/Admin/adon/delete/{id}',[AdonsController::class,'deleteAdon'])->name('deleteAdon');
+
+    /// Adon Items
+    /// passing data of adons and adons items
+    Route::get('/Admin/adon-items',[AdonItemController::class,'passData'])->name('showAdonItems');
+    Route::post('/Admin/adon-items/add',[AdonItemController::class,'addItem'])->name('adonItem');
+    //UPDATE ADON ITEM
+    Route::get('/Admin/adon-item/edit/{id}',[AdonItemController::class,'editAdonItem'])->name('edit.adonItem');
+    Route::put('/Admin/adon-item/update/{id}',[AdonItemController::class,'updateAdonItem'])->name('update.adonItem');
 
 
-    //updating the json data
-
-    Route::get('product/adons/{index}/edit', [AdonsController::class, 'edit'])->name('edit.json');
-    Route::put('/product/adons/{index}', [AdonsController::class,'updateOnPage'])->name('update.json');
+//DELETE ADON ITEM
+    Route::delete('/Admin/adon-item/delete{id}',[AdonItemController::class,'deleteItem'])->name('delete.adonItem');
 
 
-    //deleting the json record
 
-
-    //submitting to the database
-    Route::post('/add-data/',[AdonsController::class,'addJsonToDb']);
 
 });
 
@@ -163,6 +171,8 @@ Route::get('Admin/wish-list',[WishListController::class,'showWishList'])->name('
 //Client Side Routes
 //client
 Route::view('index2','main-web.index3');
+// Pasing the Adons item data and geting the product details view
+Route::get('/product-details', [AdonsController::class, 'passAdonItems'])->name('adons.product');
 
 Route::view('/user-account','main-web.user-account');
 Route::view('/user-register','main-web.user-register');

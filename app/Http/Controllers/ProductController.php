@@ -6,6 +6,8 @@ use App\Models\ProductCategoryModel;
 use App\Models\ProductModel;
 use App\Models\ReviewModel;
 use App\Models\ColourTypeModel;
+use App\Models\AdonsModel;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -70,9 +72,23 @@ class ProductController extends Controller
 
  //going to specific product detail page from the images
     public function show($id){
+        //passing the adons data to the product-details view
+            // The where() method takes two arguments: the name of the
+        // column you want to search in, and the value you want to search for.
+        //it will show the adon_items related to specific adon_value
+        $color_items = AdonsModel::where('adon_title', 'Color')->firstOrFail()->adonItems;
+        $door_type_items = AdonsModel::where('adon_title', 'Door Type')->firstOrFail()->adonItems;
+        $dimention_items = AdonsModel::where('adon_title', 'Dimentions')->firstOrFail()->adonItems;
+        $swing_type_items = AdonsModel::where('adon_title', 'Swing Type')->firstOrFail()->adonItems;
+        $handle_type_items = AdonsModel::where('adon_title', 'Handle')->firstOrFail()->adonItems;
+        $architrave_design_items = AdonsModel::where('adon_title', 'Architrave')->firstOrFail()->adonItems;
+        $lock_type_items = AdonsModel::where('adon_title', 'Door Lock')->firstOrFail()->adonItems;
+        //Passing the specific product id and the reviews for that product
         $product_details = ProductModel::find($id);
         $reviews = $product_details->reviews()->get();
-        return view('main-web.product-detail', compact('product_details', 'reviews'));
+        return view('main-web.product-detail', compact('product_details', 'reviews','color_items', 'door_type_items', 'dimention_items', 'swing_type_items', 'handle_type_items', 'architrave_design_items', 'lock_type_items'));
+
+
     }
 
 

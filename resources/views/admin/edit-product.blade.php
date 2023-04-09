@@ -46,11 +46,11 @@
     </li>
 
 
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href={{route('addColour')}}>--}}
-{{--                <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--                <span>  Add  Colours</span></a>--}}
-{{--        </li>--}}
+        <li class="nav-item">
+            <a class="nav-link" href={{route('addColour')}}>
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>  Manage  Colours</span></a>
+        </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -70,6 +70,16 @@
         <a class="nav-link" href="{{route('commentList')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage Comments</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('addingAdons')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Addons</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('showAdonItems')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Addons items</span></a>
     </li>
 {{--        <li class="nav-item">--}}
 {{--            <a class="nav-link" href="{{route('manageCart')}}">--}}

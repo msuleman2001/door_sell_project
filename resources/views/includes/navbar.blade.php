@@ -74,6 +74,12 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage Addons</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('showAdonItems')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Addons items</span></a>
+    </li>
+
 {{--    <li class="nav-item">--}}
 {{--        <a class="nav-link" href="#">--}}
 {{--            <i class="fas fa-fw fa-chart-area"></i>--}}

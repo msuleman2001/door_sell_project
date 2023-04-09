@@ -12,4 +12,8 @@ class AdonsModel extends Model
     protected $table='product_adons';
     protected $primaryKey='adon_id';
     public $timestamps=true;
+
+    public function adonItems(){
+       return $this->hasMany(AdonItemModel::class,'adon_id','adon_id');
+    }
 }

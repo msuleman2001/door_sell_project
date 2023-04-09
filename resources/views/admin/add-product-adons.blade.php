@@ -1,5 +1,10 @@
 @include('includes.header');
 {{--<h1>Hello</h1>--}}
+@if(session('success'))
+    <script>
+        alert('{{ session('success') }}');
+    </script>
+@endif
 
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -72,15 +77,16 @@
             <span>  Manage Addons</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{route('showAdonItems')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Addons items</span></a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="{{route('commentList')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage Comments</span></a>
     </li>
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="{{route('manageCart')}}">--}}
-{{--                <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--                <span>  Manage Cart</span></a>--}}
-{{--        </li>--}}
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -286,38 +292,63 @@
         <div class="container-fluid">
             <!-- Page Heading -->
             <h1 class="h3 mb-4 text-gray-800">Manage Addons</h1>
-            <form id="addon-form" action="{{route('add.Addon')}}"  method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="card">
+            <form id="submit-json" method="post" action="{{ route('save.addons') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 mb-4">
                                 <div class="form-group">
-                                    <label for="addon_title">Add Title </label>
-                                    <input type="text" class="form-control col-md-6" name="addon_title" id="addon_title"><br>
-                                    <label for="addon_type">Addon Type </label>
-                                    <input type="text" class="form-control col-md-4" name="adon_type" id="addon_type"><br>
-                                    <label for="addon_image">Addon Image </label>
-                                    <input type="file" class="form-control col-md-4" name="adon_image" id="addon_image"><br>
-                                    <label for="addon_price">Addon Price </label>
-                                    <input type="number" class="form-control col-md-4" name="adon_price" id="addon_price"><br>
-                                    <button type="button" value="addAddonJson" id="addAddon" class="btn btn-primary">Add Addon</button>
 
+                                    <label for="addon_type">Addon Type </label>
+                                    <input type="text" class="form-control col-md-4" name="adon_title" id="addon_type">
+                                    <label for="adon_remarks">Addon Remarks </label>
+                                    <textarea id="adon_remarks" class="form-control" cols="4" rows="4" name="adon_remarks"></textarea>
+                                    <button type="submit" id="submit-addons" name="addAddonItem" class="btn-success">Submit Addons</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </form>
 
+            <table class="table table-stripped" id="table">
+                <thead>
+                <tr>
+                    <th>Sr #</th>
+                    <th>Adon Name</th>
+                    <th>Remarks</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <?php
+                    $sr=1;
+                    ?>
+                    @foreach ($adons as $adon)
+                        <td>{{$sr++}}</td>
+                        <td>{{$adon->adon_title}}</td>
+                        <td>{{$adon->adon_remarks}}</td>
+                        <td class="d-flex">
+
+                            <form method="post" action="{{route('deleteAdon',['id'=>$adon->adon_id])}}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                @method('DELETE')
+                            <button><i class="btn fa fa-trash text-white bg-danger delete"></i></button>
+                            </form>
+                            <a href="{{route('edit.adon',['id'=>$adon->adon_id])}}"> <button class="bg-danger">
+                                    <i class="btn fa fa-pencil text-white bg-success edit"></i></button></a>
+                        </td>
 
 
-            <button id="submit-addons" name="addAddonItem" class="btn-success">Submit Addons</button>
+                </tr>
 
-            <div id="table-container"></div>
-        <!-- /.container-fluid -->
-
-    </div>
+                @endforeach
+                </tbody>
+            </table>
     <!-- End of Main Content -->
 
     <!-- Footer -->
@@ -348,117 +379,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-{{--Code to add data into json and show in the table--}}
-<script>
 
-    var addons = []; // Array to store addon objects in JSON format
-
-    $(document).ready(function () {
-        $("#addAddon").click(function () {
-            // Create a JSON object with values from input fields
-            var addon = {
-                'title': $("#addon_title").val(),
-                'type': $("#addon_type").val(),
-                'image': $("#addon_image").val(),
-                'price': $("#addon_price").val()
-            };
-
-            addons.push(addon); // Add the object to the addons array
-
-            // Clear the input fields
-            $("#addon_title").val("");
-            $("#addon_type").val("");
-            $("#addon_image").val("");
-            $("#addon_price").val("");
-
-            // Call the function to display the table
-            displayTable();
-        });
-
-
-        $("#table-container").on("click", ".delete-addon", function() {
-            var index = $(this).data("index");
-            deleteAddon(index);
-        });
-    });
-
-    function displayTable() {
-        // Create the table HTML dynamically using jQuery
-        var tableHTML = '<table class="table table-striped"><thead><tr><th>Title</th>' +
-            '<th>Type</th>' +
-            '<th>Image</th>' +
-            '<th>Price</th>' +
-            '<th>Action</th>' +
-            '</tr></thead>' +
-            '<tbody>';
-
-        // Loop through the addons array and create a table row for each object
-        for (var i = 0; i < addons.length; i++) {
-            // Generate the HTML for the edit and delete buttons
-            var editButtonHTML = '<button class="btn btn-primary btn-sm edit-addon" data-index="' + i + '" onclick="editAddon(' + i + ')">Edit</button>';
-            var deleteButtonHTML = '<button class="btn btn-danger btn-sm delete-addon" data-index="' + i + '">Delete</button>';
-
-            // Generate the HTML for the row with the data and buttons
-            tableHTML += '<tr><td>' + addons[i].title + '</td><td>'
-                + addons[i].type + '</td><td>' + addons[i].image +
-                '</td><td>' + addons[i].price + '</td><td>' + editButtonHTML +
-                ' ' + deleteButtonHTML + '</td></tr>';
-        }
-
-        tableHTML += '</tbody></table>';
-
-        // Replace the HTML of the div with the new table
-        $("#table-container").html(tableHTML);
-
-
-    }
-
-    function editAddon(index) {
-        // Remove the addon from the array
-        var addon = addons.splice(index, 1)[0];
-
-        // Populate the form with the addon's data
-        $("#addon_title").val(addon.title);
-        $("#addon_type").val(addon.type);
-        $("#addon_image").val(addon.image);
-        $("#addon_price").val(addon.price);
-
-        // Update the table
-
-    }
-
-    function deleteAddon(index) {
-        // Use the splice() method to remove the addon at the given index
-        addons.splice(index, 1);
-
-        // Update the table with the new data
-        displayTable();
-    }
-    $("#submit-addons").click(function () {
-
-        // Create a JSON object with values from input fields
-        var addon = {
-            'addon_title': addons[0].title, // get the value from the adons object
-            'addon_item': JSON.stringify(addons)
-        };
-
-
-        // Send the data to the server using ajax()
-        $.ajax({
-            url: '/add-data/',
-            method: 'post',
-            data: addon,
-            success: function(response) {
-                // Display a success message to the user
-                alert("Addons added successfully!");
-            },
-            error: function(error) {
-                // Display an error message to the user
-                alert("Failed to add addons: " + error.message);
-            }
-        });
-    });
-</script>
 
 
 

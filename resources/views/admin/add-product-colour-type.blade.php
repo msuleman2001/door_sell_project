@@ -70,6 +70,16 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage Comments</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('addingAdons')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Addons</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('showAdonItems')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Addons items</span></a>
+    </li>
     {{--    <li class="nav-item">--}}
     {{--        <a class="nav-link" href="{{route('manageCart')}}">--}}
     {{--            <i class="fas fa-fw fa-chart-area"></i>--}}

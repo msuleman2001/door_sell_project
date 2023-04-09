@@ -1,5 +1,11 @@
 @include('includes.header');
-<!-- Sidebar -->
+{{--<h1>Hello</h1>--}}
+@if(session('success'))
+    <script>
+        alert('{{ session('success') }}');
+    </script>
+@endif
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -7,7 +13,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-                <div class="sidebar-brand-text mx-3">FUNDA <sup>WEB IT</sup></div>
+        <div class="sidebar-brand-text mx-3">FUNDA <sup>WEB IT</sup></div>
     </a>
 
     <!-- Divider -->
@@ -45,10 +51,11 @@
     </li>
 
 
-<li class="nav-item">
-      <a class="nav-link" href="{{route('addColour')}}">
-    <i class="fas fa-fw fa-chart-area"></i>
-     <span>  Manage  Colours</span></a>   </li>
+    <li class="nav-item">
+        <a class="nav-link" href={{route('addColour')}}>
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage  Colours</span></a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addColourType')}}">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -58,16 +65,11 @@
         <a class="nav-link" href="{{route('userList')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage Users</span></a>
- </li>
-  <li class="nav-item">
- <a class="nav-link" href="{{route('wishList')}}">
-        <i class="fas fa-fw fa-chart-area"></i>
-           <span>  Manage Wishlist</span></a>
-  </li>
+    </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{route('commentList')}}">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>  Manage Comments</span></a>
+        <a class="nav-link" href="{{route('wishList')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Wishlist</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('addingAdons')}}">
@@ -75,16 +77,20 @@
             <span>  Manage Addons</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{route('showAdonItems')}}">
+        <a class="nav-link" href="{{route('addingAdons')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>  Manage Addons items</span></a>
+            <span>  Manage Addons Items</span></a>
     </li>
-{{--    <li class="nav-item">--}}
-{{--        <a class="nav-link" href="{{route('manageCart')}}">--}}
-{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>  Manage Cart</span></a>--}}
-{{--    </li>--}}
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('commentList')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>  Manage Comments</span></a>
+    </li>
+    {{--        <li class="nav-item">--}}
+    {{--            <a class="nav-link" href="{{route('manageCart')}}">--}}
+    {{--                <i class="fas fa-fw fa-chart-area"></i>--}}
+    {{--                <span>  Manage Cart</span></a>--}}
+    {{--        </li>--}}
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -94,6 +100,7 @@
     </div>
 
 </ul>
+
 <!-- End of Sidebar -->
 
 <!-- Content Wrapper -->
@@ -280,127 +287,77 @@
                         </a>
                     </div>
                 </li>
+
             </ul>
+
         </nav>
         <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
         <div class="container-fluid">
-
             <!-- Page Heading -->
-            <div class="container mt-5">
-                <table class="table table-stripped" id="table">
+            <h1 class="h3 mb-4 text-gray-800">Manage Addons</h1>
+            <form id="submit-json" method="post" action="{{ route('update.adon',['id'=>$adons->adon_id]) }}">
+                @method('PUT')
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <div class="form-group">
 
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="col-12">
-                                <a href="{{route('addingProduct')}}"><input name="product_name" type="" value="Add Products" class="btn btn-primary float-right"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="example_wrapper">
-                        <div class="col-md-6 mb-4">
-                            <!-- The buttons container will be appended here -->
-                        </div>
-                    </div>
-                    <thead>
-                    <tr>
-                        <th>Sr #</th>
-                        <th> Name </th>
-                        <th>Created At</th>
-                        <th>Created By</th>
-                        <th>Updated At</th>
-                        <th>Updated By</th>
-                        <th>Price</th>
-                        <th>Category Name</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-
-                        <?php
-                        $sr=1
-                        ?>
-                        @foreach ($products as $product)
-                            <td>{{$sr++}}</td>
-                            <td>{{ $product->product_title }}</td>
-                            <td>{{$product->created_at }}</td>
-                            <td>{{ $product->created_by_id}}</td>
-                            <td>{{ $product->updated_at}}</td>
-                            <td>{{ $product->updated_by_id}}</td>
-                            <td>{{ $product->product_price}}</td>
-                            <td>{{$product->category_name}}</td>
-                            <td class="d-flex">
-                                <form action="{{ route('deleteProduct', ['id' => $product->product_id]) }}" method="POST" id="delete-form">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#deleteModal"> <i class="btn fa fa-trash text-white bg-danger delete"></i></button>
-                                </form>
-                                <a class="mt-2" href="{{route('updateProduct',['id'=>$product->product_id] )}}"><i class="btn fa fa-pencil text-white bg-success edit"></i></a>
-                            </td>
-
-                            <!-- Confirmation Modal -->
-                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Delete Category</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to delete this ?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" form="delete-form" class="btn btn-danger">Delete</button>
-                                        </div>
-                                    </div>
+                                    <label for="addon_type">Addon Type </label>
+                                    <input type="text" value="{{$adons->adon_title}}" class="form-control col-md-4" name="adon_title" id="addon_title">
+                                    <label for="adon_remarks">Addon Remarks </label>
+                                    <textarea  id="adon_remarks" class="form-control" cols="4" rows="4" name="adon_remarks"></textarea>
+                                    <button type="submit" id="submit-addons" name="addAddonItem" class="btn-success">Submit Addons</button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    </div>
 
-                    </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
+            </form>
 
+            <!-- End of Main Content -->
 
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2019</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- /.container-fluid -->
+        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Main Content -->
+    <!-- End of Page Wrapper -->
 
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2019</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-</div>
-<!-- End of Content Wrapper -->
-
-</div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-@include('includes.logout-Model');
-@include('includes.script');
+    <!-- Logout Modal-->
+    @include('includes.logout-Model');
+    @include('includes.script');
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+    </html>
