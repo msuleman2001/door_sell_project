@@ -16,6 +16,7 @@ class AdonItemController extends Controller
  }
  public function addItem(Request $request){
      $adon_item=new AdonItemModel();
+     $adon_item->parent_adon_item_id=$request->input('parent_adon_item_id');
 
      $adon_item->adon_item_name=$request->input('adon_item_name');
      $adon_item->adon_item_price=$request->input('adon_item_price');
@@ -65,13 +66,6 @@ public function updateAdonItem(Request $request, $id){
 
 }
 
-
-
-
-
-
-
-
 // DELETING THE RECORD
 public function deleteItem($id){
      $adon_item=AdonItemModel::find($id);
@@ -80,4 +74,19 @@ public function deleteItem($id){
 
      return redirect()->route('showAdonItems');
 }
+//Geting the child items of adon_item within adoon item table
+//    public function getSizes($doorTypeId)
+//    {
+//        // Retrieve the available sizes for the selected door type
+//        $sizes = AdonItemModel::where('parent_adon_item_id', $doorTypeId)->get();
+//
+//
+//        // Return the available sizes as a JSON response
+//        return response()->json($sizes);
+//    }
+    //showing adon_items data on product details
+    public function getAddonItems($addon_id){
+     $adonItemsChilds=AdonItemModel::where('adon_id','=',$addon_id)->get();
+     return response()->json($adonItemsChilds);
+    }
 }

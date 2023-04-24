@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdonItemModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductModel;
 use App\Models\ReviewModel;
@@ -73,34 +72,20 @@ class ProductController extends Controller
 
  //going to specific product detail page from the images
     public function show($id){
-        //passing the adons data to the product-details view
-            // The where() method takes two arguments: the name of the
-        // column you want to search in, and the value you want to search for.
-        //it will show the adon_items related to specific adon_value
-        //get complete list of addons from database
-        $addons = AdonsModel::where('parent_adon_id', '=', 0)->get();
-        $products=ProductModel::join('product_category', 'products.category_id', '=', 'product_category.category_id')
-            ->select('products.*', 'product_category.category_name')
-            ->get();
-        $categories=ProductCategoryModel::all();
 
-//        $parentColor = AdonsModel::where('adon_title', 'Color')->first();
-////        retrieves all child adons where the "parent_adon_id" is equal to the "adon_id" of the parent adon
-//        $childColor = AdonsModel::where('parent_adon_id', $parentColor->adon_id)->get();
-//        $door_type_items = AdonsModel::where('adon_title', 'Door Type')->firstOrFail()->adonItems;
-//        $dimention_items = AdonsModel::where('adon_title', 'Dimentions')->firstOrFail()->adonItems;
-//        $swing_type_items = AdonsModel::where('adon_title', 'Swing Type')->firstOrFail()->adonItems;
-//        $handle_type_items = AdonsModel::where('adon_title', 'Handle')->firstOrFail()->adonItems;
-//        $architrave_design_items = AdonsModel::where('adon_title', 'Architrave')->firstOrFail()->adonItems;
-//        $lock_type_items = AdonsModel::where('adon_title', 'Door Lock')->firstOrFail()->adonItems;
-//        //Passing the specific product id and the reviews for that produ
-        $product_details = ProductModel::find($id);
-        $reviews = $product_details->reviews()->get();
-        return view('main-web.product-detail', compact('addons','product_details','reviews','products','categories'));
-//        return view('main-web.product-detail', compact('childColor',
-//            'product_details', 'reviews', 'door_type_items', 'dimention_items', 'swing_type_items',
-//            'handle_type_items', 'architrave_design_items', 'lock_type_items'));
+  $product_details = ProductModel::find($id);
+  $reviews = $product_details->reviews()->get();
+  $parentColor = AdonsModel::where('adon_title', 'Color')->first();
+//        retrieves all child adons where the "parent_adon_id" is equal to the "adon_id" of the parent adon
+        $childColor = AdonsModel::where('parent_adon_id', $parentColor->adon_id)->get();
+                $door_type_items = AdonsModel::where('adon_title', 'Door Type')->firstOrFail()->adonItems;
+ $dimention_items = AdonsModel::where('adon_title', 'Dimentions')->firstOrFail()->adonItems;
+        $swing_type_items = AdonsModel::where('adon_title', 'Swing Type')->firstOrFail()->adonItems;
+          $handle_type_items = AdonsModel::where('adon_title', 'Handle')->firstOrFail()->adonItems;
+        $architrave_design_items = AdonsModel::where('adon_title', 'Architrave')->firstOrFail()->adonItems;
+          $lock_type_items = AdonsModel::where('adon_title', 'Door Lock')->firstOrFail()->adonItems;
 
+  return view('main-web.product-detail',compact('product_details','reviews','childColor','door_type_items','dimention_items', 'swing_type_items', 'handle_type_items', 'architrave_design_items','lock_type_items'));
 
     }
 
@@ -114,6 +99,7 @@ class ProductController extends Controller
         $product=ProductModel::find($id);
 $categories=ProductCategoryModel::all();
 $colour_types=ColourTypeModel::all();
+
         return view('admin.edit-product',compact('product','categories','colour_types'));
 
     }
@@ -171,7 +157,6 @@ $colour_types=ColourTypeModel::all();
 
         return redirect()->back();
     }
-
 
 
 }

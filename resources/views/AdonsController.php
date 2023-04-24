@@ -93,26 +93,6 @@ public  function deleteAdon($id){
         $grandChildColor = AdonItemModel::where('adon_id', $childColorId)->get();
         return response()->json($grandChildColor);
     }
-//     Showing the adons data on product details page
-
-    public function getItems($addon_id){
-        $item=AdonItemModel::where('adon_id',$addon_id)->get();
-        return response()->json($item);
-
-
-    }
-    public function getChilds($addon_id)
-    {
-        // Check if there are any child adons in the adons table
-        $childAddons = AdonsModel::where('parent_adon_id', '=', $addon_id)->get();
-        if ($childAddons->count() > 0) {
-            // If child adons exist, load them first
-            return response()->json($childAddons);
-        } else {
-            return "0";
-        }
-    }
-
 }
 
 

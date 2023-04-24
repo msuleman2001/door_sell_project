@@ -301,9 +301,16 @@
                                 <div class="form-group">
 
                                     <label for="addon_type">Addon Type </label>
-                                    <input type="text" class="form-control col-md-4" name="adon_title" id="addon_type">
+                                    <input type="text" class="form-control col-md-4" name="adon_title" id="addon_type"><br>
+                                    <select class="form-control col-md-6" name="parent_adon_id">
+                                        <option value="">Select Adon</option>
+
+                                        <@foreach($adons as $adon)
+                                            <option value={{$adon->adon_id}}>{{$adon->adon_title}}</option>
+                                        @endforeach
+                                    </select><br>
                                     <label for="adon_remarks">Addon Remarks </label>
-                                    <textarea id="adon_remarks" class="form-control" cols="4" rows="4" name="adon_remarks"></textarea>
+                                    <textarea id="adon_remarks" class="form-control" cols="4" rows="4" name="adon_remarks"></textarea><br>
                                     <button type="submit" id="submit-addons" name="addAddonItem" class="btn-success">Submit Addons</button>
                                 </div>
                             </div>

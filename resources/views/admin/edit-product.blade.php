@@ -347,16 +347,16 @@
                                                style="background: #fff;"></textarea>
 
 
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                    </div>
+                                </div>
 
-{{--                            </div>--}}
-{{--                            <br>--}}
-{{--                            <button type="submit"  id="addProduct" class="btn btn-primary" >Add Products</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--            </form>--}}
-{{--        </div>--}}
+                            </div>
+                            <br>
+                            <button type="submit"  id="update" class="btn btn-primary" >Update</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
 
         <!-- /.container-fluid -->
 

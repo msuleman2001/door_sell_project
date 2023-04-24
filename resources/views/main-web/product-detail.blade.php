@@ -14,6 +14,247 @@
 <body id="product-detail">
 
 @include('main-web.includes.header')
+
+{{--<script>--}}
+{{--function  addToCart(product_id){--}}
+{{--        // Get the selected adon data from the hidden input field--}}
+{{--        var selectedAdonsJson = $('#selectedAdonsInput').val();--}}
+
+{{--        // Get the total price from the `total_price` div--}}
+{{--        var totalPrice = $('.total_price').text().trim().replace('Total Addon Price: $', '');--}}
+{{--        // Get the product ID from the button's data attributes--}}
+{{--        var productId = product_id;--}}
+{{--console.log(productId)--}}
+{{--        // Send the AJAX request--}}
+{{--        $.ajax({--}}
+{{--            type: 'POST',--}}
+{{--            url: '/user/add-to-cart',--}}
+{{--            dataType: 'json', //--}}
+{{--            data: {--}}
+{{--                selectedAdonsJson: selectedAdonsJson,--}}
+{{--                totalPrice: totalPrice,--}}
+{{--                productId: productId,--}}
+{{--            },--}}
+{{--            success: function(data) {--}}
+{{--                alert('Data added to cart:', data);--}}
+{{--            },--}}
+{{--            error: function(xhr, textStatus, errorThrown) {--}}
+{{--                console.log('Error:', errorThrown);--}}
+{{--                alert('error')--}}
+{{--            }--}}
+{{--        });--}}
+{{--}--}}
+
+{{--</script>--}}
+
+
+<script>
+    var radios = new Array();
+
+    function loadItems(addon_id,addon_title, radio){
+        var parent_div;
+        if(!radio.id.startsWith('childAddonContainer'))
+            parent_div = radio.nextSibling.nextSibling;
+        else
+            parent_div = radio;
+
+        if (parent_div.id == '')
+            blankAllOthers(parent_div);
+        parent_div.innerHTML = '';
+        var baseUrl = "{{ url('/') }}";
+        var WebURL = {!! json_encode(url('/')) !!}
+        $.ajax({
+            url: WebURL+'/adon/items/' + addon_id,
+            type: 'GET',
+            success: function (data) {
+                if (data.length > 0) {
+                    // If the response contains adon items, load them directly
+                    var divItems = '<div>';
+                    var uniqueNameItems = 'adon_item_' + addon_id; // Generate unique name for items
+                    for (var i = 0; i < data.length; i++) {
+                        var itemsChildAdon = '<input type="radio" class="adon-items-container   adon_item" id="adon_item_'
+                            + i + '" name="' + uniqueNameItems + '" data-price="' + data[i].adon_item_price + '"' +
+                            '  data-item-name="' + data[i].adon_item_name + '" data-adon-parent="'+addon_title+'">'; // Update name attribute
+
+                        itemsChildAdon += '<label for="adon_item_' + i + '">';
+                        itemsChildAdon += '<img src="'  +data[i].adon_item_image+'" style="max-width: 100px; height: 100px">';
+                        itemsChildAdon += '</label>';
+                        divItems += itemsChildAdon;
+
+                    }
+                    divItems += '</div>';
+                    parent_div.innerHTML += divItems;
+                }
+            }
+        });
+    }//end loadItem function
+
+    function loadChildAddons(addon_id, addon_title, span) {
+        var parent_div = span.nextSibling;
+        parent_div.innerHTML = '';
+
+        var uniqueName = 'child_adons_' + addon_id;
+        var WebURL = {!! json_encode(url('/')) !!}
+
+
+        $.ajax({
+            url: WebURL+'/adon/' + addon_id,
+            type: 'GET',
+            success: function (data) {
+                if (data != "0") {
+                    var uniqueNameItems = 'adon_item_' + addon_id;
+                    for (var i = 0; i < data.length; i++) {
+                        var divChildAddons = '<div>';
+                        var child_addons = '<input type="radio" class="child-adons-container child-adons" ' +
+                            'id="child_adons_' + i + '" name="' + uniqueName +
+                            '" onclick="loadItems(' + data[i].adon_id + ',\'' + addon_title + '\', this)" ' + ' data-adon-child="' + data[i].adon_title + '"  >';
+                        child_addons += '<label for="child_adons_' + i + '" >';
+                        child_addons += data[i].adon_title;
+                        child_addons += '</label><div></div>';
+
+                        divChildAddons += child_addons + '</div>';
+                        parent_div.innerHTML += divChildAddons;
+                    }
+                } else {
+                    loadItems(addon_id, addon_title, parent_div);
+                }
+            }
+        });
+    } // added this closing brace
+
+    function blankAllOthers(radio){
+        // const childElements = radio.parentElement.parentElement.querySelectorAll('div'); // get all the child elements
+        //
+        // for (let i = 0; i < childElements.length; i++) {
+        //     const childElement = childElements[i]; // get the current child element
+        //     childElement.innerHTML = '';
+        // }
+    }
+</script>
+
+<script>
+    //adding data to json and calculatin
+
+    function storeSelectedAdon() {
+        var selectedAdons = {};
+
+        // Get all the selected adon items
+        var selectedAdonItems = document.querySelectorAll('.adon_item:checked');
+
+        // Loop through the selected adon items and store their names and prices in the selectedAdons object
+        selectedAdonItems.forEach(function(selectedAdonItem) {
+            var adon_item_name = selectedAdonItem.getAttribute('data-item-name');
+            var adon_item_price = selectedAdonItem.getAttribute('data-price');
+            var adon_parent = selectedAdonItem.getAttribute('data-adon-parent');
+
+            if (!selectedAdons[adon_parent]) {
+                // Create an object for the adon item if it doesn't exist yet
+                selectedAdons[adon_parent] = {
+                    adon_item_name: adon_item_name,
+                    adon_item_price: adon_item_price,
+                };
+            } else {
+                // If the adon item object already exists, add the price and name to the existing object
+                selectedAdons[adon_parent].adon_item_name += ', ' + adon_item_name;
+                selectedAdons[adon_parent].adon_item_price += adon_item_price;
+            }
+        });
+
+        // Convert the selectedAdons object to a JSON string and store it in a variable or send it to the server
+        var selectedAdonsJson = JSON.stringify(selectedAdons);
+
+        // Set the value of the hidden input field to the JSON string
+        var selectedAdonsInput = document.getElementById('selectedAdonsInput');
+        selectedAdonsInput.value = selectedAdonsJson;
+
+        // Calculate and display the total price of checked adons
+        var totalPrice = 0;
+        selectedAdonItems.forEach(function(selectedAdonItem) {
+            totalPrice += parseFloat(selectedAdonItem.getAttribute('data-price'));
+        });
+
+        var totalPriceDiv = document.querySelector('.total_price');
+        if (totalPriceDiv) {
+            totalPriceDiv.innerText = 'Total Addon Price: $' + totalPrice.toFixed(2);
+            var totalPriceInput = document.getElementById('totalPriceInput');
+            totalPriceInput.value = totalPrice.toFixed(2);
+        }
+
+    }
+
+// adding to the product price
+    function totalPrice(productPrice) {
+        var total = parseFloat(productPrice);
+        var adonTotal = 0;
+
+        // Get all the checked adon items
+        var checkedAdonItems = document.querySelectorAll('.adon_item:checked');
+
+        // Loop through the checked adon items and add their prices to the total
+        checkedAdonItems.forEach(function(checkedAdonItem) {
+            var adon_item_price = parseFloat(checkedAdonItem.getAttribute('data-price'));
+            adonTotal += adon_item_price;
+        });
+
+        // Add the adon total to the product price
+        total += adonTotal;
+
+        // Display the total price in a div
+        var totalPriceDiv = document.getElementsByClassName('total_price')[0];
+        totalPriceDiv.innerText = 'Total Product Price: $' + total.toFixed(2);
+
+        // Set the value of the hidden input field to the total price
+        var totalPriceInput = document.getElementById('totalPriceInput');
+        totalPriceInput.value = total.toFixed(2);
+
+        // Set the value of the hidden input field for product price
+        var productPriceInput = document.getElementById('productPriceInput');
+        productPriceInput.value = productPrice;
+
+    }
+
+
+    //updating the price accoring to the quantity
+    function updateQuantity(change) {
+        const quantityInput = $('#quantity_wanted');
+        let quantity = parseInt(quantityInput.val());
+        //add the value based on change value
+        quantity += change;
+        //block quantity to go below 1
+        if (quantity < 1) {
+            quantity = 1;
+        }
+        quantityInput.val(quantity);
+
+        //adding to the hidden input
+        $('#quantityInput').val(quantity);
+
+//calculating total price of selected inputs
+        const selectedItems = $('input[type="radio"]:checked');
+        let totalPrice = 0;
+        selectedItems.each(function() {
+            if ($(this).data('price')) { // check if data-price attribute exists
+                const price = parseFloat($(this).data('price'));
+                totalPrice += price * quantity;
+            }
+        });
+        $('.total_price').text('Total Product Price: $' + totalPrice.toFixed(2));
+        // Set the value of the hidden input field to the total price
+        var totalPriceInput = document.getElementById('totalPriceInput');
+        totalPriceInput.value = totalPrice.toFixed(2);
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+
 <!-- main content -->
 <div class="main-content">
     <div id="wrapper-site">
@@ -22,337 +263,15 @@
                 <div class="page-home">
 
                     <!-- breadcrumb -->
-                    <nav class="breadcrumb-bg">
-                        <div class="container no-index">
-                            <div class="breadcrumb">
-                                <ol>
-                                    <li>
-                                        <a href="#">
-                                            <span>Home</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Living Room</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Sofa</span>
-                                        </a>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </nav>
+
                     <div class="container">
                         <div class="content">
                             <div class="row">
-                                <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+                                @include('main-web.includes.categories')
 
-                                    <!-- category -->
-                                    <div class="sidebar-block">
-                                        <div class="title-block">Categories</div>
-                                        <div class="block-content">
-                                            <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapse-icons collapsed" data-toggle="collapse" data-target="#livingroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                <a class="cateItem" href="#">Living Room</a>
-                                                <div class="subCategory collapse" id="livingroom" aria-expanded="true" role="status">
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">Side Table</a>
-                                                        <div class="subCategory collapse" id="subCategory-fruits" aria-expanded="true" role="status">
-                                                            <div class="cateTitle">
-                                                                <a href="#" class="cateItem">Side Table</a>
-                                                            </div>
-                                                            <div class="cateTitle">
-                                                                <a href="#" class="cateItem">FIREPLACE</a>
-                                                            </div>
-                                                            <div class="cateTitle">
-                                                                <a href="#" class="cateItem">FIREPLACE</a>
-                                                            </div>
-                                                            <div class="cateTitle">
-                                                                <a href="#" class="cateItem">floor lamp</a>
-                                                            </div>
-                                                            <div class="cateTitle">
-                                                                <a href="#" class="cateItem">ottoman</a>
-                                                            </div>
-                                                            <div class="cateTitle">
-                                                                <a href="#" class="cateItem">armchair</a>
-                                                            </div>
-                                                            <div class="cateTitle">
-                                                                <a href="#" class="cateItem">cushion</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">FIREPLACE</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">FIREPLACE</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">floor lamp</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">ottoman</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">armchair</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">cushion</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#bathroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                <a class="cateItem" href="#">Bathroom</a>
-                                                <div class="subCategory collapse" id="bathroom">
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">TOMATO</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">BROCCOLI</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">CABBAGE</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">CUCUMBER</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">EGGPLANT</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#diningroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                <a class="cateItem" href="#">Dining Rooom</a>
-                                                <div class="subCategory collapse" id="diningroom" aria-expanded="true" role="status">
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">DRY BREAD</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">BREAD SLICES</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">FRENCH BREAD</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">BLACK BREAD</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#bedroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                <a class="cateItem" href="#">BedRoom</a>
-                                                <div class="subCategory collapse" id="bedroom" aria-expanded="true" role="status">
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">ORANGE JUICES</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">TOMATO JUICES</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">APPLE JUICES</a>
-                                                    </div>
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                                </div>
-                                            </div>
-                                            <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#kitchen">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                <a class="cateItem" href="#">Kitchen</a>
-                                                <div class="subCategory collapse" id="kitchen" aria-expanded="true" role="status">
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">ORANGE JUICES</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">TOMATO JUICES</a>
-                                                    </div>
-                                                    <div class="cateTitle">
-                                                        <a href="#" class="cateItem">APPLE JUICES</a>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- best seller -->
-                                    <div class="sidebar-block">
-                                        <div class="title-block">
-                                            Best seller
-                                        </div>
-                                        <div class="product-content tab-content">
-                                            <div class="row">
-                                                <div class="item col-md-12">
-                                                    <div class="product-miniature item-one first-item d-flex">
-                                                        <div class="thumbnail-container border">
-                                                            <a href="/product-detail">
-                                                                <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg')}}" alt="img">
-                                                                <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg')}}" alt="img">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-description">
-                                                            <div class="product-groups">
-                                                                <div class="product-title">
-                                                                    <a href="/product-detail">Nulla et justo augue</a>
-                                                                </div>
-                                                                <div class="rating">
-                                                                    <div class="star-content">
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-group-price">
-                                                                    <div class="product-price-and-shipping">
-                                                                        <span class="price">£28.08</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item col-md-12">
-                                                    <div class="product-miniature item-one first-item d-flex">
-                                                        <div class="thumbnail-container border">
-                                                            <a href="/product-detail">
-                                                                <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg')}}" alt="img">
-                                                                <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt="img">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-description">
-                                                            <div class="product-groups">
-                                                                <div class="product-title">
-                                                                    <a href="/product-detail">Nulla et justo augue</a>
-                                                                </div>
-                                                                <div class="rating">
-                                                                    <div class="star-content">
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-group-price">
-                                                                    <div class="product-price-and-shipping">
-                                                                        <span class="price">£31.08</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item col-md-12">
-                                                    <div class="product-miniature item-one first-item d-flex">
-                                                        <div class="thumbnail-container border">
-                                                            <a href="/product-detail">
-                                                                <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg')}}" alt="img">
-                                                                <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt="img">
-                                                            </a>
-                                                        </div>
-                                                        <div class="product-description">
-                                                            <div class="product-groups">
-                                                                <div class="product-title">
-                                                                    <a href="/product-detail">Nulla et justo augue</a>
-                                                                </div>
-                                                                <div class="rating">
-                                                                    <div class="star-content">
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                        <div class="star"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-group-price">
-                                                                    <div class="product-price-and-shipping">
-                                                                        <span class="price">£20.08</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- product tag -->
-                                    <div class="sidebar-block product-tags">
-                                        <div class="title-block">
-                                            Product Tags
-                                        </div>
-                                        <div class="block-content">
-                                            <ul class="listSidebarBlog list-unstyled">
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Hot Trend">Hot Trend</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Jewelry">Jewelry</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="man" title="Show products matching tag Man">Man</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Party">Party</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag SamSung">SamSung</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Shirt Dresses">Shirt Dresses</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Shoes">Shoes</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Summer">Summer</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Sweaters">Sweaters</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Winter">Winter</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" title="Show products matching tag Woman">Woman</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8 col-lg-9 col-md-9">
+                                    <div class="col-sm-8 col-lg-9 col-md-9">
                                     <div class="main-product-detail">
                                         <h2>{{$product_details->product_title}}</h2>
                                         <div class="product-single row">
@@ -376,28 +295,7 @@
                                                                 <i class="fa fa-expand"></i>
                                                             </div>
                                                         </div>
-                                                        <ul class="product-tab nav nav-tabs d-flex">
-                                                            <li class="active col">
-                                                                <a href="#item1" data-toggle="tab" aria-expanded="true" class="active show">
-                                                                    <img src="{{asset($product_details->product_front_image)}}" alt="img">
-                                                                </a>
-                                                            </li>
-                                                            <li class="col">
-                                                                <a href="#item2" data-toggle="tab">
-                                                                    <img src="{{asset('img/product/2.jpg')}}" alt="img">
-                                                                </a>
-                                                            </li>
-                                                            <li class="col">
-                                                                <a href="#item3" data-toggle="tab">
-                                                                    <img src="{{asset('img/product/3.jpg')}}" alt="img">
-                                                                </a>
-                                                            </li>
-                                                            <li class="col">
-                                                                <a href="#item4" data-toggle="tab">
-                                                                    <img src="{{asset('img/product/5.jpg')}}" alt="img">
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+
                                                         <div class="modal fade" id="product-modal" role="dialog">
                                                             <div class="modal-dialog">
 
@@ -455,242 +353,31 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                             <div class="product-info col-xs-12 col-md-7 col-sm-7">
                                                 <div class="detail-description">
                                                     <div class="price-del">
-                                                        <span class="price">{{$product_details->product_price}}$</span>
-                                                        <span class="float-right">
-                                                                <span class="availb">Availability: </span>
-                                                                <span class="check">
-                                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>IN STOCK</span>
-                                                            </span>
+                                                        <span class="price  text-secondary" data-initial-price="{{$product_details->product_price}}"><sup>₦</sup>{{$product_details->product_price}}</span>
+
                                                     </div>
                                                     <p class="description">{{$product_details->product_details}}</p>
-                                                    <div class="option has-border d-lg-flex size-color">
-                                                        <div class="size">
-                                                            <span class="size">size :</span>
-                                                            <select>
-                                                                <option value="">Choose your size</option>
-                                                                <option value="">M</option>
-                                                                <option value="">l</option>
-                                                                <option value="">xl</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="colors">
-                                                            <b class="title">Color : </b>
-                                                            <span class="blue"></span>
-                                                            <span class="yellow"></span>
-                                                            <span class="pink"></span>
-                                                            <span class="green"></span>
-                                                            <span class="brown"></span>
-                                                            <span class="red"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="adon-color"><h6>Color:</h6></label>
-                                                        @foreach ($color_items as $item)
-                                                            <div class="radio">
-                                                                <label>
-                                                                    <input type="radio" name="adon_color" value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
-                                                                    {{ $item->adon_item_name }}
-                                                                </label>
+
+                                                    <div class="adon_item_container">
+
+                                                        @foreach($addons as $addon)
+
+                                                            <div class="parent-adon" id="parent-adon-{{$addon->adon_id}}">
+                                                                <span onclick="loadChildAddons({{$addon->adon_id}}, '{{$addon->adon_title}}', this);">{{$addon->adon_title}}</span><div id="childAddonContainer{{$addon->adon_id}}"></div>
                                                             </div>
+
                                                         @endforeach
                                                     </div>
 
-{{--                                                    <div class="form-group" id="color-images" style="display: none;">--}}
-{{--                                                        <strong>Select Colors</strong>--}}
-{{--                                                        <div class="row">--}}
-{{--                                                            <div class="col-sm-4">--}}
-{{--                                                                <label>--}}
-{{--                                                                    <input type="radio" name="color" value="black">--}}
-{{--                                                                    <img src="black.jpg" alt="Black" class="img-fluid">--}}
-{{--                                                                </label>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-sm-4">--}}
-{{--                                                                <label>--}}
-{{--                                                                    <input type="radio" name="color" value="blue">--}}
-{{--                                                                    <img src="blue.jpg" alt="Blue" class="img-fluid">--}}
-{{--                                                                </label>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="col-sm-4">--}}
-{{--                                                                <label>--}}
-{{--                                                                    <input type="radio" name="color" value="red">--}}
-{{--                                                                    <img src="red.jpg" alt="Red" class="img-fluid">--}}
-{{--                                                                </label>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
+                                                    <button class="btn-outline-primary" onclick="storeSelectedAdon()">Save selected items</button>
+                                                    <button class="btn-outline-primary" onclick="totalPrice({{$product_details->product_price}})">Total Price</button>
 
-{{--                                                    SHOWING THE DOOR TYPES--}}
-                                                    <div class="form-group" id="door-types" style="display: none;">
-                                                        <strong>Select Door Type</strong>
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                @foreach ($door_type_items as $item)
-                                                                    <div class="radio">
-                                                                        <label>
-                                                                            <input type="radio" name="door_type" value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
-                                                                            {{ $item->adon_item_name }}
-                                                                        </label>
-                                                                    </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-
-                                                    <div class="door-sizes" id="door-sizes-single" style="display: none;">
-                                                        <strong>Select Door Size</strong>
-
-                                                        <div class="form-check">
-                                                            @foreach ($dimention_items as $item)
-                                                                <div class="radio">
-                                                                    <label>
-                                                                        <input class="form-check-input" type="radio" name="door_size" id="door_size"
-                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
-                                                                        {{ $item->adon_item_name }}
-                                                                    </label>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-
-{{--                                                    <div class="door-sizes" id="door-sizes-single_half" style="display: none;">--}}
-{{--                                                        <strong>Select Size</strong>--}}
-{{--                                                        <div class="form-check">--}}
-{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_3" value="36x80">--}}
-{{--                                                            <label class="form-check-label" for="door_size_3">--}}
-{{--                                                                <img src="36x80.jpg" alt="36x80" class="img-fluid">--}}
-{{--                                                            </label>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="form-check">--}}
-{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_4" value="42x80">--}}
-{{--                                                            <label class="form-check-label" for="door_size_4">--}}
-{{--                                                                <img src="42x80.jpg" alt="42x80" class="img-fluid">--}}
-{{--                                                            </label>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-
-{{--                                                    <div class="door-sizes" id="door-sizes-double" style="display: none;">--}}
-{{--                                                        <strong>Select Size</strong>--}}
-{{--                                                        <div class="form-check">--}}
-{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_5" value="72x80">--}}
-{{--                                                            <label class="form-check-label" for="door_size_5">--}}
-{{--                                                                <img src="72x80.jpg" alt="72x80" class="img-fluid">--}}
-{{--                                                            </label>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="form-check">--}}
-{{--                                                            <strong>Select Size</strong>--}}
-{{--                                                            <input class="form-check-input" type="radio" name="door_size" id="door_size_6" value="96x80">--}}
-{{--                                                            <label class="form-check-label" for="door_size_6">--}}
-{{--                                                                <img src="96x80.jpg" alt="96x80" class="img-fluid">--}}
-{{--                                                            </label>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-
-
-
-                                                    {{--SELECTING THE SWING TYPR--}}
-                                                                <div class="swing-type-selection" id="swing-type-selection" style="display: none;">
-                                                                    <div class="form-group">
-
-                                                                        <label for="swing-type-selection"><strong>Select Door Swing Type</strong></label>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="swing_type_selection" id="swing-type-yes" value="yes">
-                                                                            <label class="form-check-label" for="swing-type-yes">Yes</label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="swing_type_selection" id="swing-type-not-sure" value="not_sure">
-                                                                            <label class="form-check-label" for="swing-type-not-sure">Not Sure</label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="swing_type_selection" id="swing-type-no" value="no">
-                                                                            <label class="form-check-label" for="swing-type-no">No</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                {{--Images to show w=if we want to select the door type--}}
-                                                    <div class="swing-type" id="door-sizes-double" style="display: none;">
-                                                        <strong>Swing Type Select</strong>
-                                                        <div class="form-check">
-                                                            @foreach ($swing_type_items as $item)
-                                                                <div class="radio">
-                                                                    <label>
-                                                                        <input class="form-check-input" type="radio" name="swing_type_items" id="swing_type_items"
-                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
-                                                                        {{ $item->adon_item_name }}
-                                                                    </label>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-
-                                                        <!-- Text Area for Not Sure Option -->
-
-
-
-
-                                                    {{--Architrave Design--}}
-                                                    <div class="architrave-design form-group" style="display: none;">
-                                                        <label><strong>Select Architrave Design</strong></label>
-
-                                                        <div class="form-check">
-                                                            @foreach ($architrave_design_items as $item)
-                                                                <div class="radio">
-                                                                    <label>
-                                                                        <input class="form-check-input" type="radio" name="architrave_design" id="architrave_design"
-                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
-                                                                        {{ $item->adon_item_name }}
-                                                                    </label>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-
-
-                                                        <!-- HANDLE TYPE -->
-                                                    <div class="handle-type " id="handle-type" style="display: none">
-
-                                                        <strong>Select Double Handle Type</strong>
-                                                        <div class="form-check">
-                                                            @foreach ($handle_type_items as $item)
-                                                                <div class="radio">
-                                                                    <label>
-                                                                        <input class="form-check-input" type="radio" name="handle" id="handle"
-                                                                               value="{{ $item->adon_item_id }}" data-price="{{ $item->adon_item_price }}">
-                                                                        {{ $item->adon_item_name }}
-                                                                    </label>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-
-
-
-
-                                                        <!-- LOCK TYPE -->
-
-                                                    <div class="lock-type" id="lock-type" style="display: none;">
-                                                        <strong>Select Lock Type</strong>
-                                                        <div class="form-check">
-                                                            @foreach ($lock_type_items as $item)
-                                                                <div class="radio">
-                                                                    <label>
-                                                                        <input class="form-check-input" type="radio" name="lock-1" id="lock" value="{{ $item->adon_item_id }}"
-                                                                               data-price="{{ $item->adon_item_price }}">
-
-                                                                        {{ $item->adon_item_name }}
-                                                                    </label>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-
-                                                    </div>
-                                                    </div>
-
-
-                                                    <p>Total Price: <span class="total-price">0</span></p>
-
+                                                    <div class="total_price"></div>
 
                                                     <div class="has-border cart-area">
                                                         <div class="product-quantity">
@@ -699,103 +386,56 @@
                                                                 <div class="input-group">
                                                                     <div class="quantity">
                                                                         <span class="control-label">QTY : </span>
-                                                                        <input type="text" name="qty" id="quantity_wanted" value="1" class="input-group form-control">
+{{--                                                                        updating price according to quantity--}}
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="qty" id="quantity_wanted" value="1" class="input-group form-control">
+                                                                            <span class="input-group-btn-vertical">
+                                                                             <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-up"
+                                                                            type="button" onclick="updateQuantity(1)">+</button>
+                                                                             <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-down"
+                                                                             type="button" onclick="updateQuantity(-1)">-</button>
+                                                                    </span>
+                                                                        </div>
 
-                                                                        <span class="input-group-btn-vertical">
-                                                                                <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-up" type="button">
-                                                                                    +
-                                                                                </button>
-                                                                                <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-down" type="button">
-                                                                                    -
-                                                                                </button>
-                                                                            </span>
                                                                     </div>
-                                                                    <span class="add">
-                                                                            <button class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" type="submit">
+                                                                    <form method="post" action="{{ route('add-to-cart', ['id' => $product_details->product_id]) }}">
+                                                                        @csrf
+                                                                        {{--//storing json--}}
+                                                                        <input type="hidden" id="selectedAdonsInput" name="selectedAdons" value="">
+                                                                        {{-- Storing the total price--}}
+                                                                        <input type="hidden" id="totalPriceInput" name="total_price" value="">
+{{--                                                                        Storing the quantity of the product--}}
+                                                                        <input type="hidden" name="quantity" id="quantityInput" value="1">
+
+                                                                        <span class="add">
+                                                                            <button type="submit" class="btn btn-primary add-to-cart add-item"  data-product-id="{{$product_details->product_id}}">
                                                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                                                 <span>  Add  to cart</span>
                                                                             </button>
-                                                                            <a class="addToWishlist" href="#">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
                                                                         </span>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="clearfix"></div>
+
                                                         <p class="product-minimal-quantity">
                                                         </p>
                                                     </div>
-                                                    <div class="d-flex2 has-border">
-                                                        <div class="btn-group">
-                                                            <a href="#">
-                                                                <i class="zmdi zmdi-share"></i>
-                                                                <span>Share</span>
-                                                            </a>
-                                                            <a href="#" class="email">
-                                                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                                <span>SEN TO A FRIEND</span>
-                                                            </a>
-                                                            <a href="#" class="print">
-                                                                <i class="zmdi zmdi-print"></i>
-                                                                <span>Print</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rating-comment has-border d-flex">
-                                                        <div class="review-description d-flex">
-                                                            <span>REVIEW : </span>
-                                                            <div class="rating">
-                                                                <div class="star-content">
-                                                                    <div class="star"></div>
-                                                                    <div class="star"></div>
-                                                                    <div class="star"></div>
-                                                                    <div class="star"></div>
-                                                                    <div class="star"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="read after-has-border">
-                                                            <a href="#review">
-                                                                <i class="fa fa-commenting-o color" aria-hidden="true"></i>
-                                                                <span>READ REVIEWS (3)</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="apen after-has-border">
-                                                            <a href="#review">
-                                                                <i class="fa fa-pencil color" aria-hidden="true"></i>
-                                                                <span>WRITE A REVIEW</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="content">
                                                         <p>SKU :
                                                             <span class="content2">
                                                                     <a href="#">{{$product_details->product_sku}}</a>
                                                                 </span>
                                                         </p>
-                                                        <p>Categories :
-                                                            <span class="content2">
-                                                                    <a href="#">Clothing</a>,
-                                                                    <a href="#">Men's Jackets</a>
-                                                                </span>
-                                                        </p>
-                                                        <p>tags :
-                                                            <span class="content2">
-                                                                    <a href="#">Jacket</a>,
-                                                                    <a href="#">Overcoat</a>,
-                                                                    <a href="#">Luxury</a>,
-                                                                    <a href="#">men</a>,
-                                                                    <a href="#">summer</a>,
-                                                                    <a href="#">autumn</a>
-                                                                </span>
-                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        </div>
 
-{{--                                        DETAILS CARD FOR PRODUCT ADONS--}}
+{{--
 
 
 
@@ -864,169 +504,6 @@
                                         </div>
 
 
-                                        <div class="related mt-5">
-                                            <div class="title-tab-content  text-center">
-                                                <div class="title-product justify-content-start">
-                                                    <h2>Related Products</h2>
-                                                </div>
-                                            </div>
-                                            <div class="tab-content">
-                                                <div class="row">
-                                                    <div class="item text-center col-md-4">
-                                                        <div class="product-miniature js-product-miniature item-one first-item">
-                                                            <div class="thumbnail-container border border">
-                                                                <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/1.jpg')}}" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/22.jpg')}}" alt="img">
-                                                                </a>
-                                                                <div class="highlighted-informations">
-                                                                    <div class="variant-links">
-                                                                        <a href="#" class="color beige" title="Beige"></a>
-                                                                        <a href="#" class="color orange" title="Orange"></a>
-                                                                        <a href="#" class="color green" title="Green"></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="/product-detail">Nulla et justo non augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£28.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-buttons d-flex justify-content-center">
-                                                                    <form action="#" method="post" class="formAddToCart">
-                                                                        <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </form>
-                                                                    <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item text-center col-md-4">
-                                                        <div class="product-miniature js-product-miniature item-one first-item">
-                                                            <div class="thumbnail-container border">
-                                                                <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/2.jpg')}}" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/11.jpg')}}" alt="img">
-                                                                </a>
-                                                                <div class="highlighted-informations">
-                                                                    <div class="variant-links">
-                                                                        <a href="#" class="color beige" title="Beige"></a>
-                                                                        <a href="#" class="color orange" title="Orange"></a>
-                                                                        <a href="#" class="color green" title="Green"></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="/product-detail">Nulla et justo non augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£31.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-buttons d-flex justify-content-center">
-                                                                    <form action="#" method="post" class="formAddToCart">
-                                                                        <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </form>
-                                                                    <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item text-center col-md-4">
-                                                        <div class="product-miniature js-product-miniature item-one first-item">
-                                                            <div class="thumbnail-container border">
-                                                                <a href="/product-detail">
-                                                                    <img class="img-fluid image-cover" src="{{asset('img/product/3.jpg')}}" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="{{asset('img/product/14.jpg')}}" alt="img">
-                                                                </a>
-                                                                <div class="highlighted-informations">
-                                                                    <div class="variant-links">
-                                                                        <a href="#" class="color beige" title="Beige"></a>
-                                                                        <a href="#" class="color orange" title="Orange"></a>
-                                                                        <a href="#" class="color green" title="Green"></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="/product-detail">Nulla et justo non augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£20.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-buttons d-flex justify-content-center">
-                                                                    <form action="#" method="post" class="formAddToCart">
-                                                                        <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </form>
-                                                                    <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1037,6 +514,7 @@
             </div>
         </div>
     </div>
+
 
 
 <!-- footer -->
@@ -1879,87 +1357,9 @@
 
 <!-- Vendor JS -->
 @include('main-web.includes.script');
-<script>
-
-    $(document).ready(function() {
-        $('input[name="adon_color"]').click(function() {
-
-// Hide the div if it's currently visible
-                $('#door-types').hide();
-// Show the div if it's currently hidden
-                $('#door-types').show();
-        });
-
-    //SELECTING THE DOOR TYPE AFTER COLOR
-    // $('input[name="color"]').click(function() {
-    //     // Hide all other door type divs that may be visible
-    //     $('.door-types').hide();
-    //     // Show the door types div that corresponds to the clicked image
-    //     $('#door-types').show();
-
-//SELECTINF THE SIZE AGAINST THE DOOR TYPE SEPCIC!
-        $('input[name="door_type"]').click(function() {
-            // Get the value of the selected door type
-            // Hide all door sizes sections
-            $('.door-sizes').show();
-            // Show the door sizes section for the selected door type
-
-        });
-
-
-        //SHOWING WHETHER TO SELECT SWING TYPE OR NOT
-        $('input[name="door_size"]').click(function() {
-
-            $('#swing-type-selection').show();
-        });
-
-            // Show architrave design section when any swing type option is selected
-            $('input[name="swing_type_selection"]').on('change', function() {
-                $('.architrave-design').show();
-            });
-
-            // Show  images when "Yes" is selected
-            $('input[name="swing_type_selection"][value="yes"]').on('change', function() {
-                $('.swing-type').show();
-                $('.text-area').hide();
-            });
-
-            // Show  text when "Not Sure" is selected
-            $('input[name="swing_type_selection"][value="not_sure"]').on('change', function() {
-                $('.text-area').show();
-                $('.text-area textarea').val('Left');
-                $('.swing-type').hide();
-            });
-
-            // Hide images and red text when "No" is selected
-            $('input[name="swing_type_selection"][value="no"]').on('change', function() {
-                $('.swing-type, .text-area').hide();
-            });
-            $('.architrave-design').click(function(){
-                $('.handle-type').show();
-            });
-        $('.handle-type').click(function(){
-            $('.lock-type').show();
-        });
-//Calculating the total price after Checking the All radio buttons
-        $('.add-to-cart').click(function() {
-            const selectedItems = $('input[type="radio"]:checked');
-            let totalPrice = 0;
-            selectedItems.each(function() {
-                if ($(this).data('price')) { // check if data-price attribute exists
-                    const price = parseFloat($(this).data('price'));
-                    totalPrice += price;
-                }
-            });
-            $('.total-price').text(totalPrice.toFixed(2));
-        });
 
 
 
-
-    });
-
-</script>
 
 </div>
 </div>

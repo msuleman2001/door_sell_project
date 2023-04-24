@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Furnitica - Minimalist Furniture HTML Template</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="keywords" content="Furniture, Decor, Interior">
     <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
@@ -55,4 +56,88 @@ position: absolute;
     .review-section{
         width: 800px;
     }
+
+    .door_types {
+        display: flex;
+        gap: 3px;
+
+    }
+    .swing_type {
+        display: flex;
+        gap: 3px;
+
+    }
+    .radio.door_size,
+    .radio.architrave,
+    .radio.handle_type {
+        display: inline-block;
+        margin-right: 10px; /* optional margin between the items */
+    }
+    .lock-type .radio {
+        display: inline-block;
+        margin-right: 10px;
+    }
+         /*Adding Borders around images*/
+         /* CSS code */
+     #door-types label img {
+         border: 2px solid transparent;
+     }
+    #door-types label img.checked {
+        border: 2px solid blue;
+    }
+    .color_type label img {
+        border: 2px solid transparent;
+    }
+
+    .color_type label img.checked {
+        border: 2px solid blue;
+    }
+
+    .door_size label img {
+        border: 2px solid transparent;
+    }
+
+    .door_size label img.checked {
+        border: 2px solid blue;
+    }
+    .swing_type label img {
+        border: 2px solid transparent;
+    }
+
+    .swing_type label img.checked {
+        border: 2px solid blue;
+    }
+    .architrave label img {
+        border: 2px solid transparent;
+    }
+
+    .architrave label img.checked {
+        border: 2px solid blue;
+    }
+    .handle_type label img {
+        border: 2px solid transparent;
+    }
+
+    .handle_type label img.checked {
+        border: 2px solid blue;
+    }
+    .lock-type label img {
+        border: 2px solid transparent;
+    }
+
+    .lock-type label img.checked {
+        border: 2px solid blue;
+    }
+
+
+
+/*#grandChildColorContainer {*/
+    /*    display: flex;*/
+    /*    justify-content: space-evenly;*/
+    /*    margin-top: 10px;*/
+    /*}*/
+    /*#grandChildColorContainer div {*/
+    /*    margin-right: 10px;*/
+    /*}*/
+
 </style>

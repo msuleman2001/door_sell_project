@@ -311,6 +311,13 @@
                                             <option value="{{$adon->adon_id}}">{{$adon->adon_title}}</option>
                                         @endforeach
                                     </select><br>
+                                    <select class="form-control col-md-6" name="parent_adon_item_id">
+
+                                        <option value="">Select Parent Adon Item</option>
+                                        <@foreach($adon_items as $adon_item)
+                                            <option value="{{$adon_item->adon_item_id}}">{{$adon_item->adon_item_name}}</option>
+                                        @endforeach
+                                    </select><br>
                                     <label for="adon_item_name">Addon Item Name </label>
                                     <input type="text" class="form-control col-md-4" name="adon_item_name" id="adon_item_name"><br>
                                     <label for="adon_item_image">Addon Item Image </label>

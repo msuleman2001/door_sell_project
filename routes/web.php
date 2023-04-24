@@ -14,6 +14,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdonsController;
 use App\Http\Controllers\AdonItemController;
+use App\Http\Controllers\CartController;
 
 
 
@@ -173,6 +174,11 @@ Route::get('/Admin/wish-list',[WishListController::class,'showWishList'])->name(
 Route::view('index2','main-web.index3');
 // Pasing the Adons item data and geting the product details view
 Route::get('/product-details', [AdonsController::class, 'passAdonItems'])->name('adons.product');
+//Geting the child adons
+Route::get('/get-grandchild-colors/{childColorId}',[AdonsController::class,'getGrandchildColors']);
+
+//Geting the child adons of the adon items within adon item table
+Route::get('/door/sizes/{doorTypeId}', [AdonItemController::class,'getSizes']);
 
 Route::view('/user-account','main-web.user-account');
 Route::view('/user-register','main-web.user-register');
@@ -226,3 +232,10 @@ Route::view('/user-wishlist','main-web.user-wishlist');
 
 // user review route
 Route::post('/review',[ReviewController::class,'addReview'])->name('addReview');
+// Geting adons
+Route::get('/adon/{addon_id}',[AdonsController::class,'getChilds']);
+
+Route::get('/adon/items/{addon_id}',[AdonsController::class,'getItems']);
+
+// Adding product data to cart table
+Route::post('user/add-to-cart/{id}',[CartController::class,'addToCart'])->name('add-to-cart');
