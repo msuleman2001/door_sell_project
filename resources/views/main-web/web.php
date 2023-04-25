@@ -63,8 +63,7 @@ Route::group(['middleware'=>['admin']], function(){
 
     //adding category
     Route::get('/Admin/add-category',[ProductCategoryController::class,'passData'])->name('addCategory');
-    //showing categories in dropdown
-    Route::get('/Admin/adding-category',[ProductCategoryController::class,'categoryList'])->name('addingCategory');
+    Route::view('/Admin/adding-category','admin.add-product-category')->name('addingCategory');
     Route::post('/Admin/added-category',[ProductCategoryController::class,'addCategory'])->name('addedCategory');
 
     //updating category data

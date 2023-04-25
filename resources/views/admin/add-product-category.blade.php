@@ -298,6 +298,14 @@
                     @csrf
                     <div class="row">
                         <div class="col-4">
+                            <label for="parent_category">Select Parent Category</label>
+                            <select class="form-control" name="parent_category">
+                                <option value="">Select Parent Category</option>
+
+                                <@foreach($categories as $category)
+                                    <option value={{$category->category_id}}>{{$category->category_name}}</option>
+                                @endforeach
+                            </select><br>
                             <label for="name">Name</label>
                             <input type="text" id="name" name="category_name" class="form-control">
 

@@ -51,7 +51,8 @@
                                                     <div class="col-sm-4 mt-4">
                                                         <div class="card">
                                                             <div class="card-body">
-                                                                <a href="/product-details/{{$product->product_id}}"><img class="card-img-top" src="{{asset($product->product_front_image)}}" alt="Card image cap"></a>
+                                                                <a href="{{route('product.detail',['id'=>$product->product_id])}}">
+                                                                    <img class="card-img-top" src="{{asset($product->product_front_image)}}" alt="Card image cap"></a>
                                                                 <h5 class="card-title">{{$product->product_title}}</h5>
                                                                 <p class="card-text">{{$product->product_price}}</p>
                                                                 <a href="#" class=""><i class="fa fa-heart"></i></a>

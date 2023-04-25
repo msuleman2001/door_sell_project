@@ -12,6 +12,11 @@ class ProductCategoryController extends Controller
         $categories = ProductCategoryModel::all();
         return view('admin.product-category-list',compact('categories'));
     }
+    //passing categories data to add category view
+    public  function categoryList(){
+        $categories=ProductCategoryModel::all();
+        return view('admin.add-product-category',compact('categories'));
+    }
     public function addCategory(Request $request)
     {
         // initialize the instance of ProductCategoryModel
