@@ -25,6 +25,14 @@ class ProductCategoryModel extends Model
         }
         return $categories_list;
     }
+
+    public static function getParentCategories(){
+        return ProductCategoryModel::where('parent_category', 0)->get();
+    }
+
+    public static function getSubCategories($parent_category_id){
+        return ProductCategoryModel::where('parent_category', $parent_category_id)->get();
+    }
     // One to many Relationship with Products
     public function products(){
         return $this->hasMany(ProductModel::class, 'category_id');

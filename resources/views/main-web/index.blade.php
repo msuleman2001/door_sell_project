@@ -31,38 +31,48 @@
                         <div class="tiva-row-wrap row">
                             <div class="groupcategoriestab-vertical col-md-12 col-xs-12">
                                 <div class="grouptab row">
-
-{{--                                    Including the categories--}}
-
                                     @include('main-web.includes.categories')
-
-
                                     <div class="categoriestab-left product-tab col-md-9 flex-9">
                                         <div class="title-tab-content d-flex justify-content-start">
-
                                         </div>
                                         <div class="tab-content">
                                             <div id="new" class="tab-pane fade in active show">
-                                            @if(count($products) == 0)
-                                                <p>No Products Found</p>
-                                            @else
-                                            <div class="row">
-                                                @foreach ($products as $product)
-                                                    <div class="col-sm-4 mt-4">
-                                                        <div class="card">
-                                                            <div class="card-body">
-                                                                <a href="{{route('product.detail',['id'=>$product->product_id])}}">
-                                                                    <img class="card-img-top" src="{{asset($product->product_front_image)}}" alt="Card image cap"></a>
-                                                                <h5 class="card-title">{{$product->product_title}}</h5>
-                                                                <p class="card-text">{{$product->product_price}}</p>
-                                                                <a href="#" class=""><i class="fa fa-heart"></i></a>
-                                                                <!-- <div><a href="#" class="btn btn-primary"></a></div> -->
+                                                @if(count($sub_categories) > 0)
+                                                    <div class="row">
+                                                        @foreach ($sub_categories as $sub_category)
+                                                            <div class="col-sm-4 mt-4">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <a href="{{url('/',['sub_category_id'=>$sub_category->category_id])}}">
+                                                                            <h5 class="card-title">{{$sub_category->category_name}}</h5>
+                                                                        </a>
+                                                                        <p class="card-text">{{$sub_category->created_at}}</p>
+                                                                        <a href="#" class=""><i class="fa fa-heart"></i></a>
+                                                                        <!-- <div><a href="#" class="btn btn-primary"></a></div> -->
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        @endforeach
                                                     </div>
-                                                @endforeach
-                                            </div>
-                                            @endif
+                                                @endif
+                                                @if(count($products) > 0)
+                                                    <div class="row">
+                                                        @foreach ($products as $product)
+                                                            <div class="col-sm-4 mt-4">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <a href="{{url('/',['sub_category_id'=>$sub_category->category_id])}}">
+                                                                            <h5 class="card-title">{{$product->product_title}}</h5>
+                                                                        </a>
+                                                                        <p class="card-text">{{$product->product_details}}</p>
+                                                                        <a href="#" class=""><i class="fa fa-heart"></i></a>
+                                                                        <!-- <div><a href="#" class="btn btn-primary"></a></div> -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

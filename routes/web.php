@@ -189,7 +189,7 @@ Route::view('/user-login','main-web.user-login');
 //main-pages
 
 //Main Website Page
-Route::get('/',[DoorShopMainPageController::class,'passData'])->name('doorShop');
+Route::get('/{sub_category_id?}',[DoorShopMainPageController::class,'index'])->name('doorShop');
 Route::view('/door_shop2','main-web.index-2');
 
 //TopBar

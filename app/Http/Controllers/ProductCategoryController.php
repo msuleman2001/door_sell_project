@@ -12,6 +12,7 @@ class ProductCategoryController extends Controller
         $categories = ProductCategoryModel::all();
         return view('admin.product-category-list',compact('categories'));
     }
+    
     //passing categories data to add category view
     public  function categoryList(){
         $categories=ProductCategoryModel::all();
@@ -22,8 +23,9 @@ class ProductCategoryController extends Controller
         // initialize the instance of ProductCategoryModel
         $categories = ProductCategoryModel::all();
 
-       $cat_name = $request->input('category_name');
-       $cat_detail=$request->input('category_details');
+        $cat_name = $request->input('category_name');
+        $cat_detail=$request->input('category_details');
+        $parent_category_id = $request->input('parent_category');
 
         // check if the category already exists
 //        $existingCategory = ProductCategoryModel::where('category_name', $request->input('category_name'))->first();
@@ -33,6 +35,7 @@ class ProductCategoryController extends Controller
         //storing data in product_category table
         DB::table('product_category')->insert([
            'category_name'=>$cat_name,
+           'parent_category'=>$parent_category_id,
             'created_at'=>now(),
             'updated_at'=>now(),
             'category_details'=>$cat_detail
@@ -52,12 +55,12 @@ class ProductCategoryController extends Controller
 
 
     //geting data related to specific id on edit product view
-public function editCatData($category_id){
+    public function editCatData($category_id){
         $category=ProductCategoryModel::find($category_id);
         return view('admin.edit-product-category',compact('category'));
-}
+    }
 //updating the category data related to specific id\
-public function updateCatData(Request $request, $category_id){
+    public function updateCatData(Request $request, $category_id){
         $category=ProductCategoryModel::find($category_id);
         $category->category_name=$request->input('category_name');
         $category->category_details=$request->input('category_details');
@@ -65,16 +68,12 @@ public function updateCatData(Request $request, $category_id){
         $category->save();
 
         return redirect('/admin/add-category');
-}
-//deleting the category data
+    }
+    //deleting the category data
 
-public function deleteCategory( $id){
+    public function deleteCategory( $id){
         $category=ProductCategoryModel::find($id);
-
         $category->delete();
         return redirect()->back();
-
-
-}
-
+    }
 }
