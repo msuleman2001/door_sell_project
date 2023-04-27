@@ -77,7 +77,7 @@ Route::group(['middleware'=>['admin']], function(){
 //Products Routes
 
     Route::get('/Admin/add-product',[ProductController::class,'passData'])->name('addProduct');
-//pasing categories data in order to show in drop down
+    //pasing categories data in order to show in drop down
     Route::get('/Admin/adding-product',[ProductController::class,'passCatData'])->name('addingProduct');
     Route::post('/Admin/added-product',[ProductController::class,'addProduct'])->name('addedProduct');
 
@@ -158,7 +158,7 @@ Route::get('/Admin/wish-list',[WishListController::class,'showWishList'])->name(
 
 
 //DELETE ADON ITEM
-    Route::delete('/Admin/adon-item/delete{id}',[AdonItemController::class,'deleteItem'])->name('delete.adonItem');
+    Route::delete('/Admin/adon-item/delete/{id}',[AdonItemController::class,'deleteItem'])->name('delete.adonItem');
 
 
 

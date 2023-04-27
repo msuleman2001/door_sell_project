@@ -296,7 +296,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-group">
-                                    <select name="category_id"  class="form-control col-md-6" id="categories">
+                                    <select name="category_id" class="form-control col-md-6" id="categories">
                                         <option value="">--Select Product Category--</option>
 
                                         @foreach($categories as $category)
@@ -307,18 +307,8 @@
                                     <input class="form-control col-md-6" value="" name="product_title" type="text" id="productName"><br>
 
                                     <label for="productPrice">Product Price</label>
-                                    <input class="form-control col-md-6" value="" name="product_price" type="number" id="productPrice">
-
-                                    <label for="productQuantity">Product Quanitity</label>
-                                    <input class="form-control col-md-4" value="" name="product_quantity" type="number" id="productQuantity">
-                                    <label for="checkBox">Enter Available Colour Types</label><br>
-                                        @foreach($colour_types as $colour_type)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="colour_type[]" value="{{$colour_type->colour_type_id}}">
-                                            <label class="form-check-label">{{$colour_type->colour_type_name}}</label>
-                                        </div>
-                                    @endforeach
-                                    </div>
+                                    <input class="form-control col-md-6" value="" name="product_price" type="number" id="productPrice">    
+                                </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-group">

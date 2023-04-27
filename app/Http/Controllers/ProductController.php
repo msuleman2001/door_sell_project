@@ -40,33 +40,30 @@ class ProductController extends Controller
     //adding the products
     public function addProduct(Request $request)
     {
-        //the number in qauntity fieldd will deide the number of total enteries of product
         $product_quantity = $request->input('product_quantity');
-        for ($i = 0; $i < $product_quantity; $i++) {
-            $product = new ProductModel();
-            $product->product_title = $request->input('product_title');
-            $product->category_id = $request->input('category_id');
-            $product->product_price = $request->input('product_price');
-            $product->product_details = $request->input('product_detail');
-            $product->product_sku = $request->input('product_sku');
+        
+        $product = new ProductModel();
+        $product->product_title = $request->input('product_title');
+        $product->category_id = $request->input('category_id');
+        $product->product_price = $request->input('product_price');
+        $product->product_details = $request->input('product_detail');
+        $product->product_sku = $request->input('product_sku');
 
-            // Upload image
-            $front_image = $request->file('product_front_image');
-            $back_image = $request->file('product_back_image');
+        // Upload image
+        $front_image = $request->file('product_front_image');
+        $back_image = $request->file('product_back_image');
 
-            $front_image_name = $front_image->getClientOriginalName();
-            $back_image_name = $back_image->getClientOriginalName();
-            $image_folder = '/public/img/';
-            $front_image_path = '/storage/img/'. $front_image_name;
-            $back_image_path = '/storage/img/'. $back_image_name;
-            $front_image->storeAs($image_folder,$front_image_name);
-            $back_image->storeAs($image_folder,$back_image_name);
-            $product->product_front_image = $front_image_path;
-            $product->product_back_image = $back_image_path;
-            $product->save();
-            $product->colors()->sync($request->input('colour_type', []));
+        $front_image_name = $front_image->getClientOriginalName();
+        $back_image_name = $back_image->getClientOriginalName();
+        $image_folder = '/public/img/';
+        $front_image_path = '/storage/img/'. $front_image_name;
+        $back_image_path = '/storage/img/'. $back_image_name;
+        $front_image->storeAs($image_folder,$front_image_name);
+        $back_image->storeAs($image_folder,$back_image_name);
+        $product->product_front_image = $front_image_path;
+        $product->product_back_image = $back_image_path;
+        $product->save();
 
-        }
         return redirect()->route('addProduct');
 
     }
@@ -82,7 +79,7 @@ class ProductController extends Controller
         $products=ProductModel::join('product_category', 'products.category_id', '=', 'product_category.category_id')
             ->select('products.*', 'product_category.category_name')
             ->get();
-        $categories=ProductCategoryModel::all();
+        $categories=ProductCategoryModel::getCategoriesAndSubCategories();
 
 //        $parentColor = AdonsModel::where('adon_title', 'Color')->first();
 ////        retrieves all child adons where the "parent_adon_id" is equal to the "adon_id" of the parent adon
