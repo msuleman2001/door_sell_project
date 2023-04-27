@@ -13,7 +13,10 @@ class DoorShopMainPageController extends Controller {
         $categories = ProductCategoryModel::getCategoriesAndSubCategories();
         
         if ($parent_category_id == 0){
-            $sub_categories = $categories[0]['sub_categories'];
+            if (count($categories) > 0)
+                $sub_categories = $categories[0]['sub_categories'];
+            else
+                $sub_categories = [];
             $products = [];
             return view('main-web.index',compact('categories', 'sub_categories', 'products'));
         }
