@@ -12,7 +12,7 @@
                     <div class="subCategory collapse" id="{{$category->category_id}}" aria-expanded="true" role="status">
                         <div class="cateTitle">
                             @foreach ($category['sub_categories'] as $sub_category)
-                                <a class="cateItem" href="{{url('/',['sub_category_id'=>$sub_category->category_id])}}" title={{ $sub_category->category_name }}">{{ $sub_category->category_name }}</a><br>
+                                <a class="cateItem" href="{{url('/',['sub_category_id'=>$sub_category->category_id])}}" title="{{ $sub_category->category_name }}">{{ $sub_category->category_name }}</a><br>
                             @endforeach
                         </div>
                     </div>

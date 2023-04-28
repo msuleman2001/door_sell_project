@@ -16,6 +16,8 @@
     </button>
 </div>
 @endif
+
+
 <body id="home">
 
 @include('main-web.includes.header')
@@ -937,6 +939,48 @@
 </div>
 <!-- Vendor JS -->
 @include('main-web.includes.script');
+<script>
+
+    // STORING THE STATE OF THE DROPDOWN TO SESSION
+
+    $('.subCategory').on('shown.bs.collapse', function () {
+        var subCategoryId = $(this).attr('id');
+        sessionStorage.setItem(subCategoryId, 'expanded');
+    });
+    $(document).ready(function () {
+        $('.subCategory').each(function () {
+            var subCategoryId = $(this).attr('id');
+            var isExpanded = sessionStorage.getItem(subCategoryId);
+            if (isExpanded === 'expanded') {
+                $(this).addClass('show');
+            }
+        });
+    });
+
+    // CHANGING THE TEXT OF THE SUBCATEGORY TO BOLD WHEN CLICKED
+
+    $('.cateItem').on('click', function() {
+        // Remove bold text from all other subcategories
+        $('.cateItem').css('font-weight', 'normal');
+
+        // Add bold text to the clicked subcategory
+        $(this).css('font-weight', 'bold');
+
+        // Store the selected subcategory in local storage
+        localStorage.setItem('selectedSubcategory', $(this).text());
+    });
+
+    // Retrieve the selected subcategory from local storage on page load
+    $(document).ready(function() {
+        var selectedSubcategory = localStorage.getItem('selectedSubcategory');
+        if (selectedSubcategory) {
+            // Add bold text to the selected subcategory
+            $('.cateItem:contains(' + selectedSubcategory + ')').css('font-weight', 'bold');
+        }
+    });
+
+
+</script>
 </body>
 
 

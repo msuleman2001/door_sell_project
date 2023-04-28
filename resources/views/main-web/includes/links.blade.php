@@ -131,13 +131,6 @@ position: absolute;
 
 
 
-/*#grandChildColorContainer {*/
-    /*    display: flex;*/
-    /*    justify-content: space-evenly;*/
-    /*    margin-top: 10px;*/
-    /*}*/
-    /*#grandChildColorContainer div {*/
-    /*    margin-right: 10px;*/
-    /*}*/
+
 
 </style>

@@ -40,10 +40,10 @@ class ProductCategoryModel extends Model
 
     public static function getCategoriesAndSubCategories(){
         $categories = ProductCategoryModel::getParentCategories();
-        
+
         foreach($categories as $parent_category)
             $parent_category['sub_categories'] = ProductCategoryModel::getSubCategories($parent_category->category_id);
-        
+
         return $categories;
     }
 }
