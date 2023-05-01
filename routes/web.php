@@ -79,6 +79,7 @@ Route::group(['middleware'=>['admin']], function(){
 
     Route::get('/Admin/product-features',[AdminProductFeaturesController::class,'index'])->name('index');
     Route::post('/Admin/add-product-features',[AdminProductFeaturesController::class,'saveProductFeature'])->name('saveProductFeature');
+    Route::post('/Admin/update-product-features',[AdminProductFeaturesController::class,'updateProductFeature'])->name('updateProductFeature');
     Route::get('/Admin/add-product',[ProductController::class,'passData'])->name('addProduct');
     //pasing categories data in order to show in drop down
     Route::get('/Admin/adding-product',[ProductController::class,'passCatData'])->name('addingProduct');
