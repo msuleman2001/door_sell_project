@@ -42,7 +42,7 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         $product_quantity = $request->input('product_quantity');
-        
+
         $product = new ProductModel();
         $product->product_title = $request->input('product_title');
         $product->category_id = $request->input('category_id');
@@ -89,8 +89,7 @@ class ProductController extends Controller
 
         $product=ProductModel::find($id);
         $categories=ProductCategoryModel::all();
-        $colour_types=ColourTypeModel::all();
-        return view('admin.edit-product',compact('product','categories','colour_types'));
+        return view('admin.edit-product',compact('product','categories'));
 
     }
     public function updateProduct(Request $request, $id)
@@ -132,7 +131,6 @@ class ProductController extends Controller
             $product->save();
 
             // Sync product colors
-            $product->colors()->sync($request->input('colour_type', []));
 
             return redirect('Admin/add-product');
         }

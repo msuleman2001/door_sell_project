@@ -18,7 +18,7 @@
                 <!-- The buttons container will be appended here -->
             </div>
         </div>
-        <table class="table table-stripped" id="table">        
+        <table class="table table-stripped" id="table">
             <thead>
                 <tr>
                     <th>Sr #</th>
@@ -75,7 +75,7 @@
         </table>
     </div>
 </div>
-@include('includes.footer');
+
 <!-- Logout Modal-->
 @include('includes.logout-Model');
 @include('includes.script');

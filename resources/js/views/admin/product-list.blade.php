@@ -45,15 +45,7 @@
     </li>
 
 
-<li class="nav-item">
-      <a class="nav-link" href="{{route('addColour')}}">
-    <i class="fas fa-fw fa-chart-area"></i>
-     <span>  Manage  Colours</span></a>   </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('addColourType')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>  Manage  Colours Type</span></a>
-    </li>
+
    <li class="nav-item">
        <a class="nav-link" href="{{route('userList')}}">
            <i class="fas fa-fw fa-chart-area"></i>   <span>  Manage Users</span></a>

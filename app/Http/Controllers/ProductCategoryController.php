@@ -12,7 +12,7 @@ class ProductCategoryController extends Controller
         $categories = ProductCategoryModel::all();
         return view('admin.product-category-list',compact('categories'));
     }
-    
+
     //passing categories data to add category view
     public  function categoryList(){
         $categories=ProductCategoryModel::all();
@@ -25,7 +25,7 @@ class ProductCategoryController extends Controller
 
         $cat_name = $request->input('category_name');
         $cat_detail=$request->input('category_details');
-        $parent_category_id = $request->input('parent_category');
+        $parent_category_id = $request->input('parent_category',0);
 
         // check if the category already exists
 //        $existingCategory = ProductCategoryModel::where('category_name', $request->input('category_name'))->first();
@@ -67,7 +67,7 @@ class ProductCategoryController extends Controller
 
         $category->save();
 
-        return redirect('/admin/add-category');
+        return redirect('/Admin/add-category');
     }
     //deleting the category data
 

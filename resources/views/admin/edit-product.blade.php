@@ -318,17 +318,7 @@
                                     <label for="productPrice">Product Price</label>
                                     <input class ="form-control col-md-6" value="{{$product->product_price}}" name="product_price" type="number" id="productPrice">
 
-                                    <label for="productQuantity">Product Quanitity</label>
-                                    <input class="form-control col-md-4" value="{{$product->product_quantity}}" name="product_quantity" type="number" id="productQuantity">
-                                    <label for="checkBox">Enter Available Colour Types</label><br>
-                                    @foreach($colour_types as $colour_type)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="colour_type[]" value="{{$colour_type->colour_type_id}}"
-                                                   @if(isset($colour_types[$colour_type->colour_type_id])) checked @endif>
 
-                                            <label class="form-check-label">{{$colour_type->colour_type_name}}</label>
-                                        </div>
-                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">

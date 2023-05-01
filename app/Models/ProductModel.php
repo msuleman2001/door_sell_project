@@ -19,11 +19,6 @@ class ProductModel extends Model
 public  function productCategory(){
     return $this->belongsTo(ProductCategoryModel::class);
 }
-
-    public function colors()
-    {
-        return $this->belongsToMany(ColourTypeModel::class, 'product_colours', 'product_id', 'colour_type_id');
-    }
     //one to many rellationship between Product and review
     public function reviews()
     {
