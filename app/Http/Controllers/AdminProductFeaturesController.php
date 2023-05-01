@@ -15,6 +15,19 @@ class AdminProductFeaturesController extends Controller
     }
 
     public function saveProductFeature(Request $request){
+        $product_feature = new ProductFeaturesModel();
+        $product_feature->product_feature_parent_name = $request->input('ddlCategoryFeature');
+        $product_feature->product_feature_name = $request->input('txtProductFeatureName');
+        $product_feature->product_feature_title = $request->input('txtProductFeatureTitle');
+        $product_feature->product_feature_image = $request->input('fulProductFeatureImage');
+        $product_feature->product_feature_price = $request->input('txtProductPrice');
+        $product_feature->product_feature_details = $request->input('txtProductFeatureDetails');
+
+        $product_feature->save();
+        return redirect()->route('index');
+    }
+
+    public function updateProductFeature(Request $request){
         
     }
 }

@@ -22,14 +22,14 @@
                     <label for="name">Name</label>
                     <input type="text" id="name" name="category_name" class="form-control">
                     <label for="productCatDetails">Product Details</label><br>
-                        <div>
-                            <textarea name="category_details" class="form-control" id="textAreaExample" rows="4" style="background: #fff;"></textarea>
+                    <div>
+                        <textarea name="category_details" class="form-control" id="textAreaExample" rows="4" style="background: #fff;"></textarea>
+                    </div>
+                    <div class=" mt-3">
+                        <div class="col-4">
+                            <button  type="submit" class="btn btn-primary">Add Category</button>
                         </div>
-                        <div class=" mt-3">
-                            <div class="col-4">
-                                <button  type="submit" class="btn btn-primary">Add Category</button>
-                            </div>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
