@@ -24,11 +24,10 @@ public  function saveAddons(Request $request){
         $addons=new AdonsModel();
 
         $addons->adon_title=$request->input('adon_title');
-    $addons->parent_adon_id=$request->input('parent_adon_id');
+        $addons->parent_adon_id=$request->input('parent_adon_id');
 
-    $addons->adon_remarks=$request->input('adon_remarks');
+        $addons->adon_remarks=$request->input('adon_remarks');
         $addons->save();
-
 
         return redirect()->route('addingAdons');
 }
