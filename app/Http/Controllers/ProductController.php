@@ -8,6 +8,7 @@ use App\Models\ProductModel;
 use App\Models\ReviewModel;
 use App\Models\ColourTypeModel;
 use App\Models\AdonsModel;
+use App\Models\ProductFeaturesModel;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -76,10 +77,26 @@ class ProductController extends Controller
         //it will show the adon_items related to specific adon_value
         //get complete list of addons from database
         $addons = AdonsModel::where('parent_adon_id', '=', 0)->get();
+        foreach ($addons as $addon){
+            $child_addons = AdonsModel::where('parent_adon_id', '=', $addon->adon_id)->get();
+            if (count($child_addons) > 0){
+                foreach ($child_addons as $child_addon){
+                    $addon_items = AdonItemModel::where('adon_id', '=', $child_addon->adon_id)->get();
+                    $child_addon['addon_items'] = $addon_items;
+                }    
+                $addon['child_addons'] = $child_addons;
+            } else {
+                $addon_items = $addon_items = AdonItemModel::where('adon_id', '=', $addon->adon_id)->get();
+                $addon['addon_items'] = $addon_items;
+            }
+        }
+
+        $product_features = ProductFeaturesModel::all();
+
         $products=ProductModel::join('product_category', 'products.category_id', '=', 'product_category.category_id')
             ->select('products.*', 'product_category.category_name')
             ->get();
-        $categories=ProductCategoryModel::getCategoriesAndSubCategories();
+        $categories = ProductCategoryModel::getCategoriesAndSubCategories();
 
 //        $parentColor = AdonsModel::where('adon_title', 'Color')->first();
 ////        retrieves all child adons where the "parent_adon_id" is equal to the "adon_id" of the parent adon
@@ -93,24 +110,21 @@ class ProductController extends Controller
 //        //Passing the specific product id and the reviews for that produ
         $product_details = ProductModel::find($id);
         $reviews = $product_details->reviews()->get();
-        return view('main-web.product-detail', compact('addons','product_details','reviews','products','categories'));
+        return view('main-web.product-detail', compact('addons','product_details','reviews','products','categories', 'product_features'));
 //        return view('main-web.product-detail', compact('childColor',
 //            'product_details', 'reviews', 'door_type_items', 'dimention_items', 'swing_type_items',
 //            'handle_type_items', 'architrave_design_items', 'lock_type_items'));
 
 
     }
-
-
-
     // updating the product data
 
     public function editProduct($id){
         //passing data related to specific product to edit product view
 
         $product=ProductModel::find($id);
-$categories=ProductCategoryModel::all();
-$colour_types=ColourTypeModel::all();
+        $categories=ProductCategoryModel::all();
+        $colour_types=ColourTypeModel::all();
         return view('admin.edit-product',compact('product','categories','colour_types'));
 
     }

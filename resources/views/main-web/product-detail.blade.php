@@ -47,88 +47,100 @@
 
 {{--</script>--}}
 
+<style>
+    .feature-option{
+        height: 80px;
+        width: 80px;
+        border: solid 1px green;
+        display: inline-block;
+    }
+</style>
 
 <script>
-    var radios = new Array();
 
-    function loadItems(addon_id,addon_title, radio){
-        var parent_div;
-        if(!radio.id.startsWith('childAddonContainer'))
-            parent_div = radio.nextSibling.nextSibling;
-        else
-            parent_div = radio;
+    $(document).ready(function(){
+        $('.product-feature').click(function(){
+            var category = $(this).attr('data-featurecategory');
+            var feature_name = $(this).attr('data-featurename');
+            var price = $(this).attr('data-featureprice');
 
-        if (parent_div.id == '')
-            blankAllOthers(parent_div);
-        parent_div.innerHTML = '';
-        var baseUrl = "{{ url('/') }}";
-        var WebURL = {!! json_encode(url('/')) !!}
-        $.ajax({
-            url: WebURL+'/adon/items/' + addon_id,
-            type: 'GET',
-            success: function (data) {
-                if (data.length > 0) {
-                    // If the response contains adon items, load them directly
-                    var divItems = '<div>';
-                    var uniqueNameItems = 'adon_item_' + addon_id; // Generate unique name for items
-                    for (var i = 0; i < data.length; i++) {
-                        var itemsChildAdon = '<input type="radio" class="adon-items-container   adon_item" id="adon_item_'
-                            + i + '" name="' + uniqueNameItems + '" data-price="' + data[i].adon_item_price + '"' +
-                            '  data-item-name="' + data[i].adon_item_name + '" data-adon-parent="'+addon_title+'">'; // Update name attribute
-
-                        itemsChildAdon += '<label for="adon_item_' + i + '">';
-                        itemsChildAdon += '<img src="'  +data[i].adon_item_image+'" style="max-width: 100px; height: 100px">';
-                        itemsChildAdon += '</label>';
-                        divItems += itemsChildAdon;
-
-                    }
-                    divItems += '</div>';
-                    parent_div.innerHTML += divItems;
-                }
-            }
+            setOrderDetails(category, feature_name, price);
         });
-    }//end loadItem function
+    });
 
-    function loadChildAddons(addon_id, addon_title, span) {
-        var parent_div = span.nextSibling;
-        parent_div.innerHTML = '';
+    function setOrderDetails(category, feature_name, price){
+        var order_json = $('#hidOrderDetailJSON').val();
+        var total_price = parseInt($('#hidTotalPrice').val());
+        var door_price = parseInt($('.price').attr('data-doorprice'));
+        var order_detail_json = JSON.parse(order_json);
+        
+        var selected_index = order_detail_json.findIndex(obj => obj.category === category);
+        
+        order_detail_json[selected_index].feature_name = feature_name;
+        order_detail_json[selected_index].price = price;
 
-        var uniqueName = 'child_adons_' + addon_id;
-        var WebURL = {!! json_encode(url('/')) !!}
+        total_price = door_price;
+        for(var feature in order_detail_json){
+            total_price += parseInt(order_detail_json[feature].price);
+        }
+        $('#hidTotalPrice').val(total_price);
+        $('#hidOrderDetailJSON').val(JSON.stringify(order_detail_json));
+    }
 
+    function showColor(div){
+        $('.color-options').hide();
+        $('#' + div).show();
+    }
 
-        $.ajax({
-            url: WebURL+'/adon/' + addon_id,
-            type: 'GET',
-            success: function (data) {
-                if (data != "0") {
-                    var uniqueNameItems = 'adon_item_' + addon_id;
-                    for (var i = 0; i < data.length; i++) {
-                        var divChildAddons = '<div>';
-                        var child_addons = '<input type="radio" class="child-adons-container child-adons" ' +
-                            'id="child_adons_' + i + '" name="' + uniqueName +
-                            '" onclick="loadItems(' + data[i].adon_id + ',\'' + addon_title + '\', this)" ' + ' data-adon-child="' + data[i].adon_title + '"  >';
-                        child_addons += '<label for="child_adons_' + i + '" >';
-                        child_addons += data[i].adon_title;
-                        child_addons += '</label><div></div>';
+    function selectItem(item){
+        var item_value = item.dataset.itemprice;
+    }
 
-                        divChildAddons += child_addons + '</div>';
-                        parent_div.innerHTML += divChildAddons;
-                    }
-                } else {
-                    loadItems(addon_id, addon_title, parent_div);
-                }
-            }
-        });
-    } // added this closing brace
+    function showDoorLocks(){
+        $('#divDoorLocks').show();
+    }
 
-    function blankAllOthers(radio){
-        // const childElements = radio.parentElement.parentElement.querySelectorAll('div'); // get all the child elements
-        //
-        // for (let i = 0; i < childElements.length; i++) {
-        //     const childElement = childElements[i]; // get the current child element
-        //     childElement.innerHTML = '';
-        // }
+    function showDoorHandles(){
+        $('#divDoorHandles').show();
+    }
+
+    function showArchitrave(){
+        $('#divArchitrave').show();
+    }
+
+    function showSwingDirectionOption(){
+        $('#divSwingDirectionOption').show();
+    }
+
+    function showLeftRightSwingOption(warning){
+        if (warning == 1){
+            $('#divDoorDirectionWarning').hide();
+        }
+
+        if (warning == 2){
+            $('#divDoorDirectionWarning').show();
+        }
+        $('#divLeftRightSwingOption').show();
+
+        if (warning == 3){
+            $('#divDoorDirectionWarning').hide();
+            $('#divLeftRightSwingOption').hide();
+        }
+        
+        
+    }
+
+    function showDoorType(){
+        $('#divDoorType').show();
+    }
+
+    function showTotalDoors(){
+        $('#divTotalDoors').show();
+    }
+
+    function showDoorSize(door_size){
+        $('.door-size').hide();
+        $('#div' + door_size).show();
     }
 </script>
 
@@ -244,14 +256,6 @@
         totalPriceInput.value = totalPrice.toFixed(2);
 
     }
-
-
-
-
-
-
-
-
 </script>
 
 
@@ -354,26 +358,139 @@
                                                 </div>
                                             </div>
 
-
                                             <div class="product-info col-xs-12 col-md-7 col-sm-7">
                                                 <div class="detail-description">
                                                     <div class="price-del">
-                                                        <span class="price  text-secondary" data-initial-price="{{$product_details->product_price}}"><sup>₦</sup>{{$product_details->product_price}}</span>
-
+                                                        <input type="hidden" id="hidTotalPrice" name="hidTotalPrice" value="{{$product_details->product_price}}"></input>
+                                                        <span class="price text-secondary" data-doorprice="{{$product_details->product_price}}"><sup>₦</sup>{{$product_details->product_price}}</span>
                                                     </div>
                                                     <p class="description">{{$product_details->product_details}}</p>
 
-                                                    <div class="adon_item_container">
-
-                                                        @foreach($addons as $addon)
-
-                                                            <div class="parent-adon" id="parent-adon-{{$addon->adon_id}}">
-                                                                <span onclick="loadChildAddons({{$addon->adon_id}}, '{{$addon->adon_title}}', this);">{{$addon->adon_title}}</span><div id="childAddonContainer{{$addon->adon_id}}"></div>
+                                                    <div id="divColorSelection" class="container">
+                                                        <div class="row"><h5>Select Color</h5></div>
+                                                        <div>
+                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divLeatherLook')">
+                                                            <label for="color" class="form-check-label">Leather Look</label>
+                                                            <div id="divLeatherLook" class="color-options" style="display: none;">
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Leather Look')
+                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
-
-                                                        @endforeach
+                                                        </div>
+                                                        <div>
+                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divGloss')">
+                                                            <label for="color" class="form-check-label"">High Gloss</label>
+                                                            <div id="divGloss" class="color-options" style="display: none;">
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Gloss')
+                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divWoodenGrain')">
+                                                            <label for="color" class="form-check-label"">Wood Grain</label>
+                                                            <div id="divWoodenGrain" class="color-options" style="display: none;">
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Wooden Grain')
+                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divSolidColor')">Solid Color</input>
+                                                            <label for="color" class="form-check-label"">Solid Color</label>
+                                                            <div id="divSolidColor" class="color-options" style="display: none;">
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Solid Color')
+                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
                                                     </div>
-
+                                                    <div id="divDoorType" class="container" style="display: none;">
+                                                        <div class="row"><h5>Select Door Type</h5></div>
+                                                        <div>
+                                                            <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="single" onclick="showDoorSize('Single')">Single Door</div>
+                                                            <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="double" onclick="showDoorSize('Double')">Double Door</div>
+                                                            <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="double half" onclick="showDoorSize('DoubleHalf')">Double Half</div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="divDoorSize">
+                                                        <div id="divSingle" class="door-size" style="display: none;">
+                                                            @foreach($product_features as $product_feature)
+                                                                @if($product_feature->product_feature_parent_name == 'Single')
+                                                                    <div class="feature-option product-feature" onclick="showTotalDoors();" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                        <div id="divDouble" class="door-size" style="display: none;">
+                                                            @foreach($product_features as $product_feature)
+                                                                @if($product_feature->product_feature_parent_name == 'Double')
+                                                                    <div><span class="product-feature" onclick="showTotalDoors()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                        <div id="divDoubleHalf" class="door-size" style="display: none;">
+                                                            @foreach($product_features as $product_feature)
+                                                                @if($product_feature->product_feature_parent_name == 'DoubleHalf')
+                                                                    <div><span class="product-feature" onclick="showTotalDoors()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                        <div id="divTotalDoors" style="display: none;">
+                                                            <span>Total Doors: </span><input id="txtTotalDoors" onchange="showSwingDirectionOption(); setOrderDetails('total doors', this.value, 0);" name="txtTotalDoors" type="number" style="width: 100;">
+                                                        </div>
+                                                        <div id="divSwingDirectionOption" style="display: none;">
+                                                            <span>Select Swing Option</span><br/>
+                                                            <input type="radio" onchange="showLeftRightSwingOption(1)" id="radSwingOption" name="radSwingOption">Yes</input><br>
+                                                            <input type="radio" onchange="showLeftRightSwingOption(2)" id="radSwingOption" name="radSwingOption">No/Not Sure</input><br>
+                                                            <input type="radio" onchange="showLeftRightSwingOption(3)" id="radSwingOption" name="radSwingOption">No. Not applied</input><br>
+                                                        </div>
+                                                        <div id="divLeftRightSwingOption" class="door-swing-option" style="display: none;">
+                                                            <div id="divDoorDirectionWarning" style="display: none; color: red;">
+                                                                All the doors in this Order will be delivered as Left Hand Swing Opening Doors
+                                                            </div>
+                                                            <div>
+                                                                <span>Doors for Left: </span><input type="number" id="txtLeftDoors" onchange="showArchitrave(); setOrderDetails('left', this.value, 0);">
+                                                                <div>Left Door Image</div>
+                                                            </div>
+                                                            <div>
+                                                                <span>Doors for Right: </span><input type="number" id="txtRightDoors" onchange="showArchitrave(); setOrderDetails('right', this.value, 0);">
+                                                                <div>Right Door Image</div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="divArchitrave" style="display: none;">
+                                                            <span>Select Architrave</span><br />
+                                                            @foreach($product_features as $product_feature)
+                                                                @if($product_feature->product_feature_parent_name == 'Architrave')
+                                                                    <div><span class="product-feature" onclick="showDoorHandles()" data-featurecategory="architrave" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                        <div id="divDoorHandles" style="display: none;">
+                                                            <span>Select Door Handle</span><br/>
+                                                            @foreach($product_features as $product_feature)
+                                                                @if($product_feature->product_feature_parent_name == 'DoorHandles')
+                                                                    <div style="display: inline-block;"><span class="product-feature" data-featurecategory="door handles" onclick="showDoorLocks()" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                        <div id="divDoorLocks" style="display: none;">
+                                                            <span>Select Lock</span><br />
+                                                            @foreach($product_features as $product_feature)
+                                                                @if($product_feature->product_feature_parent_name == 'Locks')
+                                                                    <div style="display: inline-block;"><span class="product-feature" data-featurecategory="door locks" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" id="hidOrderDetailJSON" value='[{"category": "color","feature_name": "NA","price": 0},{"category":"door type","feature_name":"NA","price": 0},{"category":"size","feature_name":"NA","price": 0},{"category":"total doors","feature_name":"NA","price": 0},{"category": "left","feature_name": "NA","price": 0},{"category": "right","feature_name": "NA","price": 0},{"category": "architrave","feature_name": "NA","price": 0},{"category": "door handles","feature_name": "NA","price": 0},{"category": "door locks","feature_name": "NA","price": 0 }]'>
                                                     <button class="btn-outline-primary" onclick="storeSelectedAdon()">Save selected items</button>
                                                     <button class="btn-outline-primary" onclick="totalPrice({{$product_details->product_price}})">Total Price</button>
 
@@ -477,8 +594,6 @@
                                                 </a>
                                             </div>
                                         </div>
-
-
                                         <div class="review-section p-4 ">
                                             <form action="{{ route('addReview') }}" method="post">
                                                 @csrf
@@ -486,17 +601,16 @@
                                                 <label for="review-content"><strong>Your review*</strong></label><br>
                                                 <textarea class="review-content" id="review-content" name="review_content"></textarea><br>
                                                 @if(!session()->has('user'))
-                                              <div class="d-flex mt-3 mb-5">
-                                                  <div class="mr-4">
-                                                      <label for="review-email"><strong>Email*</strong></label><br>
-                                                      <input class="form-control" type="email" id="review-email" name="review_email" size="25" required><br>
-                                                  </div>
-                                                  <div class="">
-                                                  <label for="review-user"><strong>Name*</strong></label><br>
-                                                  <input type="text"  class="form-control" id="review-user" name="review_user" size="25" required><br>
-                                                  </div>
+                                                    <div class="d-flex mt-3 mb-5">
+                                                        <div class="mr-4">
+                                                            <label for="review-email"><strong>Email*</strong></label><br>
+                                                            <input class="form-control" type="email" id="review-email" name="review_email" size="25" required><br>
+                                                        </div>
+                                                        <div class="">
+                                                            <label for="review-user"><strong>Name*</strong></label><br>
+                                                            <input type="text"  class="form-control" id="review-user" name="review_user" size="25" required><br>
+                                                        </div>
                                                     </div>
-
                                                 @endif
                                                 <input type="submit" class="submit-btn btn rounded-0" value="Submit">
 
