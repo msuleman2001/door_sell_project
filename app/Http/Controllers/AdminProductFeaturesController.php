@@ -26,8 +26,13 @@ class AdminProductFeaturesController extends Controller
         $product_feature->save();
         return redirect()->route('index');
     }
+public function editProductFeature($id){
+        $product_feature=ProductFeaturesModel::find($id);
 
-    public function updateProductFeature(Request $request){
-        
+        return view('admin.edit-product-feature',compact('product_feature'));
+}
+    public function updateProductFeature(Request $request,$id){
+        $feature=ProductFeaturesModel::find($id);
+
     }
 }

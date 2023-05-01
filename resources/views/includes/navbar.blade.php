@@ -60,7 +60,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('manageCart')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage Cart</span></a>
     </li>

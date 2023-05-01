@@ -25,7 +25,7 @@
                         <option value="DoorHandles">DoorHandles</option>
                         <option value="Locks">Locks</option>
                     </select>
-                    
+
                     <label for="txtProductFeatureName">Feature Name</label><br>
                     <input type="text" id="txtProductFeatureName" name="txtProductFeatureName" class="form-control">
                     <label for="txtProductFeatureTitle">Feature Title</label><br>
@@ -48,7 +48,7 @@
             </div>
         </form>
     </div>
-    <table class="table table-stripped" id="table">        
+    <table class="table table-stripped" id="table">
             <thead>
                 <tr>
                     <th>Sr #</th>
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <a class="mt-2" href="{{route('updateProductFeature', $product_feature->product_feature_id)}}"><i class="btn fa fa-pencil text-white bg-success edit"></i></a>
+                            <a class="mt-2" href="{{route('editProductFeature',['id'=> $product_feature->product_feature_id])}}"><i class="btn fa fa-pencil text-white bg-success edit"></i></a>
                         </td>
                     </tr>
                 @endforeach

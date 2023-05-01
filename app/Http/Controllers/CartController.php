@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\CartModel;
 use App\Models\ProductModel;
 use App\Models\ProductCategoryModel;
+use App\Models\AuthModel;
 
 
 use Illuminate\Http\Request;
@@ -16,8 +17,8 @@ public function  addToCart(Request $request, $product_id){
     $product_detail_json = $request->input('hidOrderDetailJSON');
     $quantity = $request->input('txtTotalDoors');
     $cart_price = $request->input('hidTotalPrice');
-
     $cart = new CartModel();
+    $cart->user_id=$user_id;
     $cart->product_id = $product_id;
     $cart->product_detail_json =  $product_detail_json;
     $cart->cart_quantity=$quantity;
@@ -46,4 +47,15 @@ public function deleteItem($id){
 
 
 }
+//admin side
+        public function manageCart(){
+            $cart_items = CartModel::join('products', 'cart.product_id', '=', 'products.product_id')
+                ->join('users', 'cart.user_id', '=', 'users.user_id')
+                ->select('cart.*', 'products.product_title', 'product_price', 'product_front_image', 'users.user_name')
+                ->get();
+            return view('admin.cart-items-list',compact('cart_items'));
+        }
+
+
+
 }

@@ -79,7 +79,12 @@ Route::group(['middleware'=>['admin']], function(){
 
     Route::get('/Admin/product-features',[AdminProductFeaturesController::class,'index'])->name('index');
     Route::post('/Admin/add-product-features',[AdminProductFeaturesController::class,'saveProductFeature'])->name('saveProductFeature');
-    Route::post('/Admin/update-product-features',[AdminProductFeaturesController::class,'updateProductFeature'])->name('updateProductFeature');
+
+    //updating the product features
+    Route::get('Admin/edit-product-features/{id}',[AdminProductFeaturesController::class,'editProductFeature'])->name('editProductFeature');
+    Route::post('/Admin/update-product-features/{id}',[AdminProductFeaturesController::class,'updateProductFeature'])->name('updateProductFeature');
+
+    //ADDING PRODUCTS
     Route::get('/Admin/add-product',[ProductController::class,'passData'])->name('addProduct');
     //pasing categories data in order to show in drop down
     Route::get('/Admin/adding-product',[ProductController::class,'passCatData'])->name('addingProduct');
@@ -91,40 +96,6 @@ Route::group(['middleware'=>['admin']], function(){
 
     //delete product data
     Route::delete('/Admin/delete/product/{id}',[ProductController::class, 'deleteProduct'])->name('deleteProduct');
-
-
-//Color Type Routes
-
-    //adding the colour type
-    Route::get('/Admin/add-colour-type',[ColourTypeController::class, 'passData'])->name('addColourType');
-    Route::view('/Admin/adding-colour-type','admin.add-product-colour-type')->name('addingColourType');
-    Route::post('/Admin/adding-colour-type',[ColourTypeController::class,'addType'])->name('addedColourType');
-
-    //updating the colour type
-
-    Route::get('/Admin/edit/colour-type/{id}',[ColourTypeController::class,'editColourType'])->name('updateColourType');
-    Route::put('/Admin/update/colour-type/{id}',[ColourTypeController::class,'updateColourType'])->name('updatingColourType');
-
-    //deleting colour type
-
-    Route::delete('/Admin/delete/colour-type/{id}',[ColourTypeController::class,'deleteColourType'])->name('deleteColourType');
-
-// Colours Routes
-
-//adding colours
-
-    Route::get('/Admin/add-colour',[ColourController::class, 'passData'])->name('addColour');
-    Route::get('/Admin/adding-colour',[ColourController::class,'passColourType'])->name('addingColour');
-    Route::post('/Admin/added-colour',[ColourController::class,'addColour'])->name('addedColour');
-
-    //updating colours
-
-    Route::get('/Admin/edit/colour/{id}',[ColourController::class,'editColour'])->name('updateColour');
-    Route::put('/Admin/update/{id}',[ColourController::class,'updateColour'])->name('updatingColour');
-
-    //deleting colours
-
-    Route::delete('/Admin/delete/{id}',[ColourController::class,'deleteColour'])->name('deleteColour');
 
 
 //    Wishlist Routes
@@ -141,30 +112,7 @@ Route::get('/Admin/wish-list',[WishListController::class,'showWishList'])->name(
 // Comments Routes
     Route::get('/Admin/comments-list',[CommentsController::class,'showComments'])->name('commentList');
 
-    //Addons Routes
-    Route::get('/Admin/product/adons/adding',[AdonsController::class,'passData'])->name('addingAdons');
-
-    //ADDING TO DATABASE
-    Route::post('/Admin/save-adons', [AdonsController::class, 'saveAddons'])->name('save.addons');
-     //UPDATING
-    Route::get('/Admin/adon/edit/{id}',[AdonsController::class,'editAdon'])->name('edit.adon');
-    Route::put('/Admin/adon/update/{id}',[AdonsController::class,'updateAdon'])->name('update.adon');
-    //DELETING
-    Route::delete('/Admin/adon/delete/{id}',[AdonsController::class,'deleteAdon'])->name('deleteAdon');
-
-    /// Adon Items
-    /// passing data of adons and adons items
-    Route::get('/Admin/adon-items',[AdonItemController::class,'passData'])->name('showAdonItems');
-    Route::post('/Admin/adon-items/add',[AdonItemController::class,'addItem'])->name('adonItem');
-    //UPDATE ADON ITEM
-    Route::get('/Admin/adon-item/edit/{id}',[AdonItemController::class,'editAdonItem'])->name('edit.adonItem');
-    Route::put('/Admin/adon-item/update/{id}',[AdonItemController::class,'updateAdonItem'])->name('update.adonItem');
-
-
-//DELETE ADON ITEM
-    Route::delete('/Admin/adon-item/delete/{id}',[AdonItemController::class,'deleteItem'])->name('delete.adonItem');
-
-
+    Route::get('/Admin/manage-cart',[CartController::class,'manageCart'])->name('manageCart');
 
 
 });
