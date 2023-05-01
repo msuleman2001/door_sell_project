@@ -73,6 +73,7 @@
 <!-- End of Page Wrapper -->
 
 <!-- Logout Modal-->
+@include('includes.footer');
 @include('includes.logout-Model');
 @include('includes.script');
 <!-- jQuery code to change the value in database based on toggle button-->
