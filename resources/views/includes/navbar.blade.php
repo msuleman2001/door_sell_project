@@ -54,7 +54,7 @@
             <span>  Manage Comments</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{route('showAdonItems')}}">
+        <a class="nav-link" href="{{route('index')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>  Manage Features</span></a>
     </li>
