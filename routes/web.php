@@ -15,6 +15,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdonsController;
 use App\Http\Controllers\AdonItemController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminProductFeaturesController;
 
 
 
@@ -76,6 +77,8 @@ Route::group(['middleware'=>['admin']], function(){
 
 //Products Routes
 
+    Route::get('/Admin/product-features',[AdminProductFeaturesController::class,'index'])->name('index');
+    Route::post('/Admin/add-product-features',[AdminProductFeaturesController::class,'saveProductFeature'])->name('saveProductFeature');
     Route::get('/Admin/add-product',[ProductController::class,'passData'])->name('addProduct');
     //pasing categories data in order to show in drop down
     Route::get('/Admin/adding-product',[ProductController::class,'passCatData'])->name('addingProduct');
