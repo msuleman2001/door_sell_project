@@ -10,26 +10,18 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-public function  addToCart(Request $request,$id){
+public function  addToCart(Request $request, $product_id){
 
-    $selectedAddons = json_decode($request->input('selectedAdons'), true);
+    $user_id = session('user')->user_id;
+    $product_detail_json = $request->input('hidOrderDetailJSON');
+    $quantity = $request->input('txtTotalDoors');
+    $cart_price = $request->input('hidTotalPrice');
 
-    //converting to json again
-    $selectedAddonsJson = json_encode($selectedAddons);
-
-    // Get the total price from the AJAX request
-    $totalPrice = $request->input('total_price');
-    // Get the product ID from the AJAX request
-    $productId = $id;
-
-    $productQuantity=$request->input('quantity');
-
-    // Create a new cart item with the given details
     $cart = new CartModel();
-    $cart->product_id = $productId;
-    $cart->cart_quantity=$productQuantity;
-    $cart->product_adons_json =  $selectedAddonsJson;
-    $cart->cart_price = $totalPrice;
+    $cart->product_id = $product_id;
+    $cart->product_detail_json =  $product_detail_json;
+    $cart->cart_quantity=$quantity;
+    $cart->cart_price = $cart_price;
 
     // Save the cart item to the database
     $cart->save();

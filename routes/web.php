@@ -241,7 +241,7 @@ Route::get('/adon/{addon_id}',[AdonsController::class,'getChilds']);
 Route::get('/adon/items/{addon_id}',[AdonsController::class,'getItems']);
 
 // Product Cart
-Route::post('user/add-to-cart/{id}',[CartController::class,'addToCart'])->name('add-to-cart');
+Route::post('user/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add-to-cart');
 // Product Cart Review
 Route::get('user/product-cart/',[CartController::class,'reviewCart'])->name('review.cart');
 // Deleting Product from the view

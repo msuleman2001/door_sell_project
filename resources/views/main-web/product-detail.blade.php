@@ -72,6 +72,11 @@
         var order_json = $('#hidOrderDetailJSON').val();
         var total_price = parseInt($('#hidTotalPrice').val());
         var door_price = parseInt($('.price').attr('data-doorprice'));
+        var quantity = parseInt($('#txtTotalDoors').val());
+        
+        if (isNaN(quantity))
+            quantity = 1;
+        
         var order_detail_json = JSON.parse(order_json);
         
         var selected_index = order_detail_json.findIndex(obj => obj.category === category);
@@ -83,7 +88,10 @@
         for(var feature in order_detail_json){
             total_price += parseInt(order_detail_json[feature].price);
         }
+
+        total_price = total_price * quantity;
         $('#hidTotalPrice').val(total_price);
+        $('#spanTotalPrice').text(total_price);
         $('#hidOrderDetailJSON').val(JSON.stringify(order_detail_json));
     }
 
@@ -359,194 +367,148 @@
                                             </div>
 
                                             <div class="product-info col-xs-12 col-md-7 col-sm-7">
-                                                <div class="detail-description">
-                                                    <div class="price-del">
-                                                        <input type="hidden" id="hidTotalPrice" name="hidTotalPrice" value="{{$product_details->product_price}}"></input>
-                                                        <span class="price text-secondary" data-doorprice="{{$product_details->product_price}}"><sup>₦</sup>{{$product_details->product_price}}</span>
-                                                    </div>
-                                                    <p class="description">{{$product_details->product_details}}</p>
-
-                                                    <div id="divColorSelection" class="container">
-                                                        <div class="row"><h5>Select Color</h5></div>
-                                                        <div>
-                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divLeatherLook')">
-                                                            <label for="color" class="form-check-label">Leather Look</label>
-                                                            <div id="divLeatherLook" class="color-options" style="display: none;">
-                                                                @foreach($product_features as $product_feature)
-                                                                    @if($product_feature->product_feature_parent_name == 'Leather Look')
-                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
-                                                                    @endif
-                                                                @endforeach
-                                                            </div>
+                                                <form method="post" id="form" action="{{route('add-to-cart',['product_id' => $product_details->product_id])}}">
+                                                    @csrf
+                                                    <div class="detail-description">
+                                                        <div class="price-del">
+                                                            <input type="hidden" id="hidTotalPrice" name="hidTotalPrice" value="{{$product_details->product_price}}"></input>
+                                                            <span class="price text-secondary" data-doorprice="{{$product_details->product_price}}"><sup>₦</sup>{{$product_details->product_price}}</span>
                                                         </div>
-                                                        <div>
-                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divGloss')">
-                                                            <label for="color" class="form-check-label"">High Gloss</label>
-                                                            <div id="divGloss" class="color-options" style="display: none;">
-                                                                @foreach($product_features as $product_feature)
-                                                                    @if($product_feature->product_feature_parent_name == 'Gloss')
-                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
-                                                                    @endif
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divWoodenGrain')">
-                                                            <label for="color" class="form-check-label"">Wood Grain</label>
-                                                            <div id="divWoodenGrain" class="color-options" style="display: none;">
-                                                                @foreach($product_features as $product_feature)
-                                                                    @if($product_feature->product_feature_parent_name == 'Wooden Grain')
-                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
-                                                                    @endif
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divSolidColor')">Solid Color</input>
-                                                            <label for="color" class="form-check-label"">Solid Color</label>
-                                                            <div id="divSolidColor" class="color-options" style="display: none;">
-                                                                @foreach($product_features as $product_feature)
-                                                                    @if($product_feature->product_feature_parent_name == 'Solid Color')
-                                                                        <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
-                                                                    @endif
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="divDoorType" class="container" style="display: none;">
-                                                        <div class="row"><h5>Select Door Type</h5></div>
-                                                        <div>
-                                                            <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="single" onclick="showDoorSize('Single')">Single Door</div>
-                                                            <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="double" onclick="showDoorSize('Double')">Double Door</div>
-                                                            <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="double half" onclick="showDoorSize('DoubleHalf')">Double Half</div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="divDoorSize">
-                                                        <div id="divSingle" class="door-size" style="display: none;">
-                                                            @foreach($product_features as $product_feature)
-                                                                @if($product_feature->product_feature_parent_name == 'Single')
-                                                                    <div class="feature-option product-feature" onclick="showTotalDoors();" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        <div id="divDouble" class="door-size" style="display: none;">
-                                                            @foreach($product_features as $product_feature)
-                                                                @if($product_feature->product_feature_parent_name == 'Double')
-                                                                    <div><span class="product-feature" onclick="showTotalDoors()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        <div id="divDoubleHalf" class="door-size" style="display: none;">
-                                                            @foreach($product_features as $product_feature)
-                                                                @if($product_feature->product_feature_parent_name == 'DoubleHalf')
-                                                                    <div><span class="product-feature" onclick="showTotalDoors()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        <div id="divTotalDoors" style="display: none;">
-                                                            <span>Total Doors: </span><input id="txtTotalDoors" onchange="showSwingDirectionOption(); setOrderDetails('total doors', this.value, 0);" name="txtTotalDoors" type="number" style="width: 100;">
-                                                        </div>
-                                                        <div id="divSwingDirectionOption" style="display: none;">
-                                                            <span>Select Swing Option</span><br/>
-                                                            <input type="radio" onchange="showLeftRightSwingOption(1)" id="radSwingOption" name="radSwingOption">Yes</input><br>
-                                                            <input type="radio" onchange="showLeftRightSwingOption(2)" id="radSwingOption" name="radSwingOption">No/Not Sure</input><br>
-                                                            <input type="radio" onchange="showLeftRightSwingOption(3)" id="radSwingOption" name="radSwingOption">No. Not applied</input><br>
-                                                        </div>
-                                                        <div id="divLeftRightSwingOption" class="door-swing-option" style="display: none;">
-                                                            <div id="divDoorDirectionWarning" style="display: none; color: red;">
-                                                                All the doors in this Order will be delivered as Left Hand Swing Opening Doors
+                                                        <p class="description">{{$product_details->product_details}}</p>
+                                                        <div id="divColorSelection" class="container">
+                                                            <div class="row"><h5>Select Color</h5></div>
+                                                            <div>
+                                                                <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divLeatherLook')">
+                                                                <label for="color" class="form-check-label">Leather Look</label>
+                                                                <div id="divLeatherLook" class="color-options" style="display: none;">
+                                                                    @foreach($product_features as $product_feature)
+                                                                        @if($product_feature->product_feature_parent_name == 'Leather Look')
+                                                                            <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
                                                             </div>
                                                             <div>
-                                                                <span>Doors for Left: </span><input type="number" id="txtLeftDoors" onchange="showArchitrave(); setOrderDetails('left', this.value, 0);">
-                                                                <div>Left Door Image</div>
+                                                                <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divGloss')">
+                                                                <label for="color" class="form-check-label"">High Gloss</label>
+                                                                <div id="divGloss" class="color-options" style="display: none;">
+                                                                    @foreach($product_features as $product_feature)
+                                                                        @if($product_feature->product_feature_parent_name == 'Gloss')
+                                                                            <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
                                                             </div>
                                                             <div>
-                                                                <span>Doors for Right: </span><input type="number" id="txtRightDoors" onchange="showArchitrave(); setOrderDetails('right', this.value, 0);">
-                                                                <div>Right Door Image</div>
+                                                                <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divWoodenGrain')">
+                                                                <label for="color" class="form-check-label"">Wood Grain</label>
+                                                                <div id="divWoodenGrain" class="color-options" style="display: none;">
+                                                                    @foreach($product_features as $product_feature)
+                                                                        @if($product_feature->product_feature_parent_name == 'Wooden Grain')
+                                                                            <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div id="divArchitrave" style="display: none;">
-                                                            <span>Select Architrave</span><br />
-                                                            @foreach($product_features as $product_feature)
-                                                                @if($product_feature->product_feature_parent_name == 'Architrave')
-                                                                    <div><span class="product-feature" onclick="showDoorHandles()" data-featurecategory="architrave" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        <div id="divDoorHandles" style="display: none;">
-                                                            <span>Select Door Handle</span><br/>
-                                                            @foreach($product_features as $product_feature)
-                                                                @if($product_feature->product_feature_parent_name == 'DoorHandles')
-                                                                    <div style="display: inline-block;"><span class="product-feature" data-featurecategory="door handles" onclick="showDoorLocks()" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                        <div id="divDoorLocks" style="display: none;">
-                                                            <span>Select Lock</span><br />
-                                                            @foreach($product_features as $product_feature)
-                                                                @if($product_feature->product_feature_parent_name == 'Locks')
-                                                                    <div style="display: inline-block;"><span class="product-feature" data-featurecategory="door locks" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                    <input type="hidden" id="hidOrderDetailJSON" value='[{"category": "color","feature_name": "NA","price": 0},{"category":"door type","feature_name":"NA","price": 0},{"category":"size","feature_name":"NA","price": 0},{"category":"total doors","feature_name":"NA","price": 0},{"category": "left","feature_name": "NA","price": 0},{"category": "right","feature_name": "NA","price": 0},{"category": "architrave","feature_name": "NA","price": 0},{"category": "door handles","feature_name": "NA","price": 0},{"category": "door locks","feature_name": "NA","price": 0 }]'>
-                                                    <button class="btn-outline-primary" onclick="storeSelectedAdon()">Save selected items</button>
-                                                    <button class="btn-outline-primary" onclick="totalPrice({{$product_details->product_price}})">Total Price</button>
-
-                                                    <div class="total_price"></div>
-
-                                                    <div class="has-border cart-area">
-                                                        <div class="product-quantity">
-
-                                                            <div class="qty">
-                                                                <div class="input-group">
-                                                                    <div class="quantity">
-                                                                        <span class="control-label">QTY : </span>
-{{--                                                                        updating price according to quantity--}}
-                                                                        <div class="input-group">
-                                                                            <input type="text" name="qty" id="quantity_wanted" value="1" class="input-group form-control">
-                                                                            <span class="input-group-btn-vertical">
-                                                                             <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-up"
-                                                                            type="button" onclick="updateQuantity(1)">+</button>
-                                                                             <button class="btn btn-touchspin js-touchspin bootstrap-touchspin-down"
-                                                                             type="button" onclick="updateQuantity(-1)">-</button>
-                                                                    </span>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <form method="post" action="{{ route('add-to-cart', ['id' => $product_details->product_id]) }}">
-                                                                        @csrf
-                                                                        {{--//storing json--}}
-                                                                        <input type="hidden" id="selectedAdonsInput" name="selectedAdons" value="">
-                                                                        {{-- Storing the total price--}}
-                                                                        <input type="hidden" id="totalPriceInput" name="total_price" value="">
-{{--                                                                        Storing the quantity of the product--}}
-                                                                        <input type="hidden" name="quantity" id="quantityInput" value="1">
-
-                                                                        <span class="add">
-                                                                            <button type="submit" class="btn btn-primary add-to-cart add-item"  data-product-id="{{$product_details->product_id}}">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                <span>  Add  to cart</span>
-                                                                            </button>
-                                                                        </span>
-                                                                    </form>
+                                                            <div>
+                                                                <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divSolidColor')">Solid Color</input>
+                                                                <label for="color" class="form-check-label"">Solid Color</label>
+                                                                <div id="divSolidColor" class="color-options" style="display: none;">
+                                                                    @foreach($product_features as $product_feature)
+                                                                        @if($product_feature->product_feature_parent_name == 'Solid Color')
+                                                                            <div class="feature-option product-feature" onclick="showDoorType();" data-featurecategory="color" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                        @endif
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="clearfix"></div>
-
-                                                        <p class="product-minimal-quantity">
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="content">
-                                                        <p>SKU :
-                                                            <span class="content2">
-                                                                    <a href="#">{{$product_details->product_sku}}</a>
-                                                                </span>
-                                                        </p>
-                                                    </div>
+                                                        <div id="divDoorType" class="container" style="display: none;">
+                                                            <div class="row"><h5>Select Door Type</h5></div>
+                                                            <div>
+                                                                <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="single" onclick="showDoorSize('Single')">Single Door</div>
+                                                                <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="double" onclick="showDoorSize('Double')">Double Door</div>
+                                                                <div class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="double half" onclick="showDoorSize('DoubleHalf')">Double Half</div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="divDoorSize">
+                                                            <div id="divSingle" class="door-size" style="display: none;">
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Single')
+                                                                        <div class="feature-option product-feature" onclick="showTotalDoors();" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <div id="divDouble" class="door-size" style="display: none;">
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Double')
+                                                                        <div><span class="product-feature" onclick="showTotalDoors()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <div id="divDoubleHalf" class="door-size" style="display: none;">
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'DoubleHalf')
+                                                                        <div><span class="product-feature" onclick="showTotalDoors()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <div id="divTotalDoors" style="display: none;">
+                                                                <span>Total Doors: </span><input id="txtTotalDoors" name="txtTotalDoors" onchange="showSwingDirectionOption(); setOrderDetails('total doors', this.value, 0);" name="txtTotalDoors" type="number" style="width: 100;">
+                                                            </div>
+                                                            <div id="divSwingDirectionOption" style="display: none;">
+                                                                <span>Select Swing Option</span><br/>
+                                                                <input type="radio" onchange="showLeftRightSwingOption(1)" id="radSwingOption" name="radSwingOption">Yes</input><br>
+                                                                <input type="radio" onchange="showLeftRightSwingOption(2)" id="radSwingOption" name="radSwingOption">No/Not Sure</input><br>
+                                                                <input type="radio" onchange="showLeftRightSwingOption(3)" id="radSwingOption" name="radSwingOption">No. Not applied</input><br>
+                                                            </div>
+                                                            <div id="divLeftRightSwingOption" class="door-swing-option" style="display: none;">
+                                                                <div id="divDoorDirectionWarning" style="display: none; color: red;">
+                                                                    All the doors in this Order will be delivered as Left Hand Swing Opening Doors
+                                                                </div>
+                                                                <div>
+                                                                    <span>Doors for Left: </span><input type="number" id="txtLeftDoors" onchange="showArchitrave(); setOrderDetails('left', this.value, 0);">
+                                                                    <div>Left Door Image</div>
+                                                                </div>
+                                                                <div>
+                                                                    <span>Doors for Right: </span><input type="number" id="txtRightDoors" onchange="showArchitrave(); setOrderDetails('right', this.value, 0);">
+                                                                    <div>Right Door Image</div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="divArchitrave" style="display: none;">
+                                                                <span>Select Architrave</span><br />
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Architrave')
+                                                                        <div><span class="product-feature" onclick="showDoorHandles()" data-featurecategory="architrave" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <div id="divDoorHandles" style="display: none;">
+                                                                <span>Select Door Handle</span><br/>
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'DoorHandles')
+                                                                        <div style="display: inline-block;"><span class="product-feature" data-featurecategory="door handles" onclick="showDoorLocks()" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <div id="divDoorLocks" style="display: none;">
+                                                                <span>Select Lock</span><br />
+                                                                @foreach($product_features as $product_feature)
+                                                                    @if($product_feature->product_feature_parent_name == 'Locks')
+                                                                        <div style="display: inline-block;"><span class="product-feature" data-featurecategory="door locks" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}">{{$product_feature->product_feature_name}}</span></div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" id="hidOrderDetailJSON" name="hidOrderDetailJSON" value='[{"category": "color","feature_name": "NA","price": 0},{"category":"door type","feature_name":"NA","price": 0},{"category":"size","feature_name":"NA","price": 0},{"category":"total doors","feature_name":"NA","price": 0},{"category": "left","feature_name": "NA","price": 0},{"category": "right","feature_name": "NA","price": 0},{"category": "architrave","feature_name": "NA","price": 0},{"category": "door handles","feature_name": "NA","price": 0},{"category": "door locks","feature_name": "NA","price": 0 }]'>
+                                                        <div class="total_price">Total Price: <span id="spanTotalPrice">{{$product_details->product_price}}</span></div>
+                                                        <span class="add">
+                                                            <button type="submit" class="btn btn-primary add-to-cart add-item"  data-product-id="{{$product_details->product_id}}">
+                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                <span>  Add  to cart</span>
+                                                            </button>
+                                                        </span>
+                                                    </form>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
