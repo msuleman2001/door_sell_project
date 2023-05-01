@@ -75,7 +75,7 @@
         </table>
     </div>
 </div>
-
+@include('includes.footer');
 <!-- Logout Modal-->
 @include('includes.logout-Model');
 @include('includes.script');
