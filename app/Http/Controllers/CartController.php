@@ -30,13 +30,16 @@ public function  addToCart(Request $request, $product_id){
     return redirect()->to('user/product-cart/');
 
 }
-public function reviewCart(){
-    $cart_items = CartModel::join('products', 'cart.product_id', '=', 'products.product_id')
-        ->select('cart.*', 'products.product_title','product_price','product_front_image')
-        ->get();
-    $categories=ProductCategoryModel::all();
-    return view('main-web.product-cart-review',compact('cart_items','categories'));
-}
+    public function reviewCart(){
+        $user_id = session('user')->user_id; // Get the current user ID from the session
+        $cart_items = CartModel::join('products', 'cart.product_id', '=', 'products.product_id')
+            ->where('cart.user_id', $user_id) // Only select cart items for the current user
+            ->select('cart.*', 'products.product_title','product_price','product_front_image')
+            ->get();
+        $categories=ProductCategoryModel::all();
+        return view('main-web.product-cart-review',compact('cart_items','categories'));
+    }
+
 //deleting the cart item
 public function deleteItem($id){
     $cart_items=CartModel::find($id);

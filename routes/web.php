@@ -131,7 +131,6 @@ Route::get('/product-details', [AdonsController::class, 'passAdonItems'])->name(
 Route::get('/get-grandchild-colors/{childColorId}',[AdonsController::class,'getGrandchildColors']);
 
 //Geting the child adons of the adon items within adon item table
-Route::get('/door/sizes/{doorTypeId}', [AdonItemController::class,'getSizes']);
 
 Route::view('/user-account','main-web.user-account');
 Route::view('/user-register','main-web.user-register');
@@ -195,6 +194,9 @@ Route::get('/adon/items/{addon_id}',[AdonsController::class,'getItems']);
 // Product Cart
 Route::post('user/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add-to-cart');
 // Product Cart Review
-Route::get('user/product-cart/',[CartController::class,'reviewCart'])->name('review.cart');
+Route::group(['middleware'=>['user']], function() {
+    Route::get('user/product-cart/', [CartController::class, 'reviewCart'])->name('review.cart');
+});
+
 // Deleting Product from the view
 Route::delete('user/cart/delete/{id}',[CartController::class,'deleteItem'])->name('delete.cart');
