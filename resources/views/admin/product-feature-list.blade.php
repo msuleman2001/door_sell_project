@@ -7,7 +7,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Add Products Feature</h1>
     <div class="container-fluid">
-        <form method="post" id="form" action="{{route('saveProductFeature')}}">
+        <form method="post" id="form" action="{{route('saveProductFeature')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-4">
@@ -30,7 +30,7 @@
                     <input type="text" id="txtProductFeatureName" name="txtProductFeatureName" class="form-control">
                     <label for="txtProductFeatureTitle">Feature Title</label><br>
                     <input type="text" id="txtProductFeatureTitle" name="txtProductFeatureTitle" class="form-control">
-                    <label for="productFeatureImage">Feature Image</label><br>
+                    <label for="fulProductFeatureImage">Feature Image</label><br>
                     <input type="file" id="fulProductFeatureImage" name="fulProductFeatureImage" class="form-control">
                     <label for="productFeaturePrice">Feature Price</label><br>
                     <input type="text" id="txtProductPrice" name="txtProductPrice" class="form-control">
@@ -45,8 +45,10 @@
                     </div>
                     </div>
                 </div>
-            </div>
         </form>
+            </div>
+
+
     </div>
     <table class="table table-stripped" id="table">
             <thead>

@@ -7,7 +7,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Add Products Feature</h1>
     <div class="container-fluid">
-        <form method="post" id="form" action="{{route('updateProductFeature',['id'=>$product_feature->product_feature_id])}}">
+        <form method="post" id="form" action="{{route('updateProductFeature',['id'=>$product_feature->product_feature_id])}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-4">

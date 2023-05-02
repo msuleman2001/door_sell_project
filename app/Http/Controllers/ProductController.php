@@ -24,9 +24,8 @@ class ProductController extends Controller
     //passing the colour types data to show in checkboxes
     public function passCatData(){
         $categories=ProductCategoryModel::all();
-        $colour_types=ColourTypeModel::all();
-        $categories_list = (new ProductCategoryModel)->categoriesList();
-        return view('admin.add-product',compact('categories','categories_list', 'colour_types'));
+               $categories_list = (new ProductCategoryModel)->categoriesList();
+        return view('admin.add-product',compact('categories','categories_list'));
 
     }
     //passing the data of products and catrgories to prouct-list view
@@ -41,8 +40,6 @@ class ProductController extends Controller
     //adding the products
     public function addProduct(Request $request)
     {
-        $product_quantity = $request->input('product_quantity');
-
         $product = new ProductModel();
         $product->product_title = $request->input('product_title');
         $product->category_id = $request->input('category_id');
@@ -130,7 +127,6 @@ class ProductController extends Controller
             // Save updated product
             $product->save();
 
-            // Sync product colors
 
             return redirect('Admin/add-product');
         }

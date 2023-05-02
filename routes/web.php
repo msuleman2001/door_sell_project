@@ -126,9 +126,7 @@ Route::get('/Admin/wish-list',[WishListController::class,'showWishList'])->name(
 //client
 Route::view('index2','main-web.index3');
 // Pasing the Adons item data and geting the product details view
-Route::get('/product-details', [AdonsController::class, 'passAdonItems'])->name('adons.product');
 //Geting the child adons
-Route::get('/get-grandchild-colors/{childColorId}',[AdonsController::class,'getGrandchildColors']);
 
 //Geting the child adons of the adon items within adon item table
 
