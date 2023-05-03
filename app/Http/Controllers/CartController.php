@@ -11,25 +11,30 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-public function  addToCart(Request $request, $product_id){
+    public function addToCart(Request $request, $product_id)
+    {
+        // Check if user is logged in
+        if (!session('user')) {
+            return redirect()->back()->withErrors(['login' => 'You must login first']);
+        }
 
-    $user_id = session('user')->user_id;
-    $product_detail_json = $request->input('hidOrderDetailJSON');
-    $quantity = $request->input('txtTotalDoors');
-    $cart_price = $request->input('hidTotalPrice');
-    $cart = new CartModel();
-    $cart->user_id=$user_id;
-    $cart->product_id = $product_id;
-    $cart->product_detail_json =  $product_detail_json;
-    $cart->cart_quantity=$quantity;
-    $cart->cart_price = $cart_price;
+        $user_id = session('user')->user_id;
+        $product_detail_json = $request->input('hidOrderDetailJSON');
+        $quantity = $request->input('txtTotalDoors');
+        $cart_price = $request->input('hidTotalPrice');
+        $cart = new CartModel();
+        $cart->user_id=$user_id;
+        $cart->product_id = $product_id;
+        $cart->product_detail_json =  $product_detail_json;
+        $cart->cart_quantity=$quantity;
+        $cart->cart_price = $cart_price;
 
-    // Save the cart item to the database
-    $cart->save();
+        // Save the cart item to the database
+        $cart->save();
 
-    return redirect()->to('user/product-cart/');
+        return redirect()->to('user/product-cart/');
+    }
 
-}
     public function reviewCart(){
         $user_id = session('user')->user_id; // Get the current user ID from the session
         $cart_items = CartModel::join('products', 'cart.product_id', '=', 'products.product_id')

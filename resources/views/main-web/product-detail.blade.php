@@ -474,6 +474,7 @@
                                                                     <img src="{{asset('/storage/img/Right-Hand-Side-Opening-Swing.png')}}" height="100px" width="100px">
                                                                 </div>
                                                             </div>
+
                                                             <div id="divArchitrave" style="display: none;">
                                                                 <span>Select Architrave</span><br />
                                                                 @foreach($product_features as $product_feature)
@@ -482,6 +483,9 @@
                                                                     @endif
                                                                 @endforeach
                                                             </div>
+                                                            </div>
+                                                        </div>
+
                                                             <div id="divDoorHandles" style="display: none;">
                                                                 <span>Select Door Handle</span><br/>
                                                                 @foreach($product_features as $product_feature)
@@ -490,6 +494,8 @@
                                                                     @endif
                                                                 @endforeach
                                                             </div>
+                                                            </div>
+                                                    </div>
                                                             <div id="divDoorLocks" style="display: none;">
                                                                 <span>Select Lock</span><br />
                                                                 @foreach($product_features as $product_feature)
@@ -499,7 +505,9 @@
                                                                 @endforeach
                                                             </div>
                                                         </div>
-                                                        <input type="hidden" id="hidOrderDetailJSON" name="hidOrderDetailJSON" value='[{"category": "color","feature_name": "NA","price": 0},{"category":"door type","feature_name":"NA","price": 0},{"category":"size","feature_name":"NA","price": 0},{"category":"total doors","feature_name":"NA","price": 0},{"category": "left","feature_name": "NA","price": 0},{"category": "right","feature_name": "NA","price": 0},{"category": "architrave","feature_name": "NA","price": 0},{"category": "door handles","feature_name": "NA","price": 0},{"category": "door locks","feature_name": "NA","price": 0 }]'>
+                                            </div>
+
+                                                <input type="hidden" id="hidOrderDetailJSON" name="hidOrderDetailJSON" value='[{"category": "color","feature_name": "NA","price": 0},{"category":"door type","feature_name":"NA","price": 0},{"category":"size","feature_name":"NA","price": 0},{"category":"total doors","feature_name":"NA","price": 0},{"category": "left","feature_name": "NA","price": 0},{"category": "right","feature_name": "NA","price": 0},{"category": "architrave","feature_name": "NA","price": 0},{"category": "door handles","feature_name": "NA","price": 0},{"category": "door locks","feature_name": "NA","price": 0 }]'>
                                                         <div class="total_price">Total Price: <span id="spanTotalPrice">{{$product_details->product_price}}</span></div>
                                                         <span class="add">
                                                             <button type="submit" class="btn btn-primary add-to-cart add-item"  data-product-id="{{$product_details->product_id}}">
@@ -507,16 +515,13 @@
                                                                 <span>  Add  to cart</span>
                                                             </button>
                                                         </span>
+
                                                     </form>
 
                                                 </div>
                                             </div>
                                         </div>
                                         </div>
-
-{{--
-
-
 
 
                                         {{--//showing the review data--}}
