@@ -52,19 +52,24 @@ class ProductController extends Controller
         $back_image = $request->file('product_back_image');
 
         $front_image_name = $front_image->getClientOriginalName();
-        $back_image_name = $back_image->getClientOriginalName();
         $image_folder = '/public/img/';
         $front_image_path = '/storage/img/'. $front_image_name;
-        $back_image_path = '/storage/img/'. $back_image_name;
         $front_image->storeAs($image_folder,$front_image_name);
-        $back_image->storeAs($image_folder,$back_image_name);
         $product->product_front_image = $front_image_path;
-        $product->product_back_image = $back_image_path;
+
+        if ($back_image) {
+            $back_image_name = $back_image->getClientOriginalName();
+            $back_image_path = '/storage/img/'. $back_image_name;
+            $back_image->storeAs($image_folder,$back_image_name);
+            $product->product_back_image = $back_image_path;
+        }
+
         $product->save();
 
         return redirect()->route('addProduct');
 
     }
+
 
  //going to specific product detail page from the images
     public function show($id){

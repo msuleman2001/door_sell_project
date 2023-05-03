@@ -12,15 +12,10 @@
             @csrf
             <div class="row">
                 <div class="col-4">
-                    <label for="parent_category">Select Parent Category</label>
-                    <select class="form-control" name="parent_category">
-                        <option value="">Select Parent Category</option>
-                        <@foreach($categories as $category)
-                            <option value={{$category->category_id}}>{{$category->category_name}}</option>
-                        @endforeach
-                    </select><br>
+
                     <label for="name">Name</label>
                     <input type="text" id="name" name="category_name" class="form-control">
+                    <input name="hidParentCategory" id="hidParentCategory" type="hidden" value="{{$category_id}}">
                     <label for="image">Category Image</label>
                     <input type="file" id="image" name="category_image" class="form-control">
                     <label for="productCatDetails">Product Details</label><br>

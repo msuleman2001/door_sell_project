@@ -63,14 +63,17 @@ Route::group(['middleware'=>['admin']], function(){
 //Product Categories Route
 
     //adding category
-    Route::get('/Admin/add-category',[ProductCategoryController::class,'passData'])->name('addCategory');
+    Route::get('/Admin/add-category/{parent_category?}',[ProductCategoryController::class,'passData'])->name('addCategory');
     //showing categories in dropdown
-    Route::get('/Admin/adding-category',[ProductCategoryController::class,'categoryList'])->name('addingCategory');
-    Route::post('/Admin/added-category',[ProductCategoryController::class,'addCategory'])->name('addedCategory');
+    Route::get('/Admin/adding-category/{parent_category?}',[ProductCategoryController::class,'categoryList'])->name('addingCategory');
+    Route::post('/Admin/added-category/{parent_category?}',[ProductCategoryController::class,'addCategory'])->name('addedCategory');
 
     //updating category data
     Route::get('/Admin/edit-category/{category_id}',[ProductCategoryController::class,'editCatData'])->name('updateCategory');
     Route::put('/Admin/update-cat/{category_id}',[ProductCategoryController::class, 'updateCatData'])->name('updatingCategory');
+
+    //Showing Sub Category
+    Route::get('/Admin/sub-category/{id}',[ProductCategoryController::class,'subCategory'])->name('subCategory');
 
     //deleting the category data
     Route::delete('/Admin/delete/category/{id}', [ProductCategoryController::class, 'deleteCategory'])->name('deleteCategory');

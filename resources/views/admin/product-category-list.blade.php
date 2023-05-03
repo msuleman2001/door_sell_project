@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="col-12">
-                    <a href="{{route('addingCategory')}}"><input name="category_name" type="" value="Add Category" class="btn btn-primary float-right"></a>
+                    <a href="{{route('addingCategory',$category_id)}}"><input name="category_name" type="" value="Add Category" class="btn btn-primary float-right"></a>
                 </div>
             </div>
         </div>
@@ -31,13 +31,14 @@
                 </tr>
             </thead>
             <tbody>
+            <?php
+            $sr=1;
+            ?>
             @foreach ($categories as $category)
                 <tr>
-                        <?php
-                        $sr=1;
-                        ?>
+
                     <td>{{$sr++}}</td>
-                    <td>{{ $category->category_name }}</td>
+                    <td><a href="{{route('subCategory',$category->category_id)}}">{{ $category->category_name }}</a></td>
                     <td>{{ $category->created_at }}</td>
                     <td>{{ $category->created_y_id }}</td>
                     <td>{{ $category->updated_at }}</td>
