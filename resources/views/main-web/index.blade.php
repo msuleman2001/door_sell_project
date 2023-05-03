@@ -4,6 +4,11 @@
         alert('Login Successful')
     </script>
 @endif
+@if(session('wishlist'))
+    <div class="alert alert-success">
+        {{ session('wishlist') }}
+    </div>
+@endif
 
 @if ($errors->any())
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -17,6 +22,7 @@
 </div>
 @endif
 
+{{--Adding the product to wishlist--}}
 
 <body id="home">
 
@@ -48,7 +54,6 @@
                                                                                 <h5 class="card-title">{{$sub_category->category_name}}</h5>
                                                                             </a>
                                                                             <p class="card-text">{{$sub_category->created_at}}</p>
-                                                                            <a href="#" class=""><i class="fa fa-heart"></i></a>
 
                                                                             @if($sub_category->category_image)
                                                                                 <img src="{{asset($sub_category->category_image)}}" class="img-fluid">
@@ -69,7 +74,14 @@
                                                                                 <h5 class="card-title">{{$product->product_title}}</h5>
                                                                             </a>
                                                                             <p class="card-text">{{$product->product_details}}</p>
-                                                                            <a href="#" class=""><i class="fa fa-heart"></i></a>
+                                                                            <form method="post" action="{{route('addToWishlist',['id'=>$product->product_id])}}" >
+                                                                                @csrf
+                                                                            <button type="submit" style="background: none; border: none" >
+
+                                                                                    <i class="fa fa-heart"></i>
+
+                                                                            </button>
+                                                                            </form>
                                                                             <img src="{{asset($product->product_front_image)}}" class="img-fluid">
                                                                             <!-- <div><a href="#" class="btn btn-primary"></a></div> -->
                                                                         </div>
@@ -985,6 +997,7 @@
 
 
 </script>
+
 </body>
 
 

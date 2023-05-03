@@ -6,14 +6,10 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DoorShopMainPageController;
-use App\Http\Controllers\ColourTypeController;
-use App\Http\Controllers\ColourController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\AdonsController;
-use App\Http\Controllers\AdonItemController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminProductFeaturesController;
 
@@ -182,15 +178,13 @@ Route::view('/product-cart','main-web.product-cart');
 Route::view('/product-checkout','main-web.product-checkout');
 
 //user wishlist
-Route::view('/user-wishlist','main-web.user-wishlist');
+Route::post('/user-wishlist/{id}',[WishListController::class,'addToWishlist'])->name('addToWishlist');
 
 
 // user review route
 Route::post('/review',[ReviewController::class,'addReview'])->name('addReview');
 // Geting adons
-Route::get('/adon/{addon_id}',[AdonsController::class,'getChilds']);
 
-Route::get('/adon/items/{addon_id}',[AdonsController::class,'getItems']);
 
 // Product Cart
 Route::post('user/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add-to-cart');

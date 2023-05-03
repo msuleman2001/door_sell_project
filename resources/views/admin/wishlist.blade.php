@@ -22,10 +22,10 @@
                         <th>Product</th>
                         <th>User</th>
                         <th>Created At</th>
-                        <th>Created By</th>
+
                         <th>Updated At</th>
-                        <th>Updated By</th>
-                        <th>Action</th>
+
+
                     </tr>
                     </thead>
                     <tbody>
@@ -36,16 +36,11 @@
                         ?>
                         @foreach ($wish_list as $wish)
                             <td>{{$sr++}}</td>
-                            <td>{{ $wish->product_id }}</td>
-                            <td>{{ $wish->user_id }}</td>
-                            <td>{{ $wish->created_at}}</td>
-                            <td>{{ $wish->created_by_id }}</td>
-                            <td>{{$wish->updated_at }}</td>
-                            <td>{{ $wish->updated_by_id }}</td>
-                            <td class="d-flex">
-                                <i class="fas fa-check-circle"></i> <!-- Enabled -->
-                                <i class="fas fa-times-circle"></i> <!-- Disabled -->
-                            </td>
+                            <td><img src="{{asset($wish->product_front_image)}}" class="img-fluid" ></td>
+                            <td class="align-middle">{{ $wish->user_name }}</td>
+                            <td class="align-middle">{{ $wish->created_at}}</td>
+                            <td class="align-middle">{{$wish->updated_at }}</td>
+
 
 
                     </tr>
