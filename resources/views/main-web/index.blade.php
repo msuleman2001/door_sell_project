@@ -49,8 +49,10 @@
                                                                             </a>
                                                                             <p class="card-text">{{$sub_category->created_at}}</p>
                                                                             <a href="#" class=""><i class="fa fa-heart"></i></a>
-                                                                            <img src="{{asset($sub_category->category_image)}}" class="img-fluid" >
-                                                                            <!-- <div><a href="#" class="btn btn-primary"></a></div> -->
+
+                                                                            @if($sub_category->category_image)
+                                                                                <img src="{{asset($sub_category->category_image)}}" class="img-fluid">
+                                                                            @endif                                                                            <!-- <div><a href="#" class="btn btn-primary"></a></div> -->
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -68,7 +70,7 @@
                                                                             </a>
                                                                             <p class="card-text">{{$product->product_details}}</p>
                                                                             <a href="#" class=""><i class="fa fa-heart"></i></a>
-                                                                            <img src="{{asset($product->product_image)}}" class="img-fluid">
+                                                                            <img src="{{asset($product->product_front_image)}}" class="img-fluid">
                                                                             <!-- <div><a href="#" class="btn btn-primary"></a></div> -->
                                                                         </div>
                                                                     </div>
