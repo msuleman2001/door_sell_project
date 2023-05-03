@@ -8,7 +8,7 @@
                         <i class="zmdi zmdi-minus"></i>
                         <i class="zmdi zmdi-plus"></i>
                     </span>
-                    <a class="cateItem" href="#">{{$category->category_name}}</a>
+                    <a class="cateItem" href="{{url('/',['category_id'=>$category->category_id])}}">{{$category->category_name}}</a>
                     <div class="subCategory collapse" id="{{$category->category_id}}" aria-expanded="true" role="status">
                         <div class="cateTitle">
                             @foreach ($category['sub_categories'] as $sub_category)
