@@ -7,14 +7,15 @@
             <h1 class="h3 mb-4 text-gray-800"><Update></Update> Product Category</h1>
             <div class="container-fluid">
 
-                <form method="post" id="form" action="{{route('updatingCategory',$category->category_id)}}">
+                <form method="post" id="form" action="{{route('updatingCategory',$category->category_id)}}"  enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="row">
                         <div class="col-4">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="category_name" class="form-control" value="{{$category->category_name}}">
-                </span>
+                            <label for="image">Category Image</label>
+                            <input type="file" id="image" name="category_image" class="form-control">
                             <label for="productCatDetails">Product Details</label><br>
                             <div>
                                      <textarea  name="category_details" class="form-control" id="textAreaExample" rows="4"

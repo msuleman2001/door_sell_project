@@ -26,20 +26,22 @@ class ProductCategoryController extends Controller
         $cat_name = $request->input('category_name');
         $cat_detail=$request->input('category_details');
         $parent_category_id = $request->input('parent_category',0);
+        $category_image=$request->file('category_image');
+        $category_image_name=$category_image->getClientOriginalName();
+        $category_image_folder='/public/img/';
+        $category_image_path='/storage/img/'.$category_image_name;
+        $category_image->storeAs($category_image_folder,$category_image_name);
+        $cat_image=$category_image_path;
 
-        // check if the category already exists
-//        $existingCategory = ProductCategoryModel::where('category_name', $request->input('category_name'))->first();
-//        if ($existingCategory) {
-//            return redirect()->back()->withErrors(['msg' => 'Category already exists']);
-//        }
+
         //storing data in product_category table
         DB::table('product_category')->insert([
            'category_name'=>$cat_name,
            'parent_category'=>$parent_category_id,
+            'category_image'=>$cat_image,
             'created_at'=>now(),
             'updated_at'=>now(),
             'category_details'=>$cat_detail
-
         ]);
 
 // Redirect back to the product-category page with a success message and the categories data
@@ -65,6 +67,14 @@ class ProductCategoryController extends Controller
         $category->category_name=$request->input('category_name');
         $category->category_details=$request->input('category_details');
 
+            // Get the new image file
+            $category_image=$request->file('category_image');
+            //uploading image
+            $category_image_name=$category_image->getClientOriginalName();
+            $category_image_folder='/public/img/';
+            $category_image_path='/storage/img/'.$category_image_name;
+            $category_image->storeAs($category_image_folder,$category_image_name);
+            $category->category_image=$category_image_path;
         $category->save();
 
         return redirect('/Admin/add-category');

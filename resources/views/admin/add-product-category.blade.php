@@ -8,7 +8,7 @@
         <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Add Products Category</h1>
     <div class="container-fluid">
-        <form method="post" id="form" action="{{route('addedCategory')}}">
+        <form method="post" id="form" action="{{route('addedCategory')}}"  enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-4">
@@ -21,6 +21,8 @@
                     </select><br>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="category_name" class="form-control">
+                    <label for="image">Category Image</label>
+                    <input type="file" id="image" name="category_image" class="form-control">
                     <label for="productCatDetails">Product Details</label><br>
                     <div>
                         <textarea name="category_details" class="form-control" id="textAreaExample" rows="4" style="background: #fff;"></textarea>
@@ -32,8 +34,9 @@
                     </div>
                     </div>
                 </div>
-            </div>
         </form>
+            </div>
+
     </div>
 </div>
 <!-- Scroll to Top Button-->
