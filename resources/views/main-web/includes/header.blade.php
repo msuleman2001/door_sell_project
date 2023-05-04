@@ -101,32 +101,6 @@
                             <table>
                                 <tbody>
                                 <tr>
-                                    <td class="product-image">
-                                        <a href="">
-                                            <img src="{{asset('storage/img/product/5.jpg')}}" alt= "">Product">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <div class="product-name">
-                                            <a href="">Organic Strawberry Fruits</a>
-                                        </div>
-                                        <div>
-                                            2 x
-                                            <span class="product-price">£28.98</span>
-                                        </div>
-                                    </td>
-                                    <td class="action">
-                                        <a class="remove" href="#">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="total">
-                                    <td colspan="2">Total:</td>
-                                    <td>£92.96</td>
-                                </tr>
-
-                                <tr>
                                     <td colspan="3" class="d-flex justify-content-center">
                                         <div class="cart-button">
                                             <a href="{{route('review.cart')}}" title="View Cart">View Cart</a>
@@ -158,115 +132,7 @@
 
                 <!-- menu -->
                 <div class="main-menu col-sm-4 col-md-5 align-items-center justify-content-center navbar-expand-md">
-                    <div class="menu navbar collapse navbar-collapse">
-                        <ul class="menu-top navbar-nav">
-                            <li class="nav-link">
-                                <a href="#" class="parent">Home</a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li class="item">
-                                            <a href="/door_shop2" title="Home Page 1">Home Page 1</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/home2" title="Home Page 2">Home Page 2</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/home3" title="Home Page 3">Home Page 3</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/home4" title="Home Page 4">Home Page 4</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/home5" title="Home Page 5">Home Page 5</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#" class="parent">Blog</a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li class="item">
-                                            <a href="/blog-list-sidebar-left" title="Blog List (Sidebar Left)">Blog List (Sidebar Left)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-list-sidebar-left2" title="Blog List (Sidebar Left) 2">Blog List (Sidebar Left) 2</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-list-sidebar-right" title="Category Blog (Right column)">Blog List (Sidebar Right)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-list-no-sidebar" title="Blog List (No Sidebar)">Blog List (No Sidebar)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-grid-no-sidebar" title="Blog Grid (No Sidebar)">Blog Grid (No Sidebar)</a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="/blog-detail" title="Blog Detail">Blog Detail</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#" class="parent">Page</a>
-                                <div class="dropdown-menu drop-tab">
-                                    <ul>
-                                        <li class="item container group">
-                                            <div class="dropdown-menu dropdown-tab">
-                                                <ul>
-                                                    <li class="item col-md-4 float-left">
-                                                        <span class="menu-title">Category Style</span>
-                                                        <div class="menu-content">
-                                                            <ul class="col">
-                                                                <li>
-                                                                    <a href="/product-grid-sidebar-left">Product Grid (Sidebar Left)</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/product-grid-sidebar-right">Product Grid (Sidebar Right)</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/product-list-sidebar-left">Product List (Sidebar left) </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="item col-md-4 html  float-left">
-                                                        <span class="menu-title">Product Detail Style</span>
-                                                        <div class="menu-content">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/product-detail">Product Detail (Sidebar Left)</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Product Detail (Sidebar Right)</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="item col-md-4 html  float-left">
-                                                        <span class="menu-title">Bonus Page</span>
-                                                        <div class="menu-content">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/404">404 Page</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/about-us">About Us Page</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="/contact-us" class="parent">Contact US</a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
 
                 <!-- search-->
@@ -303,24 +169,12 @@
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="login" href="/user-login" rel="nofollow" title="Log in to your customer account">
-                                        <i class="fa fa-sign-in"></i>
-                                        <span>Sign in</span>
-                                    </a>
-
-                                </div>
-                                <div>
                                     <a class="login" href="{{route('userLogout')}}" rel="nofollow" title="Log out your customer account">
                                         <i class="fa fa-sign-out"></i>
                                         <span>Sign out</span>
                                     </a>
                                 </div>
-                                <div>
-                                    <a class="register" href="/user-register" rel="nofollow" title="Register Account">
-                                        <i class="fa fa-user"></i>
-                                        <span>Register Account</span>
-                                    </a>
-                                </div>
+
                                 <div>
                                     <a class="check-out" href="/product-checkout" rel="nofollow" title="Checkout">
                                         <i class="fa fa-check" aria-hidden="true"></i>
@@ -333,40 +187,8 @@
                                         <span>My Wishlists</span>
                                     </a>
                                 </div>
-                                <div id="desktop_currency_selector" class="currency-selector groups-selector hidden-sm-down">
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a title="Euro" rel="nofollow" href="#">EUR</a>
-                                        </li>
-                                        <li class="current list-inline-item">
-                                            <a title="British Pound Sterling" rel="nofollow" href="#">GBP</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item current">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas.jpg ')}}" alt="English" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas2.jpg ')}}" alt="Italiano" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas3.jpg ')}}" alt="Français" width="16" height="11">
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#">
-                                                <img class="img-fluid" src="{{asset('storage/img/home/home1-flas4.jpg')}}" alt="Español" width="16" height="11">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -380,32 +202,6 @@
                                 <div class="cart-content">
                                     <table>
                                         <tbody>
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="/product-detail">
-                                                    <img src="{{asset('storage/img/product/5.jpg')}}"  alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="/product-detail">Organic Strawberry Fruits</a>
-                                                </div>
-                                                <div>
-                                                    2 x
-                                                    <span class="product-price">£28.98</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="total">
-                                            <td colspan="2">Total:</td>
-                                            <td>£92.96</td>
-                                        </tr>
-
                                         <tr>
                                             <td colspan="3" class="d-flex justify-content-center">
                                                 <div class="cart-button">

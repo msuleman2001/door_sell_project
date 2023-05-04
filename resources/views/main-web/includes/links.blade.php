@@ -128,9 +128,12 @@ position: absolute;
     .lock-type label img.checked {
         border: 2px solid blue;
     }
-
-
-
+    .feature-option{
+        height: 80px;
+        width: 80px;
+        border: solid 1px green;
+        display: inline-block;
+    }
 
 
 </style>
