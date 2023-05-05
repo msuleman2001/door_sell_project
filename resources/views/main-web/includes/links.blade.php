@@ -128,12 +128,29 @@ position: absolute;
     .lock-type label img.checked {
         border: 2px solid blue;
     }
-    .feature-option{
-        height: 80px;
-        width: 80px;
-        border: solid 1px green;
+
+
+    .feature-option-container {
         display: inline-block;
+        position: relative;
     }
+
+    figcaption {
+        position: absolute;
+        margin-bottom: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+
+
+
+
+
+
 
 
 </style>
