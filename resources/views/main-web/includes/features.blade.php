@@ -194,7 +194,7 @@
             </div>
             <div id="divDoorSize">
                 <div id="divSingle" class="door-size mt-3" style="display: none;">
-                    <h6>Choose Single Door Type</h6>
+                    <h6>Choose Single Door Type Size</h6>
                     @foreach($product_features as $product_feature)
                         @if($product_feature->product_feature_parent_name == 'Single')
                             <div>   <img src="{{asset($product_feature->product_feature_image)}}" height="100px" width="100px"class="feature-option product-feature" onclick="showTotalDoors();" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}" data-toggle="popover" data-content="<img src='{{asset($product_feature->product_feature_image)}}' height='150px' width='150px'>" data-placement="top">{{$product_feature->product_feature_name}}</div>
@@ -203,7 +203,7 @@
                     @endforeach
                 </div>
                 <div id="divDouble" class="door-size mt-3" style="display: none;">
-                    <h6>Choose Double Door Type</h6>
+                    <h6>Choose Double Door Type Size</h6>
 
                 @foreach($product_features as $product_feature)
                         @if($product_feature->product_feature_parent_name == 'Double')
@@ -213,7 +213,7 @@
                     @endforeach
                 </div>
                 <div id="divDoubleHalf" class="door-size mt-3" style="display: none; ">
-                    <h6>Choose Double Half Door Type</h6>
+                    <h6>Choose Double Half Door Type Size</h6>
 
                 @foreach($product_features as $product_feature)
                         @if($product_feature->product_feature_parent_name == 'DoubleHalf')
