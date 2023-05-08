@@ -22,7 +22,7 @@
                         <option value="Double">Double</option>
                         <option value="DoubleHalf">DoubleHalf</option>
                         <option value="Architrave">Architrave</option>
-                        <option value="DoorHandles">DoorHandles</option>
+                        <option value="DoorWallframes">DoorWallframes</option>
                         <option value="Locks">Locks</option>
                     </select>
 
@@ -63,11 +63,12 @@
                 </tr>
             </thead>
             <tbody>
+            <?php
+            $sr=1;
+            ?>
                 @foreach ($product_features as $product_feature)
                     <tr>
-                        <?php
-                            $sr=1;
-                        ?>
+
                         <td>{{$sr++}}</td>
                         <td>{{ $product_feature->product_feature_parent_name }}</td>
                         <td>{{ $product_feature->product_feature_name }}</td>
@@ -75,11 +76,11 @@
                         <td>{{ $product_feature->product_feature_image }}</td>
                         <td>{{ $product_feature->product_feature_price }}</td>
                         <td class="d-flex">
-                            <form action="{{ route('deleteCategory', ['id' => $product_feature->product_feature_id]) }}" method="POST" id="delete-form">
+                            <form action="{{ route('deleteProductFeature', ['id' => $product_feature->product_feature_id]) }}" method="POST" id="delete-form-{{ $product_feature->product_feature_id }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn" data-toggle="modal" data-target="#deleteModal"> <i class="btn fa fa-trash text-white bg-danger delete"></i></button>
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <button type="button" class="btn" data-toggle="modal" data-target="#deleteModal-{{ $product_feature->product_feature_id}}"> <i class="btn fa fa-trash text-white bg-danger delete"></i></button>
+                                <div class="modal fade" id="deleteModal-{{ $product_feature->product_feature_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -93,7 +94,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                <button type="submit" form="delete-form" class="btn btn-danger">Delete</button>
+                                                <button type="submit" form="delete-form-{{ $product_feature->product_feature_id }}" class="btn btn-danger">Delete</button>
                                             </div>
                                         </div>
                                     </div>

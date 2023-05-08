@@ -82,7 +82,8 @@ Route::group(['middleware'=>['admin']], function(){
     //updating the product features
     Route::get('Admin/edit-product-features/{id}',[AdminProductFeaturesController::class,'editProductFeature'])->name('editProductFeature');
     Route::post('/Admin/update-product-features/{id}',[AdminProductFeaturesController::class,'updateProductFeature'])->name('updateProductFeature');
-
+//Deleting the product feature
+    Route::delete('/Admin/delete-feature/{id}',[AdminProductFeaturesController::class,'deleteFeature'])->name('deleteProductFeature');
     //ADDING PRODUCTS
     Route::get('/Admin/add-product',[ProductController::class,'passData'])->name('addProduct');
     //pasing categories data in order to show in drop down
@@ -140,38 +141,11 @@ Route::view('/user-login','main-web.user-login');
 Route::get('/{sub_category_id?}',[DoorShopMainPageController::class,'index'])->name('doorShop');
 Route::view('/door_shop2','main-web.index-2');
 
-//TopBar
-
-
-//Home pages
-Route::view('/home2','main-web.home2');
-Route::view('/home3','main-web.home3');
-Route::view('/home4','main-web.home4');
-Route::view('/home5','main-web.home5');
-
-
-//Blog
-Route::view('/blog-list-sidebar-left','main-web.blog-list-sidebar-left');
-Route::view('/blog-list-sidebar-left2','main-web.blog-list-sidebar-left2');
-Route::view('/blog-list-sidebar-right','main-web.blog-list-sidebar-right');
-Route::view('/blog-list-no-sidebar','main-web.blog-list-no-sidebar');
-Route::view('/blog-grid-no-sidebar','main-web.blog-grid-no-sidebar');
-Route::view('/blog-detail','main-web.blog-detail');
-
-
-//Page
-//Category Style
-Route::view('/product-grid-sidebar-left','main-web.product-grid-sidebar-left');
-Route::view('/product-grid-sidebar-right','main-web.product-grid-sidebar-right');
-Route::view('/product-list-sidebar-left','main-web.product-list-sidebar-left');
+//product details
 Route::get('/product-details/{id}', [ProductController::class, 'show'])->name('product.detail');
 
 
-//About Us
-Route::view('/about-us','main-web.about-us');
 
-//contact us
-Route::view('/contact-us','main-web.contact');
 
 //cart and checkout
 Route::view('/product-cart','main-web.product-cart');

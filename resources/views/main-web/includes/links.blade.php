@@ -144,6 +144,12 @@ position: absolute;
         font-size: 12px;
         font-weight: bold;
     }
+    .product-feature {
+    }
+
+    .product-feature.active {
+        border: 2px solid red; /* highlighted border style */
+    }
 
 
 

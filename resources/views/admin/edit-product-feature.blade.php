@@ -22,7 +22,7 @@
                         <option value="Double">Double</option>
                         <option value="DoubleHalf">DoubleHalf</option>
                         <option value="Architrave">Architrave</option>
-                        <option value="DoorHandles">DoorHandles</option>
+                        <option value="DoorWallframes">DoorWallframes</option>
                         <option value="Locks">Locks</option>
                     </select>
 

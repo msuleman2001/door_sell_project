@@ -60,4 +60,11 @@ public function editProductFeature($id){
         return redirect()->route('index');
 
     }
+    public  function deleteFeature($id){
+        $feature=ProductFeaturesModel::find($id);
+        $feature->delete();
+        return redirect()->back();
+
+
+    }
 }
