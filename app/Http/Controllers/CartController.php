@@ -13,17 +13,16 @@ class CartController extends Controller
 {
     public function addToCart(Request $request, $product_id)
     {
-        // Check if user is logged in
-        if (!session('user')) {
-            return redirect()->back()->withErrors(['login' => 'You must login first']);
-        }
 
-        $user_id = session('user')->user_id;
         $product_detail_json = $request->input('hidOrderDetailJSON');
         $quantity = $request->input('txtTotalDoors');
         $cart_price = $request->input('hidTotalPrice');
         $cart = new CartModel();
-        $cart->user_id=$user_id;
+        // Check if user is logged in
+        if (session('user')) {
+            $user_id = session('user')->user_id;
+            $cart->user_id=$user_id;
+        }
         $cart->product_id = $product_id;
         $cart->product_detail_json =  $product_detail_json;
         $cart->cart_quantity=$quantity;
@@ -36,13 +35,21 @@ class CartController extends Controller
     }
 
     public function reviewCart(){
-        $user_id = session('user')->user_id; // Get the current user ID from the session
-        $cart_items = CartModel::join('products', 'cart.product_id', '=', 'products.product_id')
-            ->where('cart.user_id', $user_id) // Only select cart items for the current user
-            ->select('cart.*', 'products.product_title','product_price','product_front_image')
-            ->get();
+        if (session()->has('user')) { // Check if user is logged in
+            $user_id = session('user')->user_id; // Get the current user ID from the session
+            $cart_items = CartModel::join('products', 'cart.product_id', '=', 'products.product_id')
+                ->where('cart.user_id', $user_id) // Only select cart items for the current user
+                ->select('cart.*', 'products.product_title','product_price','product_front_image')
+                ->get();
+        } else {
+            $cart_items = CartModel::join('products', 'cart.product_id', '=', 'products.product_id')
+                ->whereNull('cart.user_id') // Only select cart items that are not related to any user
+                ->select('cart.*', 'products.product_title','product_price','product_front_image')
+                ->get();
+        }
         $categories=ProductCategoryModel::all();
         return view('main-web.product-cart-review',compact('cart_items','categories'));
+
     }
 
 //deleting the cart item

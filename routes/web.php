@@ -117,24 +117,6 @@ Route::get('/Admin/wish-list',[WishListController::class,'showWishList'])->name(
 
 });
 
-
-
-
-
-
-//Client Side Routes
-//client
-Route::view('index2','main-web.index3');
-// Pasing the Adons item data and geting the product details view
-//Geting the child adons
-
-//Geting the child adons of the adon items within adon item table
-
-Route::view('/user-account','main-web.user-account');
-Route::view('/user-register','main-web.user-register');
-Route::view('/user-login','main-web.user-login');
-
-
 //main-pages
 
 //Main Website Page
@@ -163,9 +145,8 @@ Route::post('/review',[ReviewController::class,'addReview'])->name('addReview');
 // Product Cart
 Route::post('user/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add-to-cart');
 // Product Cart Review
-Route::group(['middleware'=>['user']], function() {
-    Route::get('user/product-cart/', [CartController::class, 'reviewCart'])->name('review.cart');
-});
+Route::get('user/product-cart/', [CartController::class, 'reviewCart'])->name('review.cart');
+
 
 // Deleting Product from the view
 Route::delete('user/cart/delete/{id}',[CartController::class,'deleteItem'])->name('delete.cart');

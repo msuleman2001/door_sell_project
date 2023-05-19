@@ -1,109 +1,14 @@
-<script>
 
-    $(document).ready(function(){
-        $('.product-feature').click(function(){
-            var category = $(this).attr('data-featurecategory');
-            var feature_name = $(this).attr('data-featurename');
-            var price = $(this).attr('data-featureprice');
-
-            setOrderDetails(category, feature_name, price);
-        });
-    });
-
-    function setOrderDetails(category, feature_name, price){
-        var order_json = $('#hidOrderDetailJSON').val();
-        var total_price = parseInt($('#hidTotalPrice').val());
-        var door_price = parseInt($('.price').attr('data-doorprice'));
-        var quantity = parseInt($('#txtTotalDoors').val());
-
-        if (isNaN(quantity))
-            quantity = 1;
-
-        var order_detail_json = JSON.parse(order_json);
-
-        var selected_index = order_detail_json.findIndex(obj => obj.category === category);
-
-        order_detail_json[selected_index].feature_name = feature_name;
-        order_detail_json[selected_index].price = price;
-
-        total_price = door_price;
-        for(var feature in order_detail_json){
-            total_price += parseInt(order_detail_json[feature].price);
-        }
-
-        total_price = total_price * quantity;
-        $('#hidTotalPrice').val(total_price);
-        $('#spanTotalPrice').text(total_price);
-        $('#hidOrderDetailJSON').val(JSON.stringify(order_detail_json));
-    }
-
-
-
-    function selectItem(item){
-        var item_value = item.dataset.itemprice;
-    }
-    function showArchitrave(){
-        $('#divArchitrave').show();
-    }
-    function showColor(div){
-        $('.color-options').hide();
-        $('#' + div).show();
-    }
-    function showColorSelection(){
-        $('#divColorSelection').show();
-    }
-    function showDoorType(){
-        $('#divDoorType').show();
-    }
-
-    function showDoorSize(door_size){
-        $('.door-size').hide();
-        $('#div' + door_size).show();
-    }
-    function showWallframes(){
-        $('#divDoorWallframes').show();
-    }
-    function showDoorQuantity(){
-        $('#divTotalDoors').show();
-    }
-    function showDoorLocks(){
-        $('#divDoorLocks').show();
-    }
-    function showTotalDoors(){
-        $('#divTotalDoors').show();
-    }
-
-
-</script>
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="popover"]').popover({
-            html: true,
-            trigger: 'hover',
-        });
-        $(document).ready(function() {
-            $('.product-feature').on('click', function() {
-                var productDiv = $(this).closest('.feature'); // get the closest feature div
-                productDiv.find('.product-feature').removeClass('active'); // remove "active" class from all features within the same feature div
-                $(this).addClass('active'); // add "active" class to clicked feature
-            });
-        });
-
-    });
-
-
-</script>
 
 <div class="product-info col-xs-12 col-md-7 col-sm-7">
     <form method="post" id="form" action="{{route('add-to-cart',['product_id' => $product_details->product_id])}}">
         @csrf
         <div class="detail-description">
-            <div class="price-del">
+            <div class="price-del text-left">
                 <input type="hidden" id="hidTotalPrice" name="hidTotalPrice" value="{{$product_details->product_price}}"></input>
-                <span class="price text-secondary" data-doorprice="{{$product_details->product_price}}"><sup>₦</sup>{{$product_details->product_price}}</span>
             </div>
             <p class="description">{{$product_details->product_details}}</p>
-            <div id="divArchitrave" class="feature" >
+            <div id="divArchitrave" class="feature text-left" >
                 <h6>Select Architrave</h6><br />
                 @foreach($product_features as $product_feature)
                     @if($product_feature->product_feature_parent_name == 'Architrave')
@@ -112,7 +17,7 @@
                     @endif
                 @endforeach
             </div>
-            <div id="divColorSelection" class="container feature" style="display: none">
+            <div id="divColorSelection" class="container feature text-left" style="display: none">
                 <div class="row"><h5>Select Color</h5></div>
                 <div>
                     <input class="form-check-input" type="radio" id="color" name="color" onchange="showColor('divLeatherLook')">
@@ -174,7 +79,7 @@
             </div>
             <div id="divDoorType" class="container feature" style="display: none;">
                 <div class="row"><h5>Select Door Type</h5></div>
-                <div class="feature">
+                <div class="feature text-left">
                     <figure class="feature-option-container ">
                         <img src="{{asset('/storage/img/single-door.png')}}" height="100px" width="100px" class="feature-option product-feature" data-featurecategory="door type" data-featureprice="0" data-featurename="single" onclick="showDoorSize('Single')" data-toggle="popover" data-content="<img src='{{asset('/storage/img/single-door.png')}}' height='150px' width='150px'>" data-placement="top">
                         <figcaption>Single Door</figcaption>
@@ -189,12 +94,13 @@
                     </figure>
                 </div>
             </div>
-            <div id="divDoorSize">
+            <div id="divDoorSize" class="text-left">
                 <div id="divSingle" class="door-size mt-3 feature" style="display: none;">
                     <h6>Choose Single Door Type Size</h6>
                     @foreach($product_features as $product_feature)
                         @if($product_feature->product_feature_parent_name == 'Single')
-                            <div>   <img src="{{asset($product_feature->product_feature_image)}}" height="100px" width="100px"class="feature-option product-feature" onclick="showWallframes();" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}" data-toggle="popover" data-content="<img src='{{asset($product_feature->product_feature_image)}}' height='150px' width='150px'>" data-placement="top">{{$product_feature->product_feature_name}}</div>
+                             <img src="{{asset($product_feature->product_feature_image)}}" height="100px" width="100px"class="feature-option product-feature" onclick="showWallframes();" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}" data-toggle="popover" data-content="<img src='{{asset($product_feature->product_feature_image)}}' height='150px' width='150px'>" data-placement="top">
+                            <figcaption>{{$product_feature->product_feature_name}}</figcaption>
 
                         @endif
                     @endforeach
@@ -214,10 +120,10 @@
 
                 @foreach($product_features as $product_feature)
                         @if($product_feature->product_feature_parent_name == 'DoubleHalf')
-                            <div>  <img src="{{asset($product_feature->product_feature_image)}}" height="100px" width="100px" class="feature-option product-feature" onclick="showWallframes()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}" data-toggle="popover" data-content="<img src='{{asset($product_feature->product_feature_image)}}' height='150px' width='150px'>" data-placement="top">{{$product_feature->product_feature_name}}</div>
+                            <div>  <img src="{{asset($product_feature->product_feature_image)}}" height="100px" width="100px" class="feature-option product-feature ml-3" onclick="showWallframes()" data-featurecategory="size" data-featureprice="{{$product_feature->product_feature_price}}" data-featurename="{{$product_feature->product_feature_name}}" data-toggle="popover" data-content="<img src='{{asset($product_feature->product_feature_image)}}' height='150px' width='150px'>" data-placement="top">{{$product_feature->product_feature_name}}</div>
                         @endif
                     @endforeach
-                </div>
+                </div><br>
 
                 <div id="divDoorWallframes" style="display: none;" class="feature">
                     <h6>Select Door Wallframes</h6><br/>
@@ -244,16 +150,20 @@
                     </div>
         </div>
 </div>
+        <!--  Total Price-->
 
 <input type="hidden" id="hidOrderDetailJSON" name="hidOrderDetailJSON"
        value='[{"category": "color","feature_name": "NA","price": 0},{"category":"door type","feature_name":"NA","price": 0},{"category":"size","feature_name":"NA","price": 0},{"category":"total doors","feature_name":"NA","price": 0},{"category": "left","feature_name": "NA","price": 0},{"category": "right","feature_name": "NA","price": 0},{"category": "architrave","feature_name": "NA","price": 0},{"category": "door handles","feature_name": "NA","price": 0},{"category": "door locks","feature_name": "NA","price": 0 }]'>
-<div class="total_price">Total Price: <span id="spanTotalPrice">{{$product_details->product_price}}</span></div>
-<span class="add">
-    <button type="submit" class="btn btn-primary add-to-cart add-item"  data-product-id="{{$product_details->product_id}}">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-    <span>  Add  to cart</span>
+<div class="total_price text-left">Total Price: <span id="spanTotalPrice">{{$product_details->product_price}}</span></div>
 
-    </button></span>
+        <!-- Cart Button-->
+        <span class="add" style="display: flex; align-items: center;">
+    <button type="submit" class="btn btn-primary add-to-cart add-item" data-product-id="{{$product_details->product_id}}" style="margin-right: 10px;">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <span>Add to Cart</span>
+    </button>
+</span>
+
 
 </form>
 

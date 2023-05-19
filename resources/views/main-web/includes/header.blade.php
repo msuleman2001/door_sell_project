@@ -1,224 +1,184 @@
-<header>
-    <button type="button" class="btn btn-outline-primary login-btn" data-toggle="modal" data-target="#exampleModal">
-        Login
-    </button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog mx-auto " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <form  method="post" action="{{route('userLogin')}}">
-                                @csrf
-                                <h4>Login</h4>
-                                <hr>
-                                <div class="form-group text-sm">
-                                    <label for="loginEmail">Username<sup>*</sup></label>
-                                    <input name="user_name"  type="text" class="form-control" placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="loginPassword">Password<sup>*</sup></label>
-                                    <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="user_password">
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-md rounded-0">Login</button>
 
-                            </form>
-                        </div>
-                        <div class="col-md-6">
-                            <form  method="post" action="{{route('userRegister')}}">
-                                @csrf
-                                <h4>Register</h4>
-                                <hr>
-                                <label for="registerName">Username<sup>*</sup></label>
-                                <input name="user_name" type="text" id="form3Example1c" class="form-control" >
-
-                                <label for="registerEmail">Email address<sup>*</sup></label>
-                                <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp"
-                                       placeholder="Enter email" name="user_email">
-
-
-                                <label for="registerPassword">Password<sup>*</sup></label>
-                                <input type="password" class="form-control" id="registerPassword" placeholder="Password" name="user_password">
-
-                                <button type="submit" class="btn btn-primary btn-md rounded-0">Register</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <!-- header left mobie -->
-    <div class="header-mobile d-md-none">
-        <div class="mobile hidden-md-up text-xs-center d-flex align-items-center justify-content-around">
-
-            <!-- menu left -->
-            <div id="mobile_mainmenu" class="item-mobile-top">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </div>
-
-            <!-- logo -->
-            <div class="mobile-logo">
-                <a href="/door-shop2">
-                    <img class="logo-mobile img-fluid" src="{{asset('storage/img/home/logo-mobile.png')}}" alt="Prestashop_Furnitica">
+<header class="navbar" style="opacity: 1;">
+    <!-- navbar-sticky -->
+    <div class="navigation" style="margin-top: 0px;">
+        <!-- Site Logo -->
+        <a href="index.html" class="site-logo">
+            <img src="{{asset('storage/img/logo.png')}}" alt="logo">
+        </a>
+        <!-- site-logo.visible-desktop -->
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="inner">
+                <a href="#menu" class="toolbar-toggle">
+                    <i class="ti-menu"></i>
+                </a>
+                <a href="#account" class="toolbar-toggle">
+                    <i class="ti-user"></i>
+                </a>
+                <a href="#cart" class="toolbar-toggle">
+                    <i class="ti-bag"></i>
                 </a>
             </div>
-
-            <!-- menu right -->
-            <div class="mobile-menutop" data-target="#mobile-pagemenu">
-                <i class="zmdi zmdi-more"></i>
-            </div>
         </div>
+        <!-- .toolbar -->
 
-        <!-- search -->
-        <div id="mobile_search" class="d-flex">
-            <div id="mobile_search_content">
-                <form method="get" action="#">
-                    <input type="text" name="s" value="" placeholder="Search">
-                    <button type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-            </div>
-            <div class="desktop_cart">
-                <div class="blockcart block-cart cart-preview tiva-toggle">
-                    <div class="header-cart tiva-toggle-btn">
-                        <span class="cart-products-count">1</span>
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </div>
-                    <div class="dropdown-content">
-                        <div class="cart-content">
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td colspan="3" class="d-flex justify-content-center">
-                                        <div class="cart-button">
-                                            <a href="{{route('review.cart')}}" title="View Cart">View Cart</a>
-                                            <a href="/product-checkout" title="Checkout">Checkout</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- header desktop -->
-    <div class="header-top d-xs-none ">
-        <div class="container">
-            <div class="row">
-                <!-- logo -->
-                <div class="col-sm-2 col-md-2 d-flex align-items-center">
-                    <div id="logo">
-                        <a href="/door_shop2">
-                            <img class="img-fluid" src="{{asset('storage/img/home/logo.png')}}"alt= "">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- menu -->
-                <div class="main-menu col-sm-4 col-md-5 align-items-center justify-content-center navbar-expand-md">
-
-                </div>
-
-                <!-- search-->
-                <div id="search_widget" class="col-sm-6 col-md-5 align-items-center justify-content-end d-flex">
-                    <form method="get" action="#">
-                        @csrf
-                        <input type="text" name="s" value="" placeholder="Search ..." class="ui-autocomplete-input" autocomplete="off">
-                        <button type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-
-                    <!-- acount  -->
-                    <div id="block_myaccount_infos" class="hidden-sm-down dropdown">
-                        <div class="myaccount-title">
-                            <a href="#acount" data-toggle="collapse" class="acount">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                @if(session()->has('user'))
-                                    <span>{{ session('user')->user_name }}</span>
-                                @else
-                                <span>Account</span>
-                                @endif
-                                <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div id="acount" class="collapse">
-                            <div class="account-list-content">
-                                <div>
-                                    <a class="login" href="/user-acount" rel="nofollow" title="Log in to your customer account">
-                                        <i class="fa fa-cog"></i>
-
-                                     <span>My Account</span>
-
-                                    </a>
-                                </div>
-                                <div>
-                                    <a class="login" href="{{route('userLogout')}}" rel="nofollow" title="Log out your customer account">
-                                        <i class="fa fa-sign-out"></i>
-                                        <span>Sign out</span>
-                                    </a>
-                                </div>
-
-                                <div>
-                                    <a class="check-out" href="/product-checkout" rel="nofollow" title="Checkout">
-                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                        <span>Checkout</span>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="/user-wishlist" title="My Wishlists">
-                                        <i class="fa fa-heart"></i>
-                                        <span>My Wishlists</span>
-                                    </a>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="desktop_cart">
-                        <div class="blockcart block-cart cart-preview tiva-toggle">
-                            <div class="header-cart tiva-toggle-btn">
-                                <span class="cart-products-count">1</span>
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            </div>
-                            <div class="dropdown-content">
-                                <div class="cart-content">
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td colspan="3" class="d-flex justify-content-center">
-                                                <div class="cart-button">
-                                                    <a href="{{route('review.cart')}}" title="View Cart">View Cart</a>
-                                                    <a href="/product-checkout" title="Checkout">Checkout</a>
+        <!-- Toolbar Dropdown -->
+        <div class="toolbar-dropdown">
+            <!-- Menu -->
+            <div class="toolbar-section" id="menu">
+                <div class="inner">
+                    <div class="menu-items">
+                        <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+                            <div class="sidebar-block">
+                                <div class="title-block">Categories</div>
+                                <div class="block-content">
+                                    @foreach($categories as $category)
+                                        <div class="cateTitle hasSubCategory open level1">
+                    <span class="arrow collapse-icons collapsed" data-toggle="collapse" data-target="#collapse{{$category->category_id}}">
+                        <i class="zmdi zmdi-minus"></i>
+                        <i class="zmdi zmdi-plus"></i>
+                    </span>
+                                            <a class="cateItem" href="{{url('/',['category_id'=>$category->category_id])}}">{{$category->category_name}}</a>
+                                            <div class="subCategory collapse" id="collapse{{$category->category_id}}" aria-expanded="false">
+                                                <div class="cateTitle">
+                                                    @foreach ($category['sub_categories'] as $sub_category)
+                                                        <a class="cateItem" href="{{url('/',['sub_category_id'=>$sub_category->category_id])}}" title="{{ $sub_category->category_name }}">{{ $sub_category->category_name }}</a><br>
+                                                    @endforeach
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-
                         </div>
+
+                    </div>
+                </div>
+                <!-- .inner -->
+            </div>
+            <!-- .toolbar-section#menu -->
+            <div class="toolbar-section" id="account">
+                <div class="inner">
+                    <div class="login-panel">
+                        <h3>CUSTOMER LOGIN</h3>
+                        <form action="" method="">
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="password" name="password" placeholder="Password">
+                            <a href="#" id="forget-pass">Forgot your password?</a>
+                            <div class="checkbox">
+                                <label class="check">
+                                    <input id="" type="checkbox" value="" />
+                                    <div class="box"></div>
+                                </label>
+                                <span>Remember Me</span>
+                                <button class="btn-submit" type="submit">Login</button>
+                            </div>
+                        </form>
+                        <p>Don’t have an account?
+                            <a href="">Signup</a> here</p>
                     </div>
                 </div>
             </div>
+            <!-- .toolbar-section#login -->
+            <!-- Cart -->
+            <div class="toolbar-section cart" id="cart">
+                <div class="inner">
+                    <!-- <div class="empty-page-content text-center">
+                            <h1>Shopping Cart</h1>
+                            <p class="cart-empty-message mb-5">Your cart is currently empty.</p>
+                            <a href="/" class="btn btn-primary">Go To Shop</a>
+                        </div> -->
+                    <ul class="cart-list">
+                        <li class="cart-item">
+                            <div class="cart-item-image">
+                                <img class="img-fluid" src="{{asset('storage/images/cart/item-1.jpg')}}" alt="product-image">
+                            </div>
+                            <div class="cart-item-details">
+                                <h6>D9 White wooden chair</h6>
+                                <p>Unit Price:
+                                    <span>$189</span>
+                                </p>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="ti-minus"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="ti-plus"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cart-item-price">$289</div>
+                            <div class="cart-item-cancel">
+                                <a href="#">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="cart-item">
+                            <div class="cart-item-image">
+                                <img class="img-fluid" src="{{asset('storage/images/cart/item-2.jpg')}}" alt="product-image">
+                            </div>
+                            <div class="cart-item-details">
+                                <h6>D8 Green wooden chair</h6>
+                                <p>Unit Price:
+                                    <span>$189</span>
+                                </p>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="ti-minus"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="ti-plus"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cart-item-price">$192</div>
+                            <div class="cart-item-cancel">
+                                <a href="#">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary mr-3">view cart</a>
+                    <a href="#" class="btn btn-secondary">checkout</a>
+                </div>
+                <!-- .inner -->
+            </div>
+            <!-- .toolbar-section#account -->
+            <div class="toolbar-section search" id="search">
+                <div class="inner">
+                    <div class="search-panel">
+                        <form action="/search" method="get" class="row" role="search">
+                            <div class="col-lg-9 col-sm-9">
+                                <input class="search-box" type="search" name="q" placeholder="Search our store" aria-label="Search our store">
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <button class="btn-submit" type="submit" value="send"> search </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- .shopping-cart -->
+            </div>
+            <!-- .toolbar-section#cart -->
+            <!-- Cart -->
         </div>
+        <!-- .toolbar-dropdown -->
     </div>
 </header>

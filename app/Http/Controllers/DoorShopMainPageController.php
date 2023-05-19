@@ -18,17 +18,17 @@ class DoorShopMainPageController extends Controller {
             else
                 $sub_categories = [];
             $products = [];
-            return view('main-web.index',compact('categories', 'sub_categories', 'products'));
+            return view('main-web.main',compact('categories', 'sub_categories', 'products'));
         }
 
         $sub_categories = ProductCategoryModel::getSubCategories($parent_category_id);
         if (count($sub_categories) == 0){
             $products = ProductModel::where('category_id', $parent_category_id)->get();
             $sub_categories = [];
-            return view('main-web.index',compact('categories', 'sub_categories', 'products'));
+            return view('main-web.main',compact('categories', 'sub_categories', 'products'));
         }
         $products = [];
-        return view('main-web.index',compact('categories', 'sub_categories', 'products'));
+        return view('main-web.main',compact('categories', 'sub_categories', 'products'));
     }
 
     //getting categories and sub categories
