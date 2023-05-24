@@ -36,5 +36,7 @@
     <!--Favicon-->
     <link rel="shortcut icon" href="{{asset('storage/images/favicon.ico')}}" type="image/x-icon">
     <link rel="icon" href="{{asset('storage/images/favicon.ico')}}" type="image/x-icon">
+    <!-- Swiffy Slider -->
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
 
 </head>

@@ -4,7 +4,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800"><Update></Update> Product Category</h1>
+            <h1 class="h3 mb-4 text-gray-800"> Product Category</h1>
             <div class="container-fluid">
 
                 <form method="post" id="form" action="{{route('updatingCategory',$category->category_id)}}"  enctype="multipart/form-data">
@@ -16,6 +16,8 @@
                             <input type="text" id="name" name="category_name" class="form-control" value="{{$category->category_name}}">
                             <label for="image">Category Image</label>
                             <input type="file" id="image" name="category_image" class="form-control">
+                            <label for="back_image">Back Image</label>
+                            <input type="file" id="back_image" name="category_back_image" class="form-control">
                             <label for="productCatDetails">Product Details</label><br>
                             <div>
                                      <textarea  name="category_details" class="form-control" id="textAreaExample" rows="4"

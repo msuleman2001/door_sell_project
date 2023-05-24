@@ -1,5 +1,5 @@
 {{--Links--}}
-@include('main-web.includes.links');
+@include('main-web.includes.links')
 <body>
 
 {{--Header--}}
@@ -10,19 +10,25 @@
 
 {{--Hero Slider--}}
 
-<section class="hero-slider">
+<section class="hero-slider ">
     @foreach($categories as $category)
-
     <div class="hero-slider-item">
         <div class="container-fluid">
-
-                    <div class="hero-slider-content  p-5">
+            <div class="row">
+                <div class="col-lg-6 align-self-center order-2 order-lg-1">
+                    <div class="hero-slider-content">
                         <h3>{{$category->category_name}}</h3>
                         <p>{{$category->category_details}}</p>
                     </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <img class=" rounded-pill" height="500px" width="500px" src="{{asset($category->category_image)}}" alt="banner-image">
+                </div>
+
+            </div>
         </div>
     </div>
-    @endforeach
+@endforeach
 </section>
 
 {{--Collection--}}
@@ -37,24 +43,23 @@
                 </div>
                 @foreach ($sub_categories as $sub_category)
                     <div class="col-lg-4 col-md-6 col-sm-6">
+                        <a href="{{url('/',['sub_category_id'=>$sub_category->category_id])}}">
                         <div class="collection-item">
                             @if($sub_category->category_image)
                                 <img src="{{asset($sub_category->category_image)}}" class="img-fluid">
                             @endif
                                 <div class="collection-item-overlay">
                                 <div class="collection-item-content">
-                                    <a href="{{url('/',['sub_category_id'=>$sub_category->category_id])}}">
                                         <h3 class="">{{$sub_category->category_name}}</h3>
-                                    </a>
-                                    <h6>(22 Items)</h6>
                                 </div>
                             </div>
                             <div class="collection-item-title">
                                 <a href="#">
-                                    <h3>D9 Chairs</h3>
+                                    <h3>{{$sub_category->category_name}}</h3>
                                 </a>
                             </div>
                         </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -67,28 +72,31 @@
                     </div>
                     @foreach ($products as $product)
                         <div class="col-lg-4 col-md-6 col-sm-6">
+                            <a href="{{url('/product-details',['product_id' => $product->product_id])}}">
                             <div class="collection-item">
                                 <img src="{{asset($product->product_front_image)}}" class="img-fluid">
                                 <div class="collection-item-overlay">
                                     <div class="collection-item-content">
-                                        <a href="{{url('/product-details',['product_id' => $product->product_id])}}">
                                             <h5 class="card-title">{{$product->product_title}}</h5>
-                                        </a>
-                                        <h6>(22 Items)</h6>
                                     </div>
                                 </div>
+
                                 <div class="collection-item-title">
                                     <a href="#">
-                                        <h3>D9 Chairs</h3>
+                                        <h3>{{$product->product_title}}</h3>
                                     </a>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
             @endif
     </div>
 </section>
+
+    {{--Footer--}}
+@include('main-web.includes.footer');
 
     {{--JavaScript files--}}
 @include('main-web.includes.script')

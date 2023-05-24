@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdonItemModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductModel;
 use App\Models\ReviewModel;
-use App\Models\ColourTypeModel;
-use App\Models\AdonsModel;
+
 use App\Models\ProductFeaturesModel;
 
 use Illuminate\Http\Request;
@@ -146,7 +144,5 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
-
-
 
 }

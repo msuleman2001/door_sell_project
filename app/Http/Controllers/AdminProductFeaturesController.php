@@ -47,16 +47,15 @@ public function editProductFeature($id){
         $product_feature->product_feature_details = $request->input('txtProductFeatureDetails');
 
         //uploading the image
-        $feature_image=$request->file('fulProductFeatureImage');
-
-        $feature_image_name=$feature_image->getClientOriginalName();
-        $feature_image_folder='/public/img/';
-        $feature_image_path='/storage/img/'. $feature_image_name;
-        $feature_image->storeAs($feature_image_folder,$feature_image_name);
-        $product_feature->product_feature_image=$feature_image_path;
-
+       if($request->hasFile('fulProductFeatureImage')){
+           $feature_image=$request->file('fulProductFeatureImage');
+           $feature_image_name=$feature_image->getClientOriginalName();
+           $feature_image_folder='/public/img/';
+           $feature_image_path='/storage/img/'. $feature_image_name;
+           $feature_image->storeAs($feature_image_folder,$feature_image_name);
+           $product_feature->product_feature_image=$feature_image_path;
+       }
         $product_feature->save();
-
         return redirect()->route('index');
 
     }

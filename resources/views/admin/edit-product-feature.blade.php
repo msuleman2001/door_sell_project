@@ -14,16 +14,16 @@
                     <label for="ddlCategoryFeature">Select Feature Category</label>
                     <select class="form-control" name="ddlCategoryFeature">
                         <option value="">Select Parent Category</option>
-                        <option value="Leather Look">Leather Look</option>
-                        <option value="Gloss">Gloss</option>
-                        <option value="Wooden Grain">Wooden Grain</option>
-                        <option value="Solid Colour">Solid Colour</option>
-                        <option value="Single">Single</option>
-                        <option value="Double">Double</option>
-                        <option value="DoubleHalf">DoubleHalf</option>
-                        <option value="Architrave">Architrave</option>
-                        <option value="DoorWallframes">DoorWallframes</option>
-                        <option value="Locks">Locks</option>
+                        <option value="Leather Look" {{ $product_feature->parent_feature_parent_name == 'Leather Look' ? 'selected' : '' }}>Leather Look</option>
+                        <option value="Gloss" {{ $product_feature->parent_feature_parent_name == 'Gloss' ? 'selected' : '' }}>Gloss</option>
+                        <option value="Wooden Grain" {{ $product_feature->parent_feature_parent_name == 'Wooden Grain' ? 'selected' : '' }}>Wooden Grain</option>
+                        <option value="Solid Colour" {{ $product_feature->parent_feature_parent_name == 'Solid Colour' ? 'selected' : '' }}>Solid Colour</option>
+                        <option value="Single" {{ $product_feature->parent_feature_parent_name == 'Single' ? 'selected' : '' }}>Single</option>
+                        <option value="Double" {{ $product_feature->parent_feature_parent_name == 'Double' ? 'selected' : '' }}>Double</option>
+                        <option value="DoubleHalf" {{ $product_feature->parent_feature_parent_name == 'DoubleHalf' ? 'selected' : '' }}>DoubleHalf</option>
+                        <option value="Architrave" {{ $product_feature->parent_feature_parent_name == 'Architrave' ? 'selected' : '' }}>Architrave</option>
+                        <option value="DoorWallframes" {{ $product_feature->parent_feature_parent_name == 'DoorWallframes' ? 'selected' : '' }}>DoorWallframes</option>
+                        <option value="Locks" {{ $product_feature->parent_feature_parent_name == 'Locks' ? 'selected' : '' }}>Locks</option>
                     </select>
 
                     <label for="txtProductFeatureName">Feature Name</label><br>

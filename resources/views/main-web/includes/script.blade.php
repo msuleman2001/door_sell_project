@@ -13,7 +13,8 @@
 <script  src="{{asset('libs/google-map/gmap.js')}}"></script>
 <!-- Main Script -->
 <script src="{{asset('main_website_assets/js/script.js')}}"></script>
-
+<!-- Swiffy Slider -->
+<script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
 <script>
 
     $(document).ready(function(){
@@ -109,3 +110,24 @@
 
 
 </script>
+{{--swiffy slider for the product image--}}
+<script>
+    function imageClick(imageNumber) {
+        setTimeout(() => {
+            //Find the slider element
+            const sliderElement = document.getElementById('pgalleryModal');
+            //Slide to he right image
+            swiffyslider.slideTo(sliderElement, imageNumber);
+            //Listen to slide end and set focus to the container to enable keyboard navigation
+            swiffyslider.onSlideEnd(sliderElement, () => sliderElement.querySelector(".slider-container").focus());
+        }, 300)
+    }
+
+    function thumbHover(imageNumber) {
+        //Find the slider element
+        const sliderElement = document.getElementById('pgallery');
+        //Slide to he right image
+        swiffyslider.slideTo(sliderElement, imageNumber)
+    }
+</script>
+

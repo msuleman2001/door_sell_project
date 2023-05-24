@@ -1174,7 +1174,8 @@ button {
   margin-bottom: 30px;
 }
 .login-panel input[type=text],
-.login-panel input[type=password] {
+.login-panel input[type=password],
+.login-panel input[type=email]{
   display: block;
   font-size: 14px;
   line-height: 48px;
@@ -1204,6 +1205,20 @@ button {
   font-size: 14px;
   font-weight: 700;
   color: #808080;
+}
+.register-panel input[type=text],
+.register-panel input[type=password],
+.register-panel input[type=email]{
+    display: block;
+    font-size: 14px;
+    line-height: 48px;
+    padding: 0 15px;
+    color: #363636;
+    width: 100%;
+    border: 1px solid #000;
+    margin: 20px 0px;
+    -webkit-animation: fadeInUp 0.3s both 0.1s cubic-bezier(0.26, 0.63, 0.68, 1.04);
+    animation: fadeInUp 0.3s both 0.1s cubic-bezier(0.26, 0.63, 0.68, 1.04);
 }
 @media (min-width: 300px) and (max-width: 479px) {
   .login-panel p {
@@ -1546,6 +1561,8 @@ button {
     }
 }
 /*Applying css to headere*/
+
+
 .feature-option-container {
     display: inline-block;
     position: relative;
@@ -1562,7 +1579,7 @@ figcaption {
 }
 .features-container {
 position: relative;
-    margin-top: 200px;
+    margin-top: 500px;
 }
 
 .product-feature.active {

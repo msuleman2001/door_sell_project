@@ -19,21 +19,21 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-group">
-                                    <select name="category_id"  class="form-control col-md-6" id="categories">
+                                    <select name="category_id" class="form-control col-md-6" id="categories">
                                         <option value="">--Select Product Category--</option>
-
                                         @foreach($categories as $category)
-                                            <option value={{ $category->category_id}}>{{ $category->category_name}}</option>
+                                            <option value="{{ $category->category_id }}" {{ $category->category_id == $product->category_id ? 'selected' : '' }}>
+                                                {{ $category->category_name }}
+                                            </option>
                                         @endforeach
                                     </select><br>
                                     <label for="productName">Product Name</label>
                                     <input class="form-control col-md-6" value="{{$product->product_title}}" name="product_title" type="text" id="productName"><br>
 
                                     <label for="productPrice">Product Price</label>
-                                    <input class ="form-control col-md-6" value="{{$product->product_price}}" name="product_price" type="number" id="productPrice">
-
-
+                                    <input class="form-control col-md-6" value="{{$product->product_price}}" name="product_price" type="number" id="productPrice">
                                 </div>
+
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-group">

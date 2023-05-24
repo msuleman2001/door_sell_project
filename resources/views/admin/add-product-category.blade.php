@@ -18,6 +18,8 @@
                     <input name="hidParentCategory" id="hidParentCategory" type="hidden" value="{{$category_id}}">
                     <label for="image">Category Image</label>
                     <input type="file" id="image" name="category_image" class="form-control">
+                    <label for="back_image">Back Image</label>
+                    <input type="file" id="back_image" name="category_back_image" class="form-control">
                     <label for="productCatDetails">Product Details</label><br>
                     <div>
                         <textarea name="category_details" class="form-control" id="textAreaExample" rows="4" style="background: #fff;"></textarea>
